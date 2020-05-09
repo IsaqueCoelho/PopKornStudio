@@ -12,7 +12,7 @@ Do you doesn't know too?
 
 ## Authors
 
-* **Isaque Coelho and João Geniseli** - (https://github.com/JoaoGeniselli)
+* **Isaque Coelho and João Geniselli** - (https://github.com/JoaoGeniselli)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
