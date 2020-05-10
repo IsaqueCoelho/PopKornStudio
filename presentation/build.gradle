@@ -24,14 +24,24 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    
+    def dependencies = rootProject.ext.dependencies
+    def testImplementationDependencies = rootProject.ext.testImplementationDependencies
+    def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
+    // Core
+    implementation dependencies.kotlin
+    implementation dependencies.corektx
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Design
+    implementation dependencies.material
+    implementation dependencies.appCompat
+    implementation dependencies.constraintLayout
+
+    // Tests
+    testImplementation testImplementationDependencies.junit4
+    androidTestImplementation androidTestImplementationDependencies.runner
+    androidTestImplementation androidTestImplementationDependencies.espresso
 }

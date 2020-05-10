@@ -1,14 +1,28 @@
 ext {
 
     // Android Config
+    buildTools = '3.5.0'
     minSDK = 20
     targetSDK = 28
     compileSDK = 28
 
+    // KotlinVersion
     kotlinVersion = '1.3.21'
 
-    buildTools = '3.5.0'
+    // Core Ktx
+    coreKtxVersion = '1.2.0'
 
+    // Lifecycle
+    lifecycleVersion = '2.2.0'
+
+    // Material Design
+    materialVersion = '1.1.0'
+
+    // App Compat
+    appCompatVersion = '1.1.0'
+
+    // Constraint Layout
+    constraintLayoutVersion = '1.1.3'
 
     // Koin
     koinVersion = '1.0.2'
@@ -22,13 +36,43 @@ ext {
     //Room version
     roomVersion = '2.2.5'
 
+
+    //
+    // Test Dependencies
+    //
+
+    // JUnit4
+    junit5Version = '4.12'
+
+    // Runner
+    runnerVersion = '1.2.0'
+
+    // Espresso
+    espressoVersion = '3.2.0'
+
     dependencies = [
             kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            corektx               : "androidx.core:core-ktx:$coreKtxVersion",
+            viewmodel             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            livedata              : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
             koin                  : "org.koin:koin-android:$koinVersion",
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson                  : "com.google.code.gson:gson:$gsonVersion",
             room                  : "androidx.room:room-runtime:$roomVersion",
-            roomCompiler          : "androidx.room:room-compiler:$roomVersion"
+            roomCompiler          : "androidx.room:room-compiler:$roomVersion",
+            material              : "com.google.android.material:material:$materialVersion",
+            appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
+            constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    ]
+
+    testImplementationDependencies = [
+            junit4                : "junit:junit:$junit5Version",
+
+    ]
+
+    androidTestImplementationDependencies = [
+            runner             : "androidx.test:runner:$runnerVersion",
+            espresso           : "androidx.test.espresso:espresso-core:$espressoVersion"
     ]
 }
