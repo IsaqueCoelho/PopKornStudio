@@ -42,7 +42,7 @@ ext {
     //
 
     // JUnit4
-    junit5Version = '4.12'
+    junit4Version = '1.1.1'
 
     // Runner
     runnerVersion = '1.2.0'
@@ -67,8 +67,7 @@ ext {
     ]
 
     testImplementationDependencies = [
-            junit4                : "junit:junit:$junit5Version",
-
+            junit4                : "androidx.test.ext:junit:$junit4Version",
     ]
 
     androidTestImplementationDependencies = [
