@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
+apply from: "${rootProject.projectDir}/flavors.gradle"
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -12,6 +12,13 @@ android {
         minSdkVersion globalConfiguration["minSDK"]
         targetSdkVersion globalConfiguration["targetSDK"]
     }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    with flavorConfig
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

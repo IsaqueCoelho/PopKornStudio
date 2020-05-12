@@ -1,0 +1,32 @@
+ext.flavorConfig = {
+
+    flavorDimensions "version"
+    productFlavors {
+        mock {
+            dimension "version"
+            ext.myApplicationIdSuffix = '.mock'
+            ext.versionNameSuffix = '-mock'
+        }
+        mvp {
+            dimension "version"
+            ext.myApplicationIdSuffix = '.mvp'
+            ext.versionNameSuffix = '-mvp'
+        }
+        full {
+            dimension "version"
+        }
+    }
+
+    productFlavors.all { flavor ->
+        if (flavor.hasProperty('myApplicationIdSuffix') && isApplicationProject()) {
+            flavor.applicationIdSuffix = flavor.myApplicationIdSuffix
+        }
+    }
+
+}
+
+def isApplicationProject() {
+    return project.android.class.simpleName.startsWith('BaseAppModuleExtension')
+    // in AGP 3.1.x with library modules instead of feature modules:
+    // return project.android instanceof com.android.build.gradle.AppExtension
+}
