@@ -2,18 +2,21 @@ ext.flavorConfig = {
 
     flavorDimensions "version"
     productFlavors {
-        mock {
+        dev {
             dimension "version"
-            ext.myApplicationIdSuffix = '.mock'
-            ext.versionNameSuffix = '-mock'
+            ext.myApplicationIdSuffix = '.dev'
+            ext.versionNameSuffix = '-dev'
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn_dev",
+                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.SplashDevActivity"
+            ]
         }
-        mvp {
+        prod {
             dimension "version"
-            ext.myApplicationIdSuffix = '.mvp'
-            ext.versionNameSuffix = '-mvp'
-        }
-        full {
-            dimension "version"
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn",
+                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.SplashActivity"
+            ]
         }
     }
 

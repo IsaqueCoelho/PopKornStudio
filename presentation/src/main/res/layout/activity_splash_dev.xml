@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="100dp"
-    android:background="@color/colorPrimaryDark"
-    android:src="@drawable/ic_popcorn"
-    tools:context=".MainActivity" />
+    android:background="@color/colorPrimaryDevDark"
+    android:src="@drawable/ic_popcorn_dev"
+    tools:context=".SplashActivity" />
