@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: "${rootProject.projectDir}/flavors.gradle"
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
     compileSdkVersion globalConfiguration["compileSDK"]
@@ -43,6 +45,9 @@ dependencies {
     implementation dependencies.material
     implementation dependencies.appCompat
     implementation dependencies.constraintLayout
+
+    // Firebase
+    implementation dependencies.firebaseAnalytics
 
     // Tests
     testImplementation testImplementationDependencies.junit4

@@ -6,6 +6,8 @@ ext {
     targetSDK = 28
     compileSDK = 28
 
+    googleServicesVersion = '4.3.3'
+
     // KotlinVersion
     kotlinVersion = '1.3.72'
 
@@ -33,8 +35,14 @@ ext {
     // Gson
     gsonVersion = '2.8.6'
 
-    //Room version
+    // Room version
     roomVersion = '2.2.5'
+
+    //
+    // Firebase
+    //
+
+    firebaseAnalyticsVersion = '17.4.1'
 
 
     //
@@ -63,7 +71,8 @@ ext {
             roomCompiler          : "androidx.room:room-compiler:$roomVersion",
             material              : "com.google.android.material:material:$materialVersion",
             appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
-            constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+            constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
     ]
 
     testImplementationDependencies = [
