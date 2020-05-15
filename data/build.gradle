@@ -3,8 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply from: "${rootProject.projectDir}/flavors.gradle"
 
-apply plugin: 'com.google.gms.google-services'
-
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 

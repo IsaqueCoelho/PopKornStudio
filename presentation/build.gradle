@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resConfigs "pt"
     }
     buildTypes {
         release {
@@ -48,6 +49,8 @@ dependencies {
 
     // Firebase
     implementation dependencies.firebaseAnalytics
+    implementation dependencies.firebaseAuth
+    implementation dependencies.firebaseUiAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

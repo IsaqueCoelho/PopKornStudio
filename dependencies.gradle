@@ -8,54 +8,40 @@ ext {
 
     googleServicesVersion = '4.3.3'
 
-    // KotlinVersion
+    //
+    // Core
+    //
     kotlinVersion = '1.3.72'
-
-    // Core Ktx
     coreKtxVersion = '1.2.0'
-
-    // Lifecycle
     lifecycleVersion = '2.2.0'
 
-    // Material Design
+    koinVersion = '1.0.2'
+    retrofitVersion = '2.8.1'
+    gsonVersion = '2.8.6'
+    roomVersion = '2.2.5'
+
+
+    //
+    // Design
+    //
     materialVersion = '1.1.0'
-
-    // App Compat
     appCompatVersion = '1.1.0'
-
-    // Constraint Layout
     constraintLayoutVersion = '1.1.3'
 
-    // Koin
-    koinVersion = '1.0.2'
-
-    // Retrofit
-    retrofitVersion = '2.8.1'
-
-    // Gson
-    gsonVersion = '2.8.6'
-
-    // Room version
-    roomVersion = '2.2.5'
 
     //
     // Firebase
     //
-
     firebaseAnalyticsVersion = '17.4.1'
+    firebaseAuthVersion = '19.1.0'
+    firebaseUiAuthVersion = '6.2.1'
 
 
     //
     // Test Dependencies
     //
-
-    // JUnit4
     junit4Version = '1.1.1'
-
-    // Runner
     runnerVersion = '1.2.0'
-
-    // Espresso
     espressoVersion = '3.2.0'
 
     dependencies = [
@@ -72,7 +58,9 @@ ext {
             material              : "com.google.android.material:material:$materialVersion",
             appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
-            firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
+            firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
+            firebaseAuth          : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
+            firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
     ]
 
     testImplementationDependencies = [
