@@ -1,2 +1,2 @@
-include ':presentation', ':domain', ':data'
+include ':presentation', ':domain', ':data', ':firebase'
 rootProject.name='PopKornStudio'

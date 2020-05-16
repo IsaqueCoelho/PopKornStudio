@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply from: "${rootProject.projectDir}/flavors.gradle"
-apply plugin: 'com.google.gms.google-services'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -33,10 +32,12 @@ dependencies {
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
-    implementation project(":domain")
+    implementation project(':domain')
 
     // Core
     implementation dependencies.kotlin
+    implementation dependencies.corektx
+    implementation dependencies.appCompat
     implementation dependencies.koin
 
     // Remote Cache
@@ -51,4 +52,5 @@ dependencies {
     // Tests
     testImplementation testImplementationDependencies.junit4
     androidTestImplementation androidTestImplementationDependencies.runner
+    androidTestImplementation androidTestImplementationDependencies.espresso
 }

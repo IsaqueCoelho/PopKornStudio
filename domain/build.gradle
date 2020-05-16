@@ -1,13 +1,43 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "${rootProject.projectDir}/flavors.gradle"
 
-dependencies {
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    def dependencies = rootProject.ext.dependencies
+    compileSdkVersion globalConfiguration["compileSDK"]
 
-    implementation dependencies.kotlin
-    implementation dependencies.koin
+    defaultConfig {
+        minSdkVersion globalConfiguration["minSDK"]
+        targetSdkVersion globalConfiguration["targetSDK"]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    with flavorConfig
+
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dependencies = rootProject.ext.dependencies
+    def testImplementationDependencies = rootProject.ext.testImplementationDependencies
+    def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
+
+    //Core
+    implementation dependencies.kotlin
+    implementation dependencies.corektx
+    implementation dependencies.appCompat
+    implementation dependencies.koin
+
+    // Tests
+    testImplementation testImplementationDependencies.junit4
+    androidTestImplementation androidTestImplementationDependencies.runner
+    androidTestImplementation androidTestImplementationDependencies.espresso
+}

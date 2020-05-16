@@ -1,21 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "${rootProject.projectDir}/flavors.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
+
     compileSdkVersion globalConfiguration["compileSDK"]
-    buildToolsVersion "29.0.0"
+
     defaultConfig {
-        applicationId "com.studio.sevenapp.android.popkornstudio"
         minSdkVersion globalConfiguration["minSDK"]
         targetSdkVersion globalConfiguration["targetSDK"]
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        resConfigs "pt"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,31 +21,26 @@ android {
         }
     }
     with flavorConfig
+
 }
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':domain')
 
     def dependencies = rootProject.ext.dependencies
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
-    // Core
+    implementation project(':data')
+
+    //Core
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
     implementation dependencies.koin
 
-    // Design
-    implementation dependencies.material
-    implementation dependencies.constraintLayout
-
     // Firebase
-    implementation dependencies.firebaseAnalytics
-    implementation dependencies.firebaseAuth
-    implementation dependencies.firebaseUiAuth
+    implementation dependencies.firebaseCore
 
     // Tests
     testImplementation testImplementationDependencies.junit4

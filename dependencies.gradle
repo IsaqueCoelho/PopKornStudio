@@ -32,8 +32,9 @@ ext {
     //
     // Firebase
     //
+    firebaseCoreVersion = '17.4.1'
     firebaseAnalyticsVersion = '17.4.1'
-    firebaseAuthVersion = '19.1.0'
+    firebaseAuthVersion = '19.3.1'
     firebaseUiAuthVersion = '6.2.1'
 
 
@@ -58,6 +59,7 @@ ext {
             material              : "com.google.android.material:material:$materialVersion",
             appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            firebaseCore          : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
             firebaseAuth          : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
             firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
