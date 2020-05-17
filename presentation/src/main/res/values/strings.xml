@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PopKorn Studio</string>
+
+    <!-- No connection internet -->
+    <string name="base_no_internet_connection_error">Sem conexão com a internet</string>
+    <string name="base_no_internet_connection_close">FECHAR</string>
+    <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>
 </resources>

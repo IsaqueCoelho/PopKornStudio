@@ -34,7 +34,7 @@ dependencies {
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
-    implementation dependencies.koin
+    implementation dependencies.koinCore
 
     // Tests
     testImplementation testImplementationDependencies.junit4

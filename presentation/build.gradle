@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply from: "${rootProject.projectDir}/flavors.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -31,6 +33,7 @@ dependencies {
     implementation project(':domain')
 
     def dependencies = rootProject.ext.dependencies
+    def kaptDependencies = rootProject.ext.kaptDependencies
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
@@ -38,7 +41,12 @@ dependencies {
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
-    implementation dependencies.koin
+    implementation dependencies.koinCore
+    implementation dependencies.koinViewModel
+
+    implementation dependencies.viewModel
+    implementation dependencies.archExts
+    kapt kaptDependencies.archCompiler
 
     // Design
     implementation dependencies.material

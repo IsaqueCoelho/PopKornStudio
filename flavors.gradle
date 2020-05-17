@@ -8,14 +8,14 @@ ext.flavorConfig = {
             ext.versionNameSuffix = '-dev'
             manifestPlaceholders = [
                     iconApp: "@drawable/ic_popcorn_dev",
-                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.SplashDevActivity"
+                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.splash.SplashDevActivity"
             ]
         }
         prod {
             dimension "version"
             manifestPlaceholders = [
                     iconApp: "@drawable/ic_popcorn",
-                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.SplashActivity"
+                    launchActivityName: "com.studio.sevenapp.android.popkornstudio.splash.SplashActivity"
             ]
         }
     }

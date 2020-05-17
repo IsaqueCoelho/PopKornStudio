@@ -37,7 +37,7 @@ dependencies {
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
-    implementation dependencies.koin
+    implementation dependencies.koinCore
 
     // Firebase
     implementation dependencies.firebaseCore

@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.studio.sevenapp.android.popkornstudio.authentication.LoginActivity">
+    tools:context="com.studio.sevenapp.android.popkornstudio.login.LoginActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

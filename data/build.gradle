@@ -29,6 +29,7 @@ android {
 
 dependencies {
     def dependencies = rootProject.ext.dependencies
+    def kaptDependencies = rootProject.ext.kaptDependencies
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
@@ -38,7 +39,7 @@ dependencies {
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
-    implementation dependencies.koin
+    implementation dependencies.koinCore
 
     // Remote Cache
     implementation dependencies.retrofit
@@ -47,7 +48,7 @@ dependencies {
 
     // Local Cache
     implementation dependencies.room
-    kapt dependencies.roomCompiler
+    kapt kaptDependencies.roomCompiler
 
     // Tests
     testImplementation testImplementationDependencies.junit4

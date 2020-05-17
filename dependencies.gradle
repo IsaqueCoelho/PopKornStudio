@@ -15,7 +15,7 @@ ext {
     coreKtxVersion = '1.2.0'
     lifecycleVersion = '2.2.0'
 
-    koinVersion = '1.0.2'
+    koinVersion = '2.0.1'
     retrofitVersion = '2.8.1'
     gsonVersion = '2.8.6'
     roomVersion = '2.2.5'
@@ -48,25 +48,35 @@ ext {
     dependencies = [
             kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
             corektx               : "androidx.core:core-ktx:$coreKtxVersion",
-            viewmodel             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
+            viewModel             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            archExts              : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             livedata              : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
-            koin                  : "org.koin:koin-android:$koinVersion",
+            koinCore              : "org.koin:koin-core:$koinVersion",
+            koinViewModel         : "org.koin:koin-androidx-viewmodel:$koinVersion",
+
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             gson                  : "com.google.code.gson:gson:$gsonVersion",
             room                  : "androidx.room:room-runtime:$roomVersion",
-            roomCompiler          : "androidx.room:room-compiler:$roomVersion",
+
             material              : "com.google.android.material:material:$materialVersion",
-            appCompat             : "androidx.appcompat:appcompat:$appCompatVersion",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+
             firebaseCore          : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
             firebaseAuth          : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
             firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
     ]
 
+    kaptDependencies = [
+            roomCompiler: "androidx.room:room-compiler:$roomVersion",
+            archCompiler: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    ]
+
     testImplementationDependencies = [
             junit4                : "androidx.test.ext:junit:$junit4Version",
+            koinTests             : "org.koin:koin-test:$koinVersion",
     ]
 
     androidTestImplementationDependencies = [
