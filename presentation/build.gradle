@@ -17,6 +17,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resConfigs "pt"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -25,12 +26,18 @@ android {
         }
     }
     with flavorConfig
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
+    implementation project(':data')
+    implementation project(':firebase')
 
     def dependencies = rootProject.ext.dependencies
     def kaptDependencies = rootProject.ext.kaptDependencies

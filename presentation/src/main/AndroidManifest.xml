@@ -3,15 +3,15 @@
     package="com.studio.sevenapp.android.popkornstudio">
 
     <application
+        android:name=".base.MainAplication"
         android:allowBackup="true"
         android:icon="${iconApp}"
         android:label="@string/app_name"
         android:roundIcon="${iconApp}"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".base.MainAplication">
+        android:theme="@style/AppTheme">
         <activity
-            android:name="${launchActivityName}"
+            android:name=".splash.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".signin.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.MainActivity"
             android:screenOrientation="portrait"/>
     </application>
 

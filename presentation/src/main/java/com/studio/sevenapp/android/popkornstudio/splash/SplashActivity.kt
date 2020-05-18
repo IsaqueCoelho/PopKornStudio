@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
-import com.studio.sevenapp.android.popkornstudio.login.LoginActivity
+import com.studio.sevenapp.android.popkornstudio.features.MainActivity
+import com.studio.sevenapp.android.popkornstudio.signin.SignInActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : BaseActivity<SplashViewModel>() {
@@ -23,15 +24,21 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
 
         viewModel.shouldChangeScreen()
             .observe(this, Observer { result ->
-                if (result) {
-                    changeScreen(
-                        Intent(
-                            this,
-                            LoginActivity::class.java
-                        ),
-                        false
-                    )
-                }
+                changeScreen(
+                    getIntentByAuthorization(result),
+                    false
+                )
             })
+    }
+
+    private fun getIntentByAuthorization(userAuthenticated: Boolean): Intent {
+        return when (userAuthenticated) {
+            true -> {
+                Intent(this, MainActivity::class.java)
+            }
+            else -> {
+                Intent(this, SignInActivity::class.java)
+            }
+        }
     }
 }

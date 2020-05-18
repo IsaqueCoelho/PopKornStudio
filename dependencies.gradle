@@ -2,7 +2,7 @@ ext {
 
     // Android Config
     buildTools = '3.5.0'
-    minSDK = 20
+    minSDK = 21
     targetSDK = 28
     compileSDK = 28
 

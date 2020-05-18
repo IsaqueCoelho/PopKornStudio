@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.popkornstudio.base
+package com.studio.sevenapp.android.popkornstudio.di
 
 import com.studio.sevenapp.android.popkornstudio.splash.includeSplashScreen
 import org.koin.dsl.module

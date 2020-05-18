@@ -21,6 +21,10 @@ android {
         }
     }
     with flavorConfig
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
@@ -31,9 +35,7 @@ dependencies {
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
-    implementation project(':data')
-
-    //Core
+    // Core
     implementation dependencies.kotlin
     implementation dependencies.corektx
     implementation dependencies.appCompat
@@ -41,6 +43,7 @@ dependencies {
 
     // Firebase
     implementation dependencies.firebaseCore
+    implementation dependencies.firebaseAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

@@ -6,5 +6,5 @@
     android:background="@color/colorPrimaryDark"
     android:contentDescription="@string/content_description_splassh_screen"
     android:padding="100dp"
-    android:src="@drawable/ic_popcorn"
+    android:src="@drawable/ic_popcorn_dev"
     tools:context=".splash.SplashActivity" />

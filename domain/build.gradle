@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "${rootProject.projectDir}/flavors.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -20,11 +21,17 @@ android {
         }
     }
     with flavorConfig
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':data')
 
     def dependencies = rootProject.ext.dependencies
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
@@ -35,6 +42,10 @@ dependencies {
     implementation dependencies.corektx
     implementation dependencies.appCompat
     implementation dependencies.koinCore
+
+    // Firebase
+    implementation dependencies.firebaseCore
+    implementation dependencies.firebaseAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

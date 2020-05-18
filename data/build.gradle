@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply from: "${rootProject.projectDir}/flavors.gradle"
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -33,7 +35,7 @@ dependencies {
     def testImplementationDependencies = rootProject.ext.testImplementationDependencies
     def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
-    implementation project(':domain')
+    implementation project(':firebase')
 
     // Core
     implementation dependencies.kotlin
@@ -49,6 +51,10 @@ dependencies {
     // Local Cache
     implementation dependencies.room
     kapt kaptDependencies.roomCompiler
+
+    // Firebase
+    implementation dependencies.firebaseCore
+    implementation dependencies.firebaseAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

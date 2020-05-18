@@ -4,9 +4,9 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 
 
-fun Module.includeSplashScreen(){
+fun Module.includeSplashScreen() {
 
     viewModel {
-        SplashViewModel()
+        SplashViewModel(get())
     }
 }

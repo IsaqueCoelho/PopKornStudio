@@ -4,5 +4,13 @@
     <!-- No connection internet -->
     <string name="base_no_internet_connection_error">Sem conexão com a internet</string>
     <string name="base_no_internet_connection_close">FECHAR</string>
+
+    <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>
+    <string name="content_description_background_login">Background da tela de login</string>
+
+
+    <!-- button Actions -->
+    <string name="action_sign_in_by_google">Entrar usando Google</string>
+
 </resources>
