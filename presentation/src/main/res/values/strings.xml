@@ -8,9 +8,25 @@
     <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>
     <string name="content_description_background_login">Background da tela de login</string>
-
+    <string name="content_description_icon_person">Ícone de pessoa</string>
+    <string name="content_description_icon_star">Ícone de estrela</string>
+    <string name="content_description_icon_book">Ícone de livro aberto</string>
+    <string name="content_description_icon_game_controller">Ícone de controle de videogame</string>
+    <string name="content_description_icon_public">Ícone do planeta</string>
 
     <!-- button Actions -->
     <string name="action_sign_in_by_google">Entrar usando Google</string>
+    <string name="action_loggout">Sair</string>
+
+    <!-- Title -->
+    <string name="title_home">Olá, <b>%s!</b></string>
+
+    <!-- Form topic -->
+    <string name="form_topic_access_profile">Acessar Perfil</string>
+    <string name="form_topic_check_ranking">Conferir Ranking</string>
+    <string name="form_topic_about_popkorn">Sobre PopKorn</string>
+    <string name="form_topic_start_challenge">Iniciar Desafio</string>
+    <string name="form_topic_news">News</string>
+    <string name="form_topic_title_card_news">Central de Notícias</string>
 
 </resources>

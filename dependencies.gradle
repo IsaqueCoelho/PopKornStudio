@@ -27,6 +27,7 @@ ext {
     materialVersion = '1.1.0'
     appCompatVersion = '1.1.0'
     constraintLayoutVersion = '1.1.3'
+    circleimageviewVersion = '3.1.0'
 
 
     //
@@ -62,6 +63,7 @@ ext {
 
             material              : "com.google.android.material:material:$materialVersion",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            circleimageview       : "de.hdodenhof:circleimageview:$circleimageviewVersion",
 
             firebaseCore          : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",

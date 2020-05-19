@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button_loggout.setOnClickListener {
+        link_sair.setOnClickListener {
             AuthUI.getInstance().signOut(this).addOnCompleteListener {
                 Toast.makeText(this, "loggout", Toast.LENGTH_LONG).show()
             }

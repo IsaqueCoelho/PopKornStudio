@@ -5,4 +5,10 @@
     <color name="colorAccent">#5fe4fd</color>
     
     <color name="DEFAULT_RED">#f44336</color>
+    <color name="DEFAULT_F3FEFF">#f3feff</color>
+    <color name="DEFAULT_0BE881">#0be881</color>
+    <color name="DEFAULT_FF3F34">#ff3f34</color>
+    <color name="DEFAULT_0FBCF9">#0fbcf9</color>
+    <color name="DEFAULT_FFD32A">#ffd32a</color>
+    <color name="DEFAULT_5352ED">#5352ed</color>
 </resources>

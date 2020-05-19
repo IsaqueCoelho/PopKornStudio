@@ -58,6 +58,7 @@ dependencies {
     // Design
     implementation dependencies.material
     implementation dependencies.constraintLayout
+    implementation dependencies.circleimageview
 
     // Firebase
     implementation dependencies.firebaseAnalytics
