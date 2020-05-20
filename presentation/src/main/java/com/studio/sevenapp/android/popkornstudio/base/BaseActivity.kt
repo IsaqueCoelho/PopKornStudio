@@ -9,7 +9,7 @@ import com.studio.sevenapp.android.popkornstudio.extensions.setBackground
 import com.studio.sevenapp.android.popkornstudio.extensions.setElevation
 import com.studio.sevenapp.android.popkornstudio.extensions.setMargin
 
-abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
+abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
 
     abstract val viewModel: ViewModel
 
@@ -34,12 +34,23 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
             }
     }
 
-    protected fun changeScreen(intent: Intent, addToStack: Boolean){
+    protected fun changeScreen(intent: Intent, addToStack: Boolean) {
         startActivity(intent)
 
-        if(!addToStack){
+        if (!addToStack) {
             finish()
         }
+    }
+
+    protected fun setToolbarBackButton() {
+        supportActionBar?.let { it ->
+            it.setDisplayShowHomeEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    protected fun setToolbarTitle(title: String) {
+        supportActionBar?.title = title
     }
 
 }

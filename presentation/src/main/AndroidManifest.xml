@@ -26,6 +26,9 @@
         <activity
             android:name=".features.home.HomeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.game.category.GameCategoryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

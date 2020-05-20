@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/DEFAULT_32DP"
         android:text="@string/title_home"
-        android:textSize="@dimen/DEFAULT_34SP"
+        android:textSize="@dimen/FONT_34SP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardview_profile" />

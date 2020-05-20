@@ -9,6 +9,7 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseUser
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
+import com.studio.sevenapp.android.popkornstudio.features.game.category.GameCategoryActivity
 import com.studio.sevenapp.android.popkornstudio.signin.SignInActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,8 +30,15 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         link_sair.setOnClickListener {
             AuthUI.getInstance().signOut(this).addOnCompleteListener {
                 Toast.makeText(this, "loggout", Toast.LENGTH_LONG).show()
-                changeScreen( Intent(this, SignInActivity::class.java), addToStack = false )
+                changeScreen(Intent(this, SignInActivity::class.java), addToStack = false)
             }
+        }
+
+        cardview_box_four.setOnClickListener {
+            changeScreen(
+                Intent(this, GameCategoryActivity::class.java),
+                addToStack = true
+            )
         }
     }
 
