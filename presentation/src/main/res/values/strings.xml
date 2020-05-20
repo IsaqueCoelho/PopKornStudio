@@ -16,7 +16,7 @@
 
     <!-- button Actions -->
     <string name="action_sign_in_by_google">Entrar usando Google</string>
-    <string name="action_loggout">Sair</string>
+    <string name="action_loggout"><u>Sair</u></string>
 
     <!-- Title -->
     <string name="title_home">Olá, <b>%s!</b></string>

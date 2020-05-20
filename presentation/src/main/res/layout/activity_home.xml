@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/DEFAULT_16DP"
-    tools:context="com.studio.sevenapp.android.popkornstudio.features.MainActivity">
+    tools:context="com.studio.sevenapp.android.popkornstudio.features.home.HomeActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_profile"
@@ -61,6 +61,7 @@
                 android:layout_margin="@dimen/DEFAULT_8DP"
                 android:text="@string/action_loggout"
                 android:textSize="@dimen/FONT_14SP"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textview_user_name" />
 
@@ -87,6 +88,9 @@
         android:layout_marginTop="@dimen/DEFAULT_8DP"
         android:layout_marginEnd="@dimen/DEFAULT_8DP"
         android:backgroundTint="@color/DEFAULT_0BE881"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:cardElevation="@dimen/DEFAULT_0DP"
         app:layout_constraintEnd_toStartOf="@id/cardview_box_two"
@@ -128,6 +132,9 @@
         android:layout_height="@dimen/DEFAULT_100DP"
         android:layout_marginStart="@dimen/DEFAULT_8DP"
         android:backgroundTint="@color/DEFAULT_FF3F34"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:cardElevation="@dimen/DEFAULT_0DP"
         app:layout_constraintEnd_toEndOf="parent"
@@ -170,6 +177,9 @@
         android:layout_marginTop="@dimen/DEFAULT_16DP"
         android:layout_marginEnd="@dimen/DEFAULT_8DP"
         android:backgroundTint="@color/DEFAULT_0FBCF9"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:cardElevation="@dimen/DEFAULT_0DP"
         app:layout_constraintEnd_toStartOf="@id/cardview_box_four"
@@ -212,6 +222,9 @@
         android:layout_marginStart="@dimen/DEFAULT_8DP"
         android:layout_marginTop="@dimen/DEFAULT_16DP"
         android:backgroundTint="@color/DEFAULT_FFD32A"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:cardElevation="@dimen/DEFAULT_0DP"
         app:layout_constraintEnd_toEndOf="parent"
@@ -263,6 +276,9 @@
         android:layout_height="@dimen/DEFAULT_0DP"
         android:layout_marginTop="@dimen/DEFAULT_8DP"
         android:backgroundTint="@color/DEFAULT_5352ED"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:cardElevation="@dimen/DEFAULT_0DP"
         app:layout_constraintBottom_toBottomOf="parent"

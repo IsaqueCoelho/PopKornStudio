@@ -59,6 +59,8 @@ dependencies {
     implementation dependencies.material
     implementation dependencies.constraintLayout
     implementation dependencies.circleimageview
+    implementation dependencies.glide
+    kapt kaptDependencies.glideCompiler
 
     // Firebase
     implementation dependencies.firebaseAnalytics

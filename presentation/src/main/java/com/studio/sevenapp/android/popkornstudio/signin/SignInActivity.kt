@@ -8,7 +8,7 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
-import com.studio.sevenapp.android.popkornstudio.features.MainActivity
+import com.studio.sevenapp.android.popkornstudio.features.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,7 +37,7 @@ class SignInActivity : BaseActivity<SignInViewModel>() {
                 changeScreen(
                     Intent(
                         this,
-                        MainActivity::class.java
+                        HomeActivity::class.java
                     ),
                     false
                 )

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
-import com.studio.sevenapp.android.popkornstudio.features.MainActivity
+import com.studio.sevenapp.android.popkornstudio.features.home.HomeActivity
 import com.studio.sevenapp.android.popkornstudio.signin.SignInActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +34,7 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
     private fun getIntentByAuthorization(userAuthenticated: Boolean): Intent {
         return when (userAuthenticated) {
             true -> {
-                Intent(this, MainActivity::class.java)
+                Intent(this, HomeActivity::class.java)
             }
             else -> {
                 Intent(this, SignInActivity::class.java)
