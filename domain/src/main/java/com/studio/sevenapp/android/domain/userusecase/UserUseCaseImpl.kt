@@ -1,7 +1,6 @@
 package com.studio.sevenapp.android.domain.userusecase
 
 import com.google.firebase.auth.FirebaseUser
-import com.studio.sevenapp.android.data.userrepositoy.UserRepository
 
 class UserUseCaseImpl(
     private val userRepository: UserRepository

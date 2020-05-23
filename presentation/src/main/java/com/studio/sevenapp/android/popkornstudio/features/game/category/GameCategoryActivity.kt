@@ -3,20 +3,35 @@ package com.studio.sevenapp.android.popkornstudio.features.game.category
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.studio.sevenapp.android.domain.model.MovieGenre
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_category.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class GameCategoryActivity : BaseActivity<GameCategoryViewModel>() {
+class GameCategoryActivity : BaseActivity<GameCategoryViewModel>(),
+    GameCategoryAdapter.GameCategoryItemClickListener {
 
     override val viewModel: GameCategoryViewModel by viewModel()
+
+    private val adapter: GameCategoryAdapter by inject {
+        parametersOf(null, this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
+    }
 
+    override fun onResume() {
+        super.onResume()
         setComponentViews()
+        prepareObservers()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -28,11 +43,33 @@ class GameCategoryActivity : BaseActivity<GameCategoryViewModel>() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onItemClicked(movieGenre: MovieGenre) {
+        showToast("id: ${movieGenre.id} and name: ${movieGenre.name}")
+    }
+
     private fun setComponentViews() {
         setSupportActionBar(toolbar as Toolbar?)
         setToolbarBackButton()
         setToolbarTitle(
             getString(R.string.title_game_choice_category)
         )
+
+        super.loadStateView = loadstate
+
+        recyclerview.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerview.adapter = adapter
+
+    }
+
+    private fun prepareObservers() {
+        viewModel.showLoading().observe(this, Observer {loadingState ->
+            setloadingState(loadingState)
+        })
+
+        viewModel.showCategory().observe(this, Observer {movieCategoryList ->
+            adapter.updatedList(movieCategoryList)
+            setloadingState(false)
+        })
     }
 }

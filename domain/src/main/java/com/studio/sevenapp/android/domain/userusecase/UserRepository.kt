@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.userrepositoy
+package com.studio.sevenapp.android.domain.userusecase
 
 import com.google.firebase.auth.FirebaseUser
 

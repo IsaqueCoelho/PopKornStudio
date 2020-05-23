@@ -1,18 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply from: "${rootProject.projectDir}/flavors.gradle"
 apply plugin: 'com.google.gms.google-services'
+apply from: '../buildsystem/informations.gradle'
 
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    compileSdkVersion globalConfiguration["compileSDK"]
+    compileSdkVersion app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion globalConfiguration["minSDK"]
-        targetSdkVersion globalConfiguration["targetSDK"]
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
     }
     buildTypes {
         release {
@@ -20,7 +19,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    with flavorConfig
+
+    flavorDimensions dimensions.env
+    productFlavors {
+        dev {
+            dimension dimensions.env
+            buildConfigField "String", "WEB_API_URL", WEB_API_URL_PROD
+            buildConfigField "String", "API_TOKEN", API_TOKEN
+            buildConfigField "String", "URL_LANGUAGE_PARAM", URL_LANGUAGE_PARAM
+        }
+        prod {
+            dimension dimensions.env
+            buildConfigField "String", "WEB_API_URL", WEB_API_URL_PROD
+            buildConfigField "String", "API_TOKEN", API_TOKEN
+            buildConfigField "String", "URL_LANGUAGE_PARAM", URL_LANGUAGE_PARAM
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -30,31 +44,28 @@ android {
 }
 
 dependencies {
-    def dependencies = rootProject.ext.dependencies
-    def kaptDependencies = rootProject.ext.kaptDependencies
-    def testImplementationDependencies = rootProject.ext.testImplementationDependencies
-    def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
 
     implementation project(':firebase')
+    api project(':domain')
 
     // Core
-    implementation dependencies.kotlin
-    implementation dependencies.corektx
-    implementation dependencies.appCompat
-    implementation dependencies.koinCore
+    implementation generalDeps.kotlin
+    implementation generalDeps.corektx
+    implementation generalDeps.appCompat
+    implementation generalDeps.koinCore
 
     // Remote Cache
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitGsonConverter
-    implementation dependencies.gson
+    implementation generalDeps.retrofit
+    implementation generalDeps.retrofitGsonConverter
+    implementation generalDeps.gson
 
     // Local Cache
-    implementation dependencies.room
+    implementation generalDeps.room
     kapt kaptDependencies.roomCompiler
 
     // Firebase
-    implementation dependencies.firebaseCore
-    implementation dependencies.firebaseAuth
+    implementation generalDeps.firebaseCore
+    implementation generalDeps.firebaseAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

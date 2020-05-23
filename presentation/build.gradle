@@ -2,17 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply from: "${rootProject.projectDir}/flavors.gradle"
+apply from: '../buildsystem/informations.gradle'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration["compileSDK"]
+    compileSdkVersion app.compileSdkVersion
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId "com.studio.sevenapp.android.popkornstudio"
-        minSdkVersion globalConfiguration["minSDK"]
-        targetSdkVersion globalConfiguration["targetSDK"]
+        applicationId APPLICATION_ID
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -25,7 +24,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    with flavorConfig
+
+    flavorDimensions dimensions.env
+    productFlavors {
+        dev {
+            dimension dimensions.env
+            ext.myApplicationIdSuffix = '.dev'
+            ext.versionNameSuffix = '-dev'
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn_dev",
+            ]
+        }
+        prod {
+            dimension dimensions.env
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn",
+            ]
+        }
+    }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -39,33 +56,28 @@ dependencies {
     implementation project(':data')
     implementation project(':firebase')
 
-    def dependencies = rootProject.ext.dependencies
-    def kaptDependencies = rootProject.ext.kaptDependencies
-    def testImplementationDependencies = rootProject.ext.testImplementationDependencies
-    def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
-
     // Core
-    implementation dependencies.kotlin
-    implementation dependencies.corektx
-    implementation dependencies.appCompat
-    implementation dependencies.koinCore
-    implementation dependencies.koinViewModel
+    implementation generalDeps.kotlin
+    implementation generalDeps.corektx
+    implementation generalDeps.appCompat
+    implementation generalDeps.koinCore
+    implementation generalDeps.koinViewModel
 
-    implementation dependencies.viewModel
-    implementation dependencies.archExts
+    implementation generalDeps.viewModel
+    implementation generalDeps.archExts
     kapt kaptDependencies.archCompiler
 
     // Design
-    implementation dependencies.material
-    implementation dependencies.constraintLayout
-    implementation dependencies.circleimageview
-    implementation dependencies.glide
+    implementation generalDeps.material
+    implementation generalDeps.constraintLayout
+    implementation generalDeps.circleimageview
+    implementation generalDeps.glide
     kapt kaptDependencies.glideCompiler
 
     // Firebase
-    implementation dependencies.firebaseAnalytics
-    implementation dependencies.firebaseAuth
-    implementation dependencies.firebaseUiAuth
+    implementation generalDeps.firebaseAnalytics
+    implementation generalDeps.firebaseAuth
+    implementation generalDeps.firebaseUiAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

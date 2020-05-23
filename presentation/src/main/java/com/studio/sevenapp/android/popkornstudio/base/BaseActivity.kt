@@ -1,6 +1,8 @@
 package com.studio.sevenapp.android.popkornstudio.base
 
 import android.content.Intent
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -12,6 +14,8 @@ import com.studio.sevenapp.android.popkornstudio.extensions.setMargin
 abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
 
     abstract val viewModel: ViewModel
+
+    protected var loadStateView: View? = null
 
     private val snackBarNoInternetConnection by lazy {
         Snackbar
@@ -53,4 +57,22 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
         supportActionBar?.title = title
     }
 
+    protected fun showToast(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    protected fun setloadingState(showLoading: Boolean){
+        when{
+            showLoading -> showLoadingState()
+            !showLoading -> dismissLoadingState()
+        }
+    }
+
+    private fun showLoadingState(){
+        loadStateView?.visibility = View.VISIBLE
+    }
+
+    private fun dismissLoadingState(){
+        loadStateView?.visibility = View.GONE
+    }
 }

@@ -21,6 +21,7 @@
     <!-- Title -->
     <string name="title_home">Olá, <b>%s!</b></string>
     <string name="title_game_choice_category">Escolha uma categoria</string>
+    <string name="title_loading">Carregando…</string>
 
     <!-- Form topic -->
     <string name="form_topic_access_profile">Acessar Perfil</string>

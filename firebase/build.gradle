@@ -1,26 +1,41 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply from: "${rootProject.projectDir}/flavors.gradle"
 apply plugin: 'com.google.gms.google-services'
+apply from: '../buildsystem/informations.gradle'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    compileSdkVersion globalConfiguration["compileSDK"]
+    compileSdkVersion app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion globalConfiguration["minSDK"]
-        targetSdkVersion globalConfiguration["targetSDK"]
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    with flavorConfig
+
+    flavorDimensions dimensions.env
+    productFlavors {
+        dev {
+            dimension dimensions.env
+            ext.myApplicationIdSuffix = '.dev'
+            ext.versionNameSuffix = '-dev'
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn_dev",
+            ]
+        }
+        prod {
+            dimension dimensions.env
+            manifestPlaceholders = [
+                    iconApp: "@drawable/ic_popcorn",
+            ]
+        }
+    }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -31,19 +46,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    def dependencies = rootProject.ext.dependencies
-    def testImplementationDependencies = rootProject.ext.testImplementationDependencies
-    def androidTestImplementationDependencies = rootProject.ext.androidTestImplementationDependencies
-
     // Core
-    implementation dependencies.kotlin
-    implementation dependencies.corektx
-    implementation dependencies.appCompat
-    implementation dependencies.koinCore
+    implementation generalDeps.kotlin
+    implementation generalDeps.corektx
+    implementation generalDeps.appCompat
+    implementation generalDeps.koinCore
 
     // Firebase
-    implementation dependencies.firebaseCore
-    implementation dependencies.firebaseAuth
+    implementation generalDeps.firebaseCore
+    implementation generalDeps.firebaseAuth
 
     // Tests
     testImplementation testImplementationDependencies.junit4

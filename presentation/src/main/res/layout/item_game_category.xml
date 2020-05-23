@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/DEFAULT_16DP"
@@ -25,12 +26,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/textview_category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/DEFAULT_16DP"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="@dimen/FONT_20DP"
+                android:textSize="@dimen/FONT_20SP"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
