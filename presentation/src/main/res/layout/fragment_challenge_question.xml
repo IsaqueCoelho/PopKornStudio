@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.game.challenge.ChallengeQuestionFragment">
+
+    <TextView
+        android:id="@+id/textview_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/DEFAULT_8DP"
+        android:textSize="@dimen/FONT_20SP"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Qual é o filme da sinopse a abaixo?"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_question_container"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/DEFAULT_8DP"
+        android:backgroundTint="@color/DEFAULT_5352ED"
+        app:cardCornerRadius="@dimen/DEFAULT_16DP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_question"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/DEFAULT_16DP"
+            android:layout_marginTop="@dimen/DEFAULT_16DP"
+            android:layout_marginEnd="@dimen/DEFAULT_8DP"
+            android:layout_marginBottom="@dimen/DEFAULT_8DP">
+
+            <TextView
+                android:id="@+id/textview_question_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:maxLength="280"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="@tools:sample/lorem/random"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textview_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DEFAULT_32DP"
+        android:layout_marginStart="@dimen/DEFAULT_8DP"
+        android:textSize="@dimen/FONT_20SP"
+        android:text="@string/form_topic_challenge_question_options"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardview_question_container"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="@dimen/DEFAULT_0DP"
+        android:layout_marginStart="@dimen/DEFAULT_8DP"
+        android:layout_marginTop="@dimen/DEFAULT_16DP"
+        android:layout_marginEnd="@dimen/DEFAULT_8DP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_challenge_options"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

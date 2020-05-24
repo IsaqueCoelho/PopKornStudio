@@ -30,5 +30,6 @@
     <string name="form_topic_start_challenge">Iniciar Desafio</string>
     <string name="form_topic_news">News</string>
     <string name="form_topic_title_card_news">Central de Notícias</string>
+    <string name="form_topic_challenge_question_options">As Opções são:</string>
 
 </resources>
