@@ -1,8 +1,9 @@
 package com.studio.sevenapp.android.data.di
 
+import com.studio.sevenapp.android.data.challenge.insertChallengeRepository
 import com.studio.sevenapp.android.data.infra.insertInfra
-import com.studio.sevenapp.android.data.moviegenrerepository.insertMovieGenreDependencies
-import com.studio.sevenapp.android.data.userrepositoy.insertUserRepository
+import com.studio.sevenapp.android.data.moviegenre.insertMovieGenreRepository
+import com.studio.sevenapp.android.data.user.insertUserRepository
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -14,6 +15,9 @@ val dataModule = module {
     insertUserRepository()
 
     // Genre Repository
-    insertMovieGenreDependencies()
+    insertMovieGenreRepository()
+
+    // Challenge Repository
+    insertChallengeRepository()
 
 }

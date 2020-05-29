@@ -1,7 +1,7 @@
-package com.studio.sevenapp.android.data.moviegenrerepository
+package com.studio.sevenapp.android.data.moviegenre
 
 import com.studio.sevenapp.android.domain.model.MovieGenre
-import com.studio.sevenapp.android.domain.moviegenreusecase.MovieGenreRepository
+import com.studio.sevenapp.android.domain.moviegenre.MovieGenreRepository
 
 class MovieGenreRepositoryImpl(
     private val movieGenreRemoteSource: MovieGenreRemoteSource

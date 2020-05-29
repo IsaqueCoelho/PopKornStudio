@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.moviegenrerepository
+package com.studio.sevenapp.android.data.moviegenre
 
 import retrofit2.http.GET
 

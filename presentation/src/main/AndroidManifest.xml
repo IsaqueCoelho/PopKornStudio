@@ -32,6 +32,9 @@
         <activity
             android:name=".features.game.challenge.ChallengeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.game.result.ChallengeResultActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

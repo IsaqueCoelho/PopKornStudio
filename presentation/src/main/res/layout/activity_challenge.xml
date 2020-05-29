@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.studio.sevenapp.android.popkornstudio.components.ViewPagerChallenge
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerchallenge"
         android:layout_width="@dimen/DEFAULT_0DP"
         android:layout_height="@dimen/DEFAULT_0DP"
@@ -21,28 +21,6 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageview_container_indicator"
-        android:layout_width="@dimen/DEFAULT_45DP"
-        android:layout_height="@dimen/DEFAULT_45DP"
-        android:layout_margin="@dimen/DEFAULT_32DP"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/textview_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/FONT_20SP"
-        app:layout_constraintStart_toStartOf="@id/imageview_container_indicator"
-        app:layout_constraintTop_toTopOf="@id/imageview_container_indicator"
-        app:layout_constraintEnd_toEndOf="@id/imageview_container_indicator"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_container_indicator"
-        tools:text="1"/>
 
     <include
         android:id="@+id/loadstate"

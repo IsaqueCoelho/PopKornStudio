@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.game.result.ChallengeResultActivity">
+
+    <TextView
+        android:id="@+id/textview_title"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/DEFAULT_16DP"
+        android:text="@string/title_challenge_result"
+        android:textColor="@color/DEFAULT_37474F"
+        android:textSize="@dimen/FONT_34SP"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_subtitle"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/DEFAULT_16DP"
+        android:text="@string/subtitle_challenge_result"
+        android:textSize="@dimen/FONT_16SP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_title" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_informations"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="@dimen/DEFAULT_0DP"
+        android:layout_margin="@dimen/DEFAULT_16DP"
+        android:backgroundTint="@color/DEFAULT_0BE881"
+        app:cardCornerRadius="@dimen/DEFAULT_16DP"
+        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:layout_constraintBottom_toTopOf="@id/button_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_subtitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_genre_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/DEFAULT_16DP"
+                android:textAlignment="center"
+                android:textColor="@color/DEFAULT_F3FEFF"
+                android:textSize="@dimen/FONT_34SP"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Action" />
+
+            <ProgressBar
+                android:id="@+id/indicator"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_height="350dp"
+                android:indeterminate="false"
+                android:indeterminateTint="@color/DEFAULT_F3FEFF"
+                android:max="10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/DEFAULT_F3FEFF"
+                android:textSize="@dimen/FONT_34SP"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/indicator"
+                app:layout_constraintEnd_toEndOf="@id/indicator"
+                app:layout_constraintStart_toStartOf="@id/indicator"
+                app:layout_constraintTop_toTopOf="@id/indicator"
+                tools:text="7/10" />
+
+            <TextView
+                android:id="@+id/textview_resume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/DEFAULT_16DP"
+                android:textAlignment="center"
+                android:textColor="@color/DEFAULT_F3FEFF"
+                android:textSize="@dimen/FONT_24SP"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Acerte tudo para passar de nível ;)" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_confirm"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/DEFAULT_16DP"
+        android:layout_marginEnd="@dimen/DEFAULT_16DP"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/action_confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardview_informations"
+        app:layout_constraintVertical_bias="1" />
+
+
+    <include
+        android:id="@+id/loadstate"
+        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_height="@dimen/DEFAULT_0DP"
+        layout="@layout/layout_loading_state"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

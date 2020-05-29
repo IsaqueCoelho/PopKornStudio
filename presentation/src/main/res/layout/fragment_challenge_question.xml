@@ -7,7 +7,7 @@
     tools:context=".features.game.challenge.ChallengeQuestionFragment">
 
     <TextView
-        android:id="@+id/textview_question"
+        android:id="@+id/textview_question_topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/DEFAULT_8DP"
@@ -23,10 +23,10 @@
         android:layout_width="@dimen/DEFAULT_0DP"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/DEFAULT_8DP"
-        android:backgroundTint="@color/DEFAULT_5352ED"
+        android:backgroundTint="@color/DEFAULT_37474F"
         app:cardCornerRadius="@dimen/DEFAULT_16DP"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_question"
+        app:layout_constraintTop_toBottomOf="@id/textview_question_topic"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,10 +35,10 @@
             android:layout_marginStart="@dimen/DEFAULT_16DP"
             android:layout_marginTop="@dimen/DEFAULT_16DP"
             android:layout_marginEnd="@dimen/DEFAULT_8DP"
-            android:layout_marginBottom="@dimen/DEFAULT_8DP">
+            android:layout_marginBottom="@dimen/DEFAULT_16DP">
 
             <TextView
-                android:id="@+id/textview_question_body"
+                android:id="@+id/textview_question_context"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
@@ -78,5 +78,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_challenge_options"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageview_container_indicator"
+        android:layout_width="@dimen/DEFAULT_45DP"
+        android:layout_height="@dimen/DEFAULT_45DP"
+        android:src="@color/DEFAULT_0FBCF9"
+        android:layout_margin="@dimen/DEFAULT_16DP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/textview_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/FONT_20SP"
+        android:text="@string/timer_indicator"
+        app:layout_constraintStart_toStartOf="@id/imageview_container_indicator"
+        app:layout_constraintTop_toTopOf="@id/imageview_container_indicator"
+        app:layout_constraintEnd_toEndOf="@id/imageview_container_indicator"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_container_indicator"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

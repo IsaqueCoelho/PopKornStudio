@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.moviegenrerepository
+package com.studio.sevenapp.android.data.moviegenre
 
 import com.google.gson.annotations.SerializedName
 import com.studio.sevenapp.android.domain.model.MovieGenre

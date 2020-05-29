@@ -9,7 +9,7 @@ import com.studio.sevenapp.android.popkornstudio.R
 import kotlinx.android.synthetic.main.item_game_category.view.*
 
 class GameCategoryAdapter(
-    private var genreList: List<MovieGenre>?,
+    private var genreList: List<MovieGenre>,
     private val itemClickListener: GameCategoryItemClickListener
 ) : RecyclerView.Adapter<GameCategoryAdapter.GameCategoryViewHolder>() {
 
@@ -20,11 +20,11 @@ class GameCategoryAdapter(
     }
 
     override fun getItemCount(): Int {
-        return genreList?.size ?: 0
+        return genreList.size
     }
 
     override fun onBindViewHolder(holder: GameCategoryViewHolder, position: Int) {
-        genreList?.let { categoryList ->
+        genreList.let { categoryList ->
             holder.itemView.cardview_category.setOnClickListener {
                 itemClickListener.onItemClicked(categoryList[position])
             }

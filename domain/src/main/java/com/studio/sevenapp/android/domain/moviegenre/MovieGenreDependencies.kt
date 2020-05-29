@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.domain.moviegenreusecase
+package com.studio.sevenapp.android.domain.moviegenre
 
 import org.koin.core.module.Module
 

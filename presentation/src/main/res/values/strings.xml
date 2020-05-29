@@ -17,11 +17,14 @@
     <!-- button Actions -->
     <string name="action_sign_in_by_google">Entrar usando Google</string>
     <string name="action_loggout"><u>Sair</u></string>
+    <string name="action_confirm">Confirmar</string>
 
     <!-- Title -->
     <string name="title_home">Olá, <b>%s!</b></string>
     <string name="title_game_choice_category">Escolha uma categoria</string>
     <string name="title_loading">Carregando…</string>
+    <string name="title_challenge">Desafio</string>
+    <string name="title_challenge_result">Resultado</string>
 
     <!-- Form topic -->
     <string name="form_topic_access_profile">Acessar Perfil</string>
@@ -31,5 +34,11 @@
     <string name="form_topic_news">News</string>
     <string name="form_topic_title_card_news">Central de Notícias</string>
     <string name="form_topic_challenge_question_options">As Opções são:</string>
+
+    <!-- Challenge Question -->
+    <string name="timer_indicator">15</string>
+
+    <!-- Challenge Result-->
+    <string name="subtitle_challenge_result">Confira aqui o resultado do desafio</string>
 
 </resources>

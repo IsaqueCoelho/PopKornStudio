@@ -3,17 +3,21 @@ package com.studio.sevenapp.android.popkornstudio.base
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.extensions.setBackground
 import com.studio.sevenapp.android.popkornstudio.extensions.setElevation
 import com.studio.sevenapp.android.popkornstudio.extensions.setMargin
 
-abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
 
     abstract val viewModel: ViewModel
+
+    open val isViewModelOwner = true
 
     protected var loadStateView: View? = null
 
@@ -36,6 +40,16 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
                 setBackground(R.color.DEFAULT_RED)
                 setElevation(6f)
             }
+    }
+
+    @CallSuper
+    override fun onResume() {
+        super.onResume()
+
+        if (isViewModelOwner)
+            viewModel.onViewResumed()
+
+        prepareObservers()
     }
 
     protected fun changeScreen(intent: Intent, addToStack: Boolean) {
@@ -66,6 +80,12 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
             showLoading -> showLoadingState()
             !showLoading -> dismissLoadingState()
         }
+    }
+
+    private fun prepareObservers() {
+        viewModel.showLoading().observe(this, Observer { loadingState ->
+            setloadingState(loadingState)
+        })
     }
 
     private fun showLoadingState(){

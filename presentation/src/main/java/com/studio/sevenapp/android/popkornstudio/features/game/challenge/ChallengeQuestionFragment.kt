@@ -1,39 +1,112 @@
 package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-
+import android.os.CountDownTimer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.studio.sevenapp.android.domain.model.ChallengeQuestion
+import com.studio.sevenapp.android.domain.model.ChallengeQuestionAnswerOption
 import com.studio.sevenapp.android.popkornstudio.R
+import com.studio.sevenapp.android.popkornstudio.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_challenge_question.*
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM_CHALLENGE_QUESTION = "PARAM_CHALLENGE_QUESTION"
 
-class ChallengeQuestionFragment : Fragment() {
-    private var param1: String? = null
+class ChallengeQuestionFragment :
+    BaseFragment<ChallengeQuestionViewModel>(R.layout.fragment_challenge_question),
+    ChallengeAnswerOptionsAdapter.ChallengeAnswerOptionItemClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+    override val viewModel: ChallengeQuestionViewModel by viewModel()
+
+    private lateinit var questionChallengeQuestion: ChallengeQuestion
+    private val answerOptionsAdapter: ChallengeAnswerOptionsAdapter by inject {
+        parametersOf(this)
+    }
+
+    private val totalTimer = 16000L
+    private val intervalTimer = 1000L
+    private lateinit var timer: CountDownTimer
+
+    override fun onResume() {
+        super.onResume()
+        getArquments()
+        setComponents()
+    }
+
+    override fun onClick(challengeQuestionAnswerOption: ChallengeQuestionAnswerOption) {
+        challengeQuestionAnswerOption.isChecked = true
+        swipeToNextScreen()
+    }
+
+    private fun getArquments() {
+        questionChallengeQuestion = arguments!!.let { bundle ->
+            bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION) as ChallengeQuestion
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_challenge_question, container, false)
+    private fun setComponents() {
+        textview_question_topic.text = questionChallengeQuestion.questionTopic
+        textview_question_context.text = questionChallengeQuestion.questionContext
+
+        answerOptionsAdapter.updateList(questionChallengeQuestion.questionAnswerOptions)
+
+        recyclerview.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerview.adapter = answerOptionsAdapter
+
+        setCountDownTimer()
+        timer.start()
     }
 
+    private fun setCountDownTimer() {
+        timer = object : CountDownTimer(totalTimer, intervalTimer) {
+            override fun onFinish() {
+                swipeToNextScreen()
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                val currentTimer =
+                    if (millisUntilFinished > 0) (millisUntilFinished / 1000).toInt()
+                    else millisUntilFinished.toInt()
+                setTimerIndicator(currentTimer)
+            }
+        }
+    }
+
+    private fun swipeToNextScreen() {
+        timer.cancel()
+        context?.let {
+            (it as ChallengeActivity).swipeToNext()
+        }
+    }
+
+    private fun setTimerIndicator(currentTimer: Int) {
+        textview_indicator?.let {indicator ->
+            indicator.text = currentTimer.toString()
+        }
+        imageview_container_indicator?.setImageDrawable(
+            context?.getDrawable(
+                getIndicatorColor(currentTimer)
+            )
+        )
+    }
+
+    private fun getIndicatorColor(currentTimer: Int): Int {
+        return when {
+            currentTimer > 10 -> R.color.DEFAULT_0FBCF9
+            currentTimer > 5 -> R.color.DEFAULT_FFD32A
+            else -> R.color.DEFAULT_FF3F34
+        }
+    }
 
     companion object {
-        fun newInstance(param1: String) =
+        fun newInstance(questionParam: ChallengeQuestion) =
             ChallengeQuestionFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putParcelable(ARG_PARAM_CHALLENGE_QUESTION, questionParam)
                 }
             }
     }

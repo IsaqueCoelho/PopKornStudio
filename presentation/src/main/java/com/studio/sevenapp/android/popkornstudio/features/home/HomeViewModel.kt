@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
-import com.studio.sevenapp.android.domain.userusecase.UserUseCase
+import com.studio.sevenapp.android.domain.user.UserUseCase
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import kotlinx.coroutines.launch
 

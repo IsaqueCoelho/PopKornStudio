@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.domain.moviegenreusecase
+package com.studio.sevenapp.android.domain.moviegenre
 
 import com.studio.sevenapp.android.domain.model.MovieGenre
 
