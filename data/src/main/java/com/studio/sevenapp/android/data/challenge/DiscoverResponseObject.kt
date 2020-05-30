@@ -1,9 +1,8 @@
-package com.studio.sevenapp.android.domain.model
+package com.studio.sevenapp.android.data.challenge
 
 import com.google.gson.annotations.SerializedName
 import com.studio.sevenapp.android.domain.model.Movie
 
-data class MovieObjectResponse(
-    @SerializedName("page") val page: Int,
+data class DiscoverResponseObject(
     @SerializedName("results") val movieList: List<Movie>
 )

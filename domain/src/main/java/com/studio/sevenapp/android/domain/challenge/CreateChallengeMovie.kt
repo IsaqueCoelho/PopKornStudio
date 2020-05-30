@@ -10,9 +10,10 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
 
     private var questionNumber: Int = 0
 
-    fun generateChallenge(): Challenge {
+    fun generateChallenge(genreName: String): Challenge {
         return Challenge(
             id = UUID.randomUUID().toString(),
+            genreName = genreName,
             challengeQuestionList = generateQuestions()
         )
     }
@@ -31,7 +32,6 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
 
     private fun getQuestionByIndex(position: Int): ChallengeQuestion {
         return ChallengeQuestion(
-            id = movieList[position].id,
             questionTopic = getTopic(),
             questionContext = movieList[position].overview,
             questionAnswerOptions = getAnswerOptions(position)
@@ -70,7 +70,6 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
 
     private fun getAnswer(moviePosition: Int, isCorrect: Boolean): ChallengeQuestionAnswerOption {
         return ChallengeQuestionAnswerOption(
-            id = UUID.randomUUID().toString(),
             text = movieList[moviePosition].title,
             isCorrect = isCorrect
         )

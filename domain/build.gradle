@@ -62,9 +62,6 @@ dependencies {
     implementation generalDeps.firebaseCore
     implementation generalDeps.firebaseAuth
 
-    // RetrofitGson
-    implementation generalDeps.gson
-
     // Tests
     testImplementation testImplementationDependencies.junit4
     androidTestImplementation androidTestImplementationDependencies.runner

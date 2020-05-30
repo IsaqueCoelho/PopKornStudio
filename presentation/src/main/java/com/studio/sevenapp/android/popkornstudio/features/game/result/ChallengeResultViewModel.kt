@@ -4,5 +4,7 @@ import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 
 class ChallengeResultViewModel : BaseViewModel() {
 
-    var challenge: String? = null
+    fun getChallengeById(challengeId: String){
+
+    }
 }

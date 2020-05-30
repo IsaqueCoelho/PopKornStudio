@@ -11,10 +11,6 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
 
     override val viewModel: ChallengeResultViewModel by viewModel()
 
-    private val challengeId by lazy {
-        intent.extras?.getString(PARAM_CHALLENGE)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_result)
@@ -26,7 +22,11 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
     }
 
     private fun getChallenge() {
-        viewModel.challenge = challengeId
+        intent.extras?.let { bundle ->
+            if(!bundle.getString(PARAM_CHALLENGE).isNullOrEmpty()){
+                viewModel.getChallengeById(bundle.getString(PARAM_CHALLENGE)!!)
+            }
+        }
     }
 
     companion object {
