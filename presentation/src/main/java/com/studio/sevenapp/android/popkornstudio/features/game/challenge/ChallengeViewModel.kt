@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
 import com.studio.sevenapp.android.domain.model.Challenge
-import com.studio.sevenapp.android.domain.model.ChallengeQuestion
+import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.domain.model.MovieGenre
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -33,10 +33,10 @@ class ChallengeViewModel(
         }
     }
 
-    fun createChallengeQuestionFragments(challengeQuestionList: List<ChallengeQuestion>) {
+    fun createChallengeQuestionFragments(questionList: List<Question>) {
         val challengeFragmentList = mutableListOf<ChallengeQuestionFragment>()
 
-        challengeQuestionList.forEach { question ->
+        questionList.forEach { question ->
             challengeFragmentList.add(
                 ChallengeQuestionFragment.newInstance(question)
             )

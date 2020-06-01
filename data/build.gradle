@@ -65,7 +65,7 @@ dependencies {
     implementation generalDeps.retrofitInterceptor
 
     // Local Cache
-    implementation generalDeps.room
+    implementation generalDeps.roomCoroutine
     kapt kaptDependencies.roomCompiler
 
     // Firebase

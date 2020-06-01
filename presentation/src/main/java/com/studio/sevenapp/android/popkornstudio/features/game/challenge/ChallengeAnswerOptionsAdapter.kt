@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.studio.sevenapp.android.domain.model.ChallengeQuestionAnswerOption
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.popkornstudio.R
 import kotlinx.android.synthetic.main.item_challenge_options.view.*
 
 class ChallengeAnswerOptionsAdapter(
-    private var challengeQuestionOptions: List<ChallengeQuestionAnswerOption>,
+    private var challengeQuestionOptions: List<Answer>,
     private val listener: ChallengeAnswerOptionItemClickListener
 ) :
     RecyclerView.Adapter<ChallengeAnswerOptionsAdapter.ChallengeAnswerOptionsViewHolder>() {
@@ -48,7 +48,7 @@ class ChallengeAnswerOptionsAdapter(
 
     }
 
-    fun updateList(newList: List<ChallengeQuestionAnswerOption>){
+    fun updateList(newList: List<Answer>){
         challengeQuestionOptions = newList
         notifyDataSetChanged()
     }
@@ -85,6 +85,6 @@ class ChallengeAnswerOptionsAdapter(
         RecyclerView.ViewHolder(itemView)
 
     interface ChallengeAnswerOptionItemClickListener {
-        fun onClick(challengeQuestionAnswerOption: ChallengeQuestionAnswerOption)
+        fun onClick(answer: Answer)
     }
 }

@@ -20,7 +20,7 @@ fun Module.insertChallengeDependencies() {
     }
 
     // ===========================
-    // Fragment Question Challenge
+    // Fragment Question
     viewModel {
         ChallengeQuestionViewModel()
     }

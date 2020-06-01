@@ -4,6 +4,9 @@ import com.studio.sevenapp.android.data.BuildConfig
 
 class BuildInfoHelper {
 
+    /* Build ======= */
+    val productName = "popkorn-studio"
+
     /* Apis Info ====== */
 
     val webApiUrl: String

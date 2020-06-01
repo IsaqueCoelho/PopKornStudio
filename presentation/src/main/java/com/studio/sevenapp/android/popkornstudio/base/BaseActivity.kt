@@ -49,7 +49,7 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
         if (isViewModelOwner)
             viewModel.onViewResumed()
 
-        prepareObservers()
+        prepareBaseObservers()
     }
 
     protected fun changeScreen(intent: Intent, addToStack: Boolean) {
@@ -82,7 +82,7 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
         }
     }
 
-    private fun prepareObservers() {
+    private fun prepareBaseObservers() {
         viewModel.showLoading().observe(this, Observer { loadingState ->
             setloadingState(loadingState)
         })

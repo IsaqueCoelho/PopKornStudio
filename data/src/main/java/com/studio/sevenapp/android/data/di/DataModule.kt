@@ -17,7 +17,7 @@ val dataModule = module {
     // Genre Repository
     insertMovieGenreRepository()
 
-    // Challenge Repository
+    // ChallengeEntity Repository
     insertChallengeRepository()
 
 }

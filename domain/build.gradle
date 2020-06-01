@@ -24,17 +24,9 @@ android {
     productFlavors {
         dev {
             dimension dimensions.env
-            ext.myApplicationIdSuffix = '.dev'
-            ext.versionNameSuffix = '-dev'
-            manifestPlaceholders = [
-                    iconApp: "@drawable/ic_popcorn_dev",
-            ]
         }
         prod {
             dimension dimensions.env
-            manifestPlaceholders = [
-                    iconApp: "@drawable/ic_popcorn",
-            ]
         }
     }
 

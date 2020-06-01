@@ -9,6 +9,7 @@ import org.koin.core.qualifier.named
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+const val KOIN_DB_NAME = "db_name"
 const val KOIN_WEB_API_URL = "webApiUrl"
 const val KOIN_RETROFIT = "retrofit"
 const val KOIN_TMDB_TOKEN = "tmdb_token"
@@ -23,6 +24,10 @@ fun Module.insertInfra() {
 
     single {
         BuildInfoHelper()
+    }
+
+    single(named(KOIN_DB_NAME)) {
+        "c-${get<BuildInfoHelper>().productName.hashCode()}-db"
     }
 
     single(named(KOIN_WEB_API_URL)) {

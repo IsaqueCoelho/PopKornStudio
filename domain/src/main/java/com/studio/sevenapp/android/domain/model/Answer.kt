@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ChallengeQuestionAnswerOption (
+data class Answer (
     val text: String,
     var isCorrect: Boolean = false,
     var isChecked: Boolean = false

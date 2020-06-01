@@ -8,6 +8,15 @@ class ChallengeUseCaseImpl(
 ) : ChallengeUseCase {
     override suspend fun getChallenge(genre: MovieGenre): Challenge {
         val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
-        return CreateChallengeMovie(movieList).generateChallenge(genre.name!!)
+        val challenge = CreateChallengeMovie().generateChallenge(
+            genreName = genre.name!!,
+            movieList = movieList
+        )
+        challengeRepository.insertChallenge(challenge = challenge)
+        return challenge
+    }
+
+    override suspend fun getChallengeById(challengeId: String): Challenge {
+        return challengeRepository.getChallengeById(challengeId = challengeId)
     }
 }

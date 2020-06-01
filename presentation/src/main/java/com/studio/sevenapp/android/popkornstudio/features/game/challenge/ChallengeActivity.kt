@@ -72,7 +72,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
             .observe(this, Observer { challenge ->
                 challengeId = challenge.id
                 viewModel.createChallengeQuestionFragments(
-                    challengeQuestionList = challenge.challengeQuestionList
+                    questionList = challenge.questionList
                 )
             })
     }

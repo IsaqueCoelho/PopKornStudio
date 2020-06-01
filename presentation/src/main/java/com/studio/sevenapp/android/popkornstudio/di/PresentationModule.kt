@@ -22,9 +22,9 @@ val presentationModule = module {
     // Game Category
     insertGameCategoryDependencies()
 
-    // ChallengeQuestion
+    // QuestionEntity
     insertChallengeDependencies()
 
-    // Challenge Result
+    // ChallengeEntity Result
     insertChallengeResult()
 }

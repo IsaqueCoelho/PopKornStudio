@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.challenge
+package com.studio.sevenapp.android.data.challenge.remotesource
 
 import com.google.gson.annotations.SerializedName
 import com.studio.sevenapp.android.domain.model.Movie

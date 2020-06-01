@@ -1,25 +1,30 @@
 package com.studio.sevenapp.android.domain.challenge
 
 import com.studio.sevenapp.android.domain.model.Challenge
-import com.studio.sevenapp.android.domain.model.ChallengeQuestion
-import com.studio.sevenapp.android.domain.model.ChallengeQuestionAnswerOption
+import com.studio.sevenapp.android.domain.model.Question
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Movie
 import java.util.*
 
-class CreateChallengeMovie(private val movieList: List<Movie>) {
+class CreateChallengeMovie {
 
+    private var movieList: List<Movie> = emptyList()
     private var questionNumber: Int = 0
 
-    fun generateChallenge(genreName: String): Challenge {
+    fun generateChallenge(
+        genreName: String,
+        movieList: List<Movie>
+    ): Challenge {
+        this.movieList = movieList
         return Challenge(
             id = UUID.randomUUID().toString(),
-            genreName = genreName,
-            challengeQuestionList = generateQuestions()
+            genre = genreName,
+            questionList = generateQuestions()
         )
     }
 
-    private fun generateQuestions(): List<ChallengeQuestion> {
-        val questionList: MutableList<ChallengeQuestion> = mutableListOf()
+    private fun generateQuestions(): List<Question> {
+        val questionList: MutableList<Question> = mutableListOf()
 
         for (position in movieList.indices step 2) {
             questionList.add(
@@ -30,11 +35,12 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
         return questionList
     }
 
-    private fun getQuestionByIndex(position: Int): ChallengeQuestion {
-        return ChallengeQuestion(
-            questionTopic = getTopic(),
-            questionContext = movieList[position].overview,
-            questionAnswerOptions = getAnswerOptions(position)
+    private fun getQuestionByIndex(position: Int): Question {
+        return Question(
+            id = UUID.randomUUID().toString(),
+            topic = getTopic(),
+            context = movieList[position].overview,
+            answerList = getAnswerOptions(position)
         )
     }
 
@@ -43,15 +49,15 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
         return "$questionNumber. Qual o Filme da sinopse a seguir?"
     }
 
-    private fun getAnswerOptions(moviePosition: Int): List<ChallengeQuestionAnswerOption> {
-        val answerOptionList: MutableList<ChallengeQuestionAnswerOption> = mutableListOf()
+    private fun getAnswerOptions(moviePosition: Int): List<Answer> {
+        val answerList: MutableList<Answer> = mutableListOf()
         val positionCorrectAnswer = (0..2).random()
         val fakeMoviePositions = getFakeMoviesPositions(moviePosition)
         var fakeMoviePositionIndex = 0
 
         for (answerPosition in 0..2) {
             if (answerPosition != positionCorrectAnswer) {
-                answerOptionList.add(
+                answerList.add(
                     getAnswer(
                         moviePosition = fakeMoviePositions[fakeMoviePositionIndex],
                         isCorrect = false
@@ -59,17 +65,17 @@ class CreateChallengeMovie(private val movieList: List<Movie>) {
                 )
                 fakeMoviePositionIndex++
             } else {
-                answerOptionList.add(
+                answerList.add(
                     getAnswer(moviePosition = moviePosition, isCorrect = true)
                 )
             }
         }
 
-        return answerOptionList
+        return answerList
     }
 
-    private fun getAnswer(moviePosition: Int, isCorrect: Boolean): ChallengeQuestionAnswerOption {
-        return ChallengeQuestionAnswerOption(
+    private fun getAnswer(moviePosition: Int, isCorrect: Boolean): Answer {
+        return Answer(
             text = movieList[moviePosition].title,
             isCorrect = isCorrect
         )

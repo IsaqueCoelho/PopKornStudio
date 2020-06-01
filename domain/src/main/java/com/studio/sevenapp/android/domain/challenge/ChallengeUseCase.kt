@@ -5,4 +5,5 @@ import com.studio.sevenapp.android.domain.model.MovieGenre
 
 interface ChallengeUseCase {
     suspend fun getChallenge(genre: MovieGenre) : Challenge
+    suspend fun getChallengeById(challengeId: String) : Challenge
 }

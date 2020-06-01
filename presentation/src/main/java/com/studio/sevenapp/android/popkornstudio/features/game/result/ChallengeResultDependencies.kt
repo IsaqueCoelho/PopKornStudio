@@ -5,6 +5,6 @@ import org.koin.core.module.Module
 
 fun Module.insertChallengeResult(){
     viewModel {
-        ChallengeResultViewModel()
+        ChallengeResultViewModel(get())
     }
 }

@@ -58,6 +58,7 @@ ext.generalDeps = [
         gson                  : "com.google.code.gson:gson:$gsonVersion",
         retrofitInterceptor   : "com.squareup.okhttp3:logging-interceptor:$retrofitInterceptor",
         room                  : "androidx.room:room-runtime:$roomVersion",
+        roomCoroutine         : "androidx.room:room-ktx:$roomVersion",
 
         material              : "com.google.android.material:material:$materialVersion",
         constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",

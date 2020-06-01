@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.studio.sevenapp.android.domain.model.ChallengeQuestion
-import com.studio.sevenapp.android.domain.model.ChallengeQuestionAnswerOption
+import com.studio.sevenapp.android.domain.model.Question
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_challenge_question.*
@@ -21,7 +21,7 @@ class ChallengeQuestionFragment :
 
     override val viewModel: ChallengeQuestionViewModel by viewModel()
 
-    private lateinit var questionChallengeQuestion: ChallengeQuestion
+    private lateinit var questionChallenge: Question
     private val answerOptionsAdapter: ChallengeAnswerOptionsAdapter by inject {
         parametersOf(this)
     }
@@ -36,22 +36,22 @@ class ChallengeQuestionFragment :
         setComponents()
     }
 
-    override fun onClick(challengeQuestionAnswerOption: ChallengeQuestionAnswerOption) {
-        challengeQuestionAnswerOption.isChecked = true
+    override fun onClick(answer: Answer) {
+        answer.isChecked = true
         swipeToNextScreen()
     }
 
     private fun getArquments() {
-        questionChallengeQuestion = arguments!!.let { bundle ->
-            bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION) as ChallengeQuestion
+        questionChallenge = arguments!!.let { bundle ->
+            bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION) as Question
         }
     }
 
     private fun setComponents() {
-        textview_question_topic.text = questionChallengeQuestion.questionTopic
-        textview_question_context.text = questionChallengeQuestion.questionContext
+        textview_question_topic.text = questionChallenge.topic
+        textview_question_context.text = questionChallenge.context
 
-        answerOptionsAdapter.updateList(questionChallengeQuestion.questionAnswerOptions)
+        answerOptionsAdapter.updateList(questionChallenge.answerList)
 
         recyclerview.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -103,7 +103,7 @@ class ChallengeQuestionFragment :
     }
 
     companion object {
-        fun newInstance(questionParam: ChallengeQuestion) =
+        fun newInstance(questionParam: Question) =
             ChallengeQuestionFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(ARG_PARAM_CHALLENGE_QUESTION, questionParam)

@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.challenge
+package com.studio.sevenapp.android.data.challenge.remotesource
 
 import retrofit2.http.GET
 import retrofit2.http.Query
