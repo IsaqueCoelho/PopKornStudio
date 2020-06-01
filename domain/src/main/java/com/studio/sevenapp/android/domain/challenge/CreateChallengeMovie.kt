@@ -76,6 +76,7 @@ class CreateChallengeMovie {
 
     private fun getAnswer(moviePosition: Int, isCorrect: Boolean): Answer {
         return Answer(
+            id = UUID.randomUUID().toString(),
             text = movieList[moviePosition].title,
             isCorrect = isCorrect
         )

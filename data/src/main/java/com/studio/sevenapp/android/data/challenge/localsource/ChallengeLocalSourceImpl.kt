@@ -4,6 +4,7 @@ import com.studio.sevenapp.android.data.challenge.mapper.AnswerMapper
 import com.studio.sevenapp.android.data.challenge.mapper.ChallengeMapper
 import com.studio.sevenapp.android.data.challenge.mapper.QuestionMapper
 import com.studio.sevenapp.android.data.model.*
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Question
 
@@ -35,6 +36,11 @@ class ChallengeLocalSourceImpl(
             questionEntityList = questionEntityList,
             answerEntityList = answerEntityList
         )
+    }
+
+    override suspend fun updatedAnswer(answer: Answer) {
+        val answerEntity = answerMapper.transformToEntity(answer)
+        challengeDao.updatedAnswer(answerEntity = answerEntity)
     }
 
     private fun getQuestionList(questionWithAnswerList: List<QuestionWithAnswer>): List<Question> {

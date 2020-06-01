@@ -22,7 +22,7 @@ fun Module.insertChallengeDependencies() {
     // ===========================
     // Fragment Question
     viewModel {
-        ChallengeQuestionViewModel()
+        ChallengeQuestionViewModel(get())
     }
 
     factory { (listening: ChallengeAnswerOptionsAdapter.ChallengeAnswerOptionItemClickListener) ->

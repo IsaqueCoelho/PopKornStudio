@@ -1,5 +1,6 @@
 package com.studio.sevenapp.android.domain.challenge
 
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.MovieGenre
 
@@ -18,5 +19,9 @@ class ChallengeUseCaseImpl(
 
     override suspend fun getChallengeById(challengeId: String): Challenge {
         return challengeRepository.getChallengeById(challengeId = challengeId)
+    }
+
+    override suspend fun saveAnswer(answer: Answer) {
+        challengeRepository.updatedAnswer(answer = answer)
     }
 }

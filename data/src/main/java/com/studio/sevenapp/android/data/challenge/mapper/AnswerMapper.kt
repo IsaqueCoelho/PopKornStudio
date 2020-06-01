@@ -3,7 +3,6 @@ package com.studio.sevenapp.android.data.challenge.mapper
 import com.studio.sevenapp.android.data.model.AnswerEntity
 import com.studio.sevenapp.android.domain.base.BaseMapper
 import com.studio.sevenapp.android.domain.model.Answer
-import java.util.*
 
 class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
 
@@ -11,7 +10,7 @@ class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
 
     override fun transformToEntity(dataObject: Answer): AnswerEntity {
         return AnswerEntity(
-            id = UUID.randomUUID().toString(),
+            id = dataObject.id,
             text = dataObject.text,
             isCorrect = dataObject.isCorrect,
             isChecked = dataObject.isChecked,
@@ -21,6 +20,7 @@ class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
 
     override fun transformFromEntity(entityObject: AnswerEntity): Answer {
         return Answer(
+            id = entityObject.id,
             text = entityObject.text,
             isChecked = entityObject.isChecked,
             isCorrect = entityObject.isCorrect

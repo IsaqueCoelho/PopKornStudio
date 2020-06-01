@@ -3,6 +3,7 @@ package com.studio.sevenapp.android.data.challenge
 import com.studio.sevenapp.android.data.challenge.localsource.ChallengeLocalSource
 import com.studio.sevenapp.android.data.challenge.remotesource.MovieRemoteSource
 import com.studio.sevenapp.android.domain.challenge.ChallengeRepository
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Movie
 
@@ -27,4 +28,7 @@ class ChallengeRepositoryImpl(
 
     override suspend fun insertChallenge(challenge: Challenge) =
         challengeLocalSource.insertChallenge(challenge = challenge)
+
+    override suspend fun updatedAnswer(answer: Answer) =
+        challengeLocalSource.updatedAnswer(answer = answer)
 }

@@ -1,9 +1,6 @@
 package com.studio.sevenapp.android.data.challenge.localsource
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.studio.sevenapp.android.data.model.AnswerEntity
 import com.studio.sevenapp.android.data.model.ChallengeEntity
 import com.studio.sevenapp.android.data.model.ChallengeWithQuestionWithAnswer
@@ -21,4 +18,7 @@ interface ChallengeDao {
         questionEntityList: List<QuestionEntity>,
         answerEntityList: List<AnswerEntity>
     )
+
+    @Update
+    suspend fun updatedAnswer(answerEntity: AnswerEntity)
 }

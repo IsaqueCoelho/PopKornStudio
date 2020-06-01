@@ -38,6 +38,7 @@ class ChallengeQuestionFragment :
 
     override fun onClick(answer: Answer) {
         answer.isChecked = true
+        viewModel.saveAnswer(answer = answer)
         swipeToNextScreen()
     }
 
