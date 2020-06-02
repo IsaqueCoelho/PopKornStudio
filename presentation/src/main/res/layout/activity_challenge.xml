@@ -15,8 +15,8 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerchallenge"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +24,8 @@
 
     <include
         android:id="@+id/loadstate"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
         layout="@layout/layout_loading_state"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

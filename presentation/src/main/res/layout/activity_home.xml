@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/DEFAULT_16DP"
+    android:padding="@dimen/SPACE_16DP"
     tools:context="com.studio.sevenapp.android.popkornstudio.features.home.HomeActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_profile"
-        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/DEFAULT_F3FEFF"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,12 +21,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/DEFAULT_8DP">
+            android:layout_margin="@dimen/SPACE_8DP">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleimageview_profile"
-                android:layout_width="@dimen/DEFAULT_60DP"
-                android:layout_height="@dimen/DEFAULT_60DP"
+                android:layout_width="@dimen/SPACE_60DP"
+                android:layout_height="@dimen/SPACE_60DP"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -34,9 +34,9 @@
 
             <TextView
                 android:id="@+id/textview_user_name"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/DEFAULT_8DP"
+                android:layout_margin="@dimen/SPACE_8DP"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/circleimageview_profile"
@@ -45,9 +45,9 @@
 
             <TextView
                 android:id="@+id/textview_user_email"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/DEFAULT_8DP"
+                android:layout_margin="@dimen/SPACE_8DP"
                 android:textSize="@dimen/FONT_14SP"
                 app:layout_constraintEnd_toStartOf="@+id/link_sair"
                 app:layout_constraintStart_toEndOf="@id/circleimageview_profile"
@@ -58,7 +58,7 @@
                 android:id="@+id/link_sair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/DEFAULT_8DP"
+                android:layout_margin="@dimen/SPACE_8DP"
                 android:text="@string/action_loggout"
                 android:textSize="@dimen/FONT_14SP"
                 android:textStyle="bold"
@@ -72,9 +72,9 @@
 
     <TextView
         android:id="@+id/textview_hello"
-        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DEFAULT_32DP"
+        android:layout_marginTop="@dimen/SPACE_32DP"
         android:text="@string/title_home"
         android:textSize="@dimen/FONT_34SP"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,16 +83,16 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_box_one"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_100DP"
-        android:layout_marginTop="@dimen/DEFAULT_8DP"
-        android:layout_marginEnd="@dimen/DEFAULT_8DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_100DP"
+        android:layout_marginTop="@dimen/SPACE_8DP"
+        android:layout_marginEnd="@dimen/SPACE_8DP"
         android:backgroundTint="@color/DEFAULT_0BE881"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintEnd_toStartOf="@id/cardview_box_two"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_hello">
@@ -100,11 +100,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/DEFAULT_8DP">
+            android:layout_margin="@dimen/SPACE_8DP">
 
             <TextView
                 android:id="@+id/textview_box_one"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
                 android:text="@string/form_topic_access_profile"
                 android:textColor="@android:color/white"
@@ -116,8 +116,8 @@
 
             <ImageView
                 android:id="@+id/imageview_box_one"
-                android:layout_width="@dimen/DEFAULT_32DP"
-                android:layout_height="@dimen/DEFAULT_32DP"
+                android:layout_width="@dimen/SPACE_32DP"
+                android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_person"
                 android:src="@drawable/ic_person_white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -128,15 +128,15 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_box_two"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_100DP"
-        android:layout_marginStart="@dimen/DEFAULT_8DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_100DP"
+        android:layout_marginStart="@dimen/SPACE_8DP"
         android:backgroundTint="@color/DEFAULT_FF3F34"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cardview_box_one"
         app:layout_constraintTop_toTopOf="@+id/cardview_box_one">
@@ -144,11 +144,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/DEFAULT_8DP">
+            android:layout_margin="@dimen/SPACE_8DP">
 
             <TextView
                 android:id="@+id/textview_box_two"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
                 android:text="@string/form_topic_check_ranking"
                 android:textColor="@android:color/white"
@@ -160,8 +160,8 @@
 
             <ImageView
                 android:id="@+id/imageview_box_two"
-                android:layout_width="@dimen/DEFAULT_32DP"
-                android:layout_height="@dimen/DEFAULT_32DP"
+                android:layout_width="@dimen/SPACE_32DP"
+                android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_star"
                 android:src="@drawable/ic_star_white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -172,16 +172,16 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_box_three"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_100DP"
-        android:layout_marginTop="@dimen/DEFAULT_16DP"
-        android:layout_marginEnd="@dimen/DEFAULT_8DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_100DP"
+        android:layout_marginTop="@dimen/SPACE_16DP"
+        android:layout_marginEnd="@dimen/SPACE_8DP"
         android:backgroundTint="@color/DEFAULT_0FBCF9"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintEnd_toStartOf="@id/cardview_box_four"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardview_box_one">
@@ -189,11 +189,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/DEFAULT_8DP">
+            android:layout_margin="@dimen/SPACE_8DP">
 
             <TextView
                 android:id="@+id/textview_box_three"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
                 android:text="@string/form_topic_about_popkorn"
                 android:textColor="@android:color/white"
@@ -205,8 +205,8 @@
 
             <ImageView
                 android:id="@+id/imageview_box_three"
-                android:layout_width="@dimen/DEFAULT_32DP"
-                android:layout_height="@dimen/DEFAULT_32DP"
+                android:layout_width="@dimen/SPACE_32DP"
+                android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_book"
                 android:src="@drawable/ic_book_white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -217,16 +217,16 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_box_four"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_100DP"
-        android:layout_marginStart="@dimen/DEFAULT_8DP"
-        android:layout_marginTop="@dimen/DEFAULT_16DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_100DP"
+        android:layout_marginStart="@dimen/SPACE_8DP"
+        android:layout_marginTop="@dimen/SPACE_16DP"
         android:backgroundTint="@color/DEFAULT_FFD32A"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cardview_box_three"
         app:layout_constraintTop_toBottomOf="@+id/cardview_box_two">
@@ -234,11 +234,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/DEFAULT_8DP">
+            android:layout_margin="@dimen/SPACE_8DP">
 
             <TextView
                 android:id="@+id/textview_box_four"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
                 android:text="@string/form_topic_start_challenge"
                 android:textColor="@android:color/white"
@@ -250,8 +250,8 @@
 
             <ImageView
                 android:id="@+id/imageview_box_four"
-                android:layout_width="@dimen/DEFAULT_32DP"
-                android:layout_height="@dimen/DEFAULT_32DP"
+                android:layout_width="@dimen/SPACE_32DP"
+                android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_game_controller"
                 android:src="@drawable/ic_controller_white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -262,9 +262,9 @@
 
     <TextView
         android:id="@+id/textview_topic_news"
-        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DEFAULT_16DP"
+        android:layout_marginTop="@dimen/SPACE_16DP"
         android:text="@string/form_topic_news"
         android:textSize="@dimen/FONT_24SP"
         app:layout_constraintStart_toStartOf="parent"
@@ -272,15 +272,15 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_box_news"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_0DP"
-        android:layout_marginTop="@dimen/DEFAULT_8DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
+        android:layout_marginTop="@dimen/SPACE_8DP"
         android:backgroundTint="@color/DEFAULT_5352ED"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/DEFAULT_16DP"
-        app:cardElevation="@dimen/DEFAULT_0DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -289,11 +289,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/DEFAULT_16DP">
+            android:layout_margin="@dimen/SPACE_16DP">
 
             <TextView
                 android:id="@+id/textview_box_news"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
                 android:text="@string/form_topic_title_card_news"
                 android:textColor="@android:color/white"
@@ -305,9 +305,9 @@
 
             <TextView
                 android:id="@+id/textview_box_news_body"
-                android:layout_width="@dimen/DEFAULT_0DP"
-                android:layout_height="@dimen/DEFAULT_0DP"
-                android:layout_marginTop="@dimen/DEFAULT_16DP"
+                android:layout_width="@dimen/SPACE_0DP"
+                android:layout_height="@dimen/SPACE_0DP"
+                android:layout_marginTop="@dimen/SPACE_16DP"
                 android:maxLength="240"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -318,8 +318,8 @@
 
             <ImageView
                 android:id="@+id/imageview_box_news"
-                android:layout_width="@dimen/DEFAULT_32DP"
-                android:layout_height="@dimen/DEFAULT_32DP"
+                android:layout_width="@dimen/SPACE_32DP"
+                android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_public"
                 android:src="@drawable/ic_public_white"
                 app:layout_constraintEnd_toEndOf="parent"

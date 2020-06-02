@@ -28,7 +28,7 @@ class ChallengeLocalSourceImpl(
 
     override suspend fun insertChallenge(challenge: Challenge) {
         val challengeEntity: ChallengeEntity = challengeMapper.transformToEntity(challenge)
-        val questionEntityList: List<QuestionEntity> = getQuestionEntityList(challenge)
+        val questionEntityList: List<QuestionEntity> = getQuestionEntityList(challenge.id, challenge.questionList)
         val answerEntityList: List<AnswerEntity> = getAnswerEntityList(challenge.questionList)
 
         challengeDao.insertChallengeWithQuestionWithAnswer(
@@ -58,17 +58,19 @@ class ChallengeLocalSourceImpl(
         return questionList
     }
 
-    private fun getQuestionEntityList(challenge: Challenge): List<QuestionEntity> {
-        return questionMapper.transformListToEntity(challenge.questionList, challenge.id)
+    private fun getQuestionEntityList(challengeId: String, questionList: List<Question>): List<QuestionEntity> {
+        return questionMapper.transformListToEntity(questionList, challengeId)
     }
 
     private fun getAnswerEntityList(questionList: List<Question>): List<AnswerEntity> {
-        var answerEntityList: List<AnswerEntity> = emptyList()
+        val answerEntityList = mutableListOf<AnswerEntity>()
 
         questionList.forEach { question ->
-            answerEntityList = answerMapper.transformListToEntity(
-                question.answerList,
-                question.id
+            answerEntityList.addAll(
+                answerMapper.transformListToEntity(
+                    question.answerList,
+                    question.id
+                )
             )
         }
 

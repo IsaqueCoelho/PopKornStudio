@@ -15,10 +15,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_0DP"
-        android:layout_marginStart="@dimen/DEFAULT_8DP"
-        android:layout_marginEnd="@dimen/DEFAULT_8DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
+        android:layout_marginStart="@dimen/SPACE_8DP"
+        android:layout_marginEnd="@dimen/SPACE_8DP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +27,8 @@
 
     <include
         android:id="@+id/loadstate"
-        android:layout_width="@dimen/DEFAULT_0DP"
-        android:layout_height="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
         layout="@layout/layout_loading_state"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

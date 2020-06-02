@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.popkornstudio.features.game.result
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.studio.sevenapp.android.domain.model.ChallengeResult
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_challenge_result.*
@@ -17,12 +18,13 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_result)
         prepareObservers()
+        setComponent()
     }
 
-    private fun prepareObservers() {
-        viewModel.showChallenge().observe(this, Observer {challenge ->
-            textview_genre_topic.text = challenge.genre
-        })
+    private fun setComponent() {
+        button_confirm.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onResume() {
@@ -33,9 +35,23 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
     private fun getChallenge() {
         intent.extras?.let { bundle ->
             if(!bundle.getString(PARAM_CHALLENGE).isNullOrEmpty()){
-                viewModel.getChallengeById(bundle.getString(PARAM_CHALLENGE)!!)
+                viewModel.getChallengeResult(bundle.getString(PARAM_CHALLENGE)!!)
             }
         }
+    }
+
+    private fun prepareObservers() {
+        viewModel.showResult().observe(this, Observer {challengeResult ->
+            setResultComponents(challengeResult)
+        })
+    }
+
+    private fun setResultComponents(challengeResult: ChallengeResult) {
+        val pointsIndicator = "${challengeResult.points}/10"
+        textview_genre_topic.text = challengeResult.genre
+        textview_indicator.text = pointsIndicator
+        textview_result.text = challengeResult.result
+        indicator.progress = challengeResult.points
     }
 
     companion object {

@@ -11,7 +11,7 @@
     </style>
 
     <style name="defaultButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="cornerRadius">@dimen/DEFAULT_16DP</item>
+        <item name="cornerRadius">@dimen/SPACE_16DP</item>
     </style>
 
 </resources>

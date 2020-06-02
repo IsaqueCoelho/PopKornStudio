@@ -5,12 +5,13 @@
     <dimen name="FONT_20SP">20sp</dimen>
     <dimen name="FONT_24SP">24sp</dimen>
     <dimen name="FONT_34SP">34sp</dimen>
+    <dimen name="FONT_60SP">60sp</dimen>
 
-    <dimen name="DEFAULT_0DP">0dp</dimen>
-    <dimen name="DEFAULT_8DP">8dp</dimen>
-    <dimen name="DEFAULT_16DP">16dp</dimen>
-    <dimen name="DEFAULT_32DP">32dp</dimen>
-    <dimen name="DEFAULT_45DP">45dp</dimen>
-    <dimen name="DEFAULT_60DP">60dp</dimen>
-    <dimen name="DEFAULT_100DP">100dp</dimen>
+    <dimen name="SPACE_0DP">0dp</dimen>
+    <dimen name="SPACE_8DP">8dp</dimen>
+    <dimen name="SPACE_16DP">16dp</dimen>
+    <dimen name="SPACE_32DP">32dp</dimen>
+    <dimen name="SPACE_45DP">45dp</dimen>
+    <dimen name="SPACE_60DP">60dp</dimen>
+    <dimen name="SPACE_100DP">100dp</dimen>
 </resources>

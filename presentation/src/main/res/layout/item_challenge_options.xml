@@ -7,14 +7,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_option"
-        android:layout_width="@dimen/DEFAULT_0DP"
+        android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/DEFAULT_8DP"
-        android:layout_marginEnd="@dimen/DEFAULT_8DP"
-        android:layout_marginBottom="@dimen/DEFAULT_32DP"
+        android:layout_marginStart="@dimen/SPACE_8DP"
+        android:layout_marginEnd="@dimen/SPACE_8DP"
+        android:layout_marginBottom="@dimen/SPACE_32DP"
         android:backgroundTint="@color/DEFAULT_F3FEFF"
-        app:cardElevation="@dimen/DEFAULT_0DP"
-        app:cardCornerRadius="@dimen/DEFAULT_32DP"
+        app:cardElevation="@dimen/SPACE_0DP"
+        app:cardCornerRadius="@dimen/SPACE_32DP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,9 +26,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageview_container_option"
-                android:layout_width="@dimen/DEFAULT_45DP"
-                android:layout_height="@dimen/DEFAULT_45DP"
-                android:layout_margin="@dimen/DEFAULT_16DP"
+                android:layout_width="@dimen/SPACE_45DP"
+                android:layout_height="@dimen/SPACE_45DP"
+                android:layout_margin="@dimen/SPACE_16DP"
                 android:src="@color/DEFAULT_0BE881"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,10 +49,10 @@
 
             <TextView
                 android:id="@+id/textview_option_answer"
-                android:layout_width="@dimen/DEFAULT_0DP"
+                android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/DEFAULT_32DP"
-                android:layout_marginEnd="@dimen/DEFAULT_8DP"
+                android:layout_marginStart="@dimen/SPACE_32DP"
+                android:layout_marginEnd="@dimen/SPACE_8DP"
                 android:textSize="@dimen/FONT_20SP"
                 app:layout_constraintStart_toEndOf="@id/imageview_container_option"
                 app:layout_constraintTop_toTopOf="parent"

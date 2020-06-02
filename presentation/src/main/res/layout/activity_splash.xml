@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:contentDescription="@string/content_description_splassh_screen"
-    android:padding="@dimen/DEFAULT_100DP"
+    android:padding="@dimen/SPACE_100DP"
     android:src="@drawable/ic_popcorn_dev"
     tools:context=".splash.SplashActivity" />
