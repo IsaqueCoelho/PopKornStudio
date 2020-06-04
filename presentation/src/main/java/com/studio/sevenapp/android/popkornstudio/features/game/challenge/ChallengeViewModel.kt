@@ -6,13 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
 import com.studio.sevenapp.android.domain.model.Challenge
-import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.domain.model.MovieGenre
+import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ChallengeViewModel(
-    private val challenge: ChallengeUseCase
+    private val challengeUseCase: ChallengeUseCase
 ) : BaseViewModel() {
 
     private val challengeLv = MutableLiveData<Challenge>()
@@ -29,7 +30,11 @@ class ChallengeViewModel(
 
     fun getChallenge(movieGenre: MovieGenre) {
         viewModelScope.launch {
-            challengeLv.postValue(challenge.getChallenge(movieGenre))
+
+            challengeUseCase.createQuestions(movieGenre)
+            delay(1500)
+
+            challengeLv.postValue(challengeUseCase.getChallenged())
         }
     }
 

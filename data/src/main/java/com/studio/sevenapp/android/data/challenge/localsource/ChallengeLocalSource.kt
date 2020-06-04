@@ -1,10 +1,10 @@
 package com.studio.sevenapp.android.data.challenge.localsource
 
 import com.studio.sevenapp.android.domain.model.Answer
-import com.studio.sevenapp.android.domain.model.Challenge
+import com.studio.sevenapp.android.domain.model.Question
 
 interface ChallengeLocalSource {
-    suspend fun getChalengeById(challengeId: String): Challenge
-    suspend fun insertChallenge(challenge: Challenge)
+    suspend fun insertQuestions(questionList: List<Question>)
     suspend fun updatedAnswer(answer: Answer)
+    suspend fun getQuestionsByState(state: String): List<Question>
 }

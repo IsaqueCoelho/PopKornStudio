@@ -2,12 +2,13 @@ package com.studio.sevenapp.android.data.challenge.mapper
 
 import com.studio.sevenapp.android.data.model.QuestionEntity
 import com.studio.sevenapp.android.domain.base.BaseMapper
+import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
+import com.studio.sevenapp.android.domain.challenge.business.QuestionTypeEnum
 import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Question
 
 class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
 
-    private var challengeId: String = ""
     private var answerList: List<Answer> = emptyList()
 
     override fun transformToEntity(dataObject: Question): QuestionEntity {
@@ -15,7 +16,10 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
             id = dataObject.id,
             topic = dataObject.topic,
             context = dataObject.context,
-            challengeId = challengeId
+            movieId = dataObject.movieId,
+            type = dataObject.type.name,
+            state = dataObject.state.name,
+            time = dataObject.time
         )
     }
 
@@ -24,6 +28,10 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
             id = entityObject.id,
             topic = entityObject.topic,
             context = entityObject.context,
+            movieId = entityObject.movieId,
+            type = getQuestionType(entityObject.type),
+            state = getQuestionState(entityObject.state),
+            time = entityObject.time,
             answerList = answerList
         )
     }
@@ -33,8 +41,24 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
         return transformFromEntity(entityObject)
     }
 
-    fun transformListToEntity(objectList: List<Question>, challengeId: String): List<QuestionEntity> {
-        this.challengeId = challengeId
-        return transformListToEntity(objectList)
+    private fun getQuestionType(type: String): QuestionTypeEnum {
+        return when (type) {
+            QuestionTypeEnum.OVERVIEW.name -> {
+                QuestionTypeEnum.OVERVIEW
+            }
+            else -> QuestionTypeEnum.RELEASE_DATE
+        }
+    }
+
+    private fun getQuestionState(type: String): QuestionStateEnum {
+        return when (type) {
+            QuestionStateEnum.AVAILABLE.name -> {
+                QuestionStateEnum.AVAILABLE
+            }
+            QuestionStateEnum.TO_VALIDATE.name -> {
+                QuestionStateEnum.TO_VALIDATE
+            }
+            else -> QuestionStateEnum.RESOLVED
+        }
     }
 }

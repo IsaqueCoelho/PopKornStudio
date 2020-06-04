@@ -15,10 +15,10 @@ class ChallengeResultViewModel(
     private val resultLv = MutableLiveData<ChallengeResult>()
     fun showResult(): LiveData<ChallengeResult> = resultLv
 
-    fun getChallengeResult(challengeId: String){
+    fun getChallengeResult(challengeId: String) {
         viewModelScope.launch {
-            val challengeResult = challengeUseCase.getChallengeResult(challengeId = challengeId)
-            resultLv.postValue(challengeResult)
+//            val challengeResult = challengeUseCase.getChallengeResult(challengeId = challengeId)
+//            resultLv.postValue(challengeResult)
         }
     }
 }

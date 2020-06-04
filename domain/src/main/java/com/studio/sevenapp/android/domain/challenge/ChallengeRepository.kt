@@ -1,12 +1,13 @@
 package com.studio.sevenapp.android.domain.challenge
 
+import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.Answer
-import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Movie
+import com.studio.sevenapp.android.domain.model.Question
 
 interface ChallengeRepository {
-    suspend fun getMoviesByGenre(page: Int = 1, genre: Int) : List<Movie>
-    suspend fun getChallengeById(challengeId: String) : Challenge
-    suspend fun insertChallenge(challenge: Challenge)
+    suspend fun insertQuestions(questionList: List<Question>)
+    suspend fun getMoviesByGenre(page: Int = 1, genre: Int): List<Movie>
     suspend fun updatedAnswer(answer: Answer)
+    suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question>
 }

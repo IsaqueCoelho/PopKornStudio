@@ -1,37 +1,41 @@
 package com.studio.sevenapp.android.domain.challenge
 
+import com.studio.sevenapp.android.domain.challenge.business.CreateChallenge
+import com.studio.sevenapp.android.domain.challenge.business.GenerateChallengeDataLists
+import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.*
 
 class ChallengeUseCaseImpl(
     private val challengeRepository: ChallengeRepository
 ) : ChallengeUseCase {
-    override suspend fun getChallenge(genre: MovieGenre): Challenge {
-        val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
-        val challenge = CreateChallengeMovie().generateChallenge(
-            genreName = genre.name!!,
-            movieList = movieList
-        )
-        challengeRepository.insertChallenge(challenge = challenge)
-        return challenge
-    }
 
-    override suspend fun getChallengeById(challengeId: String): Challenge {
-        return challengeRepository.getChallengeById(challengeId = challengeId)
+    override suspend fun createQuestions(genre: MovieGenre) {
+        GENRE_NAME = genre.name!!
+        val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
+
+        val generateData = GenerateChallengeDataLists(movieList)
+        val questionList: List<Question> = generateData.getQuestionList()
+
+        challengeRepository.insertQuestions(questionList = questionList)
     }
 
     override suspend fun saveAnswer(answer: Answer) {
         challengeRepository.updatedAnswer(answer = answer)
     }
 
-    override suspend fun getChallengeResult(challengeId: String): ChallengeResult {
-        val challenge = challengeRepository.getChallengeById(challengeId = challengeId)
-        return getChallengeResult(challenge = challenge)
+    override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
+        return challengeRepository.getQuestionsByState(state = state)
+    }
+
+    override suspend fun getChallenged(): Challenge {
+        val questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
+        return CreateChallenge().create(GENRE_NAME, questionList)
     }
 
     private fun getChallengeResult(challenge: Challenge): ChallengeResult {
         var points = 0
 
-        challenge.questionList.forEach {question ->
+        challenge.questionList.forEach { question ->
             points += question.answerList.filter { answer ->
                 answer.isCorrect && answer.isChecked
             }.size
@@ -56,5 +60,9 @@ class ChallengeUseCaseImpl(
                 "Ihhh, acho melhor maratonar mais um pouco!"
             }
         }
+    }
+
+    companion object {
+        private var GENRE_NAME: String = ""
     }
 }

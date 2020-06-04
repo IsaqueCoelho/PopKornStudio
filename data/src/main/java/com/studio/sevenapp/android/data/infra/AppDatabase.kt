@@ -9,7 +9,7 @@ import com.studio.sevenapp.android.data.model.QuestionEntity
 
 @Database(
     entities = [ChallengeEntity::class, QuestionEntity::class, AnswerEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

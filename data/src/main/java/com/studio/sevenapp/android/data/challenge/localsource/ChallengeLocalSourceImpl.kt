@@ -1,38 +1,26 @@
 package com.studio.sevenapp.android.data.challenge.localsource
 
 import com.studio.sevenapp.android.data.challenge.mapper.AnswerMapper
-import com.studio.sevenapp.android.data.challenge.mapper.ChallengeMapper
 import com.studio.sevenapp.android.data.challenge.mapper.QuestionMapper
-import com.studio.sevenapp.android.data.model.*
+import com.studio.sevenapp.android.data.model.AnswerEntity
+import com.studio.sevenapp.android.data.model.QuestionEntity
+import com.studio.sevenapp.android.data.model.QuestionWithAnswer
 import com.studio.sevenapp.android.domain.model.Answer
-import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Question
 
 class ChallengeLocalSourceImpl(
     private val challengeDao: ChallengeDao,
-    private val challengeMapper: ChallengeMapper,
     private val questionMapper: QuestionMapper,
     private val answerMapper: AnswerMapper
 ) : ChallengeLocalSource {
 
-    override suspend fun getChalengeById(challengeId: String): Challenge {
-        val challengeQuery: ChallengeWithQuestionWithAnswer =
-            challengeDao.getChallengeById(challengeId = challengeId)
+    override suspend fun insertQuestions(questionList: List<Question>) {
+        val questionEntityList: List<QuestionEntity> =
+            questionMapper.transformListToEntity(questionList)
+        val answerEntityList: List<AnswerEntity> =
+            getAnswerEntityList(questionList = questionList)
 
-        return Challenge(
-            id = challengeId,
-            genre = challengeQuery.challengeEntity.genre,
-            questionList = getQuestionList(challengeQuery.questionWithAnswerList)
-        )
-    }
-
-    override suspend fun insertChallenge(challenge: Challenge) {
-        val challengeEntity: ChallengeEntity = challengeMapper.transformToEntity(challenge)
-        val questionEntityList: List<QuestionEntity> = getQuestionEntityList(challenge.id, challenge.questionList)
-        val answerEntityList: List<AnswerEntity> = getAnswerEntityList(challenge.questionList)
-
-        challengeDao.insertChallengeWithQuestionWithAnswer(
-            challengeEntity = challengeEntity,
+        challengeDao.insertQuestionWithAnswer(
             questionEntityList = questionEntityList,
             answerEntityList = answerEntityList
         )
@@ -41,6 +29,12 @@ class ChallengeLocalSourceImpl(
     override suspend fun updatedAnswer(answer: Answer) {
         val answerEntity = answerMapper.transformToEntity(answer)
         challengeDao.updatedAnswer(answerEntity = answerEntity)
+    }
+
+    override suspend fun getQuestionsByState(state: String): List<Question> {
+        val questionWithAnswerList: List<QuestionWithAnswer> =
+            challengeDao.getQuestionsByState(state)
+        return getQuestionList(questionWithAnswerList = questionWithAnswerList)
     }
 
     private fun getQuestionList(questionWithAnswerList: List<QuestionWithAnswer>): List<Question> {
@@ -56,10 +50,6 @@ class ChallengeLocalSourceImpl(
         }
 
         return questionList
-    }
-
-    private fun getQuestionEntityList(challengeId: String, questionList: List<Question>): List<QuestionEntity> {
-        return questionMapper.transformListToEntity(questionList, challengeId)
     }
 
     private fun getAnswerEntityList(questionList: List<Question>): List<AnswerEntity> {

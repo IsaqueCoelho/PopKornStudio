@@ -15,7 +15,7 @@ import com.studio.sevenapp.android.domain.challenge.ChallengeRepository
 import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 
-fun Module.insertChallengeRepository(){
+fun Module.insertChallengeRepository() {
 
     // Remote injection
     single {
@@ -43,12 +43,12 @@ fun Module.insertChallengeRepository(){
         AnswerMapper()
     }
 
-    single<ChallengeLocalSource>{
-        ChallengeLocalSourceImpl(get(), get(), get(), get())
+    single<ChallengeLocalSource> {
+        ChallengeLocalSourceImpl(get(), get(), get())
     }
 
     // Repository
-    single<ChallengeRepository>{
+    single<ChallengeRepository> {
         ChallengeRepositoryImpl(get(), get())
     }
 
