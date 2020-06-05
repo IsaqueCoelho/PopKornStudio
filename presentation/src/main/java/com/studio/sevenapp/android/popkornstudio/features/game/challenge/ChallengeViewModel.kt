@@ -9,7 +9,6 @@ import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.MovieGenre
 import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ChallengeViewModel(
@@ -31,10 +30,7 @@ class ChallengeViewModel(
     fun getChallenge(movieGenre: MovieGenre) {
         viewModelScope.launch {
 
-            challengeUseCase.createQuestions(movieGenre)
-            delay(1500)
-
-            challengeLv.postValue(challengeUseCase.getChallenged())
+            challengeLv.postValue(challengeUseCase.getChallenged(movieGenre))
         }
     }
 

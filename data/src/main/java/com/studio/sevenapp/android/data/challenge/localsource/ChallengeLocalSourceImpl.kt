@@ -37,6 +37,18 @@ class ChallengeLocalSourceImpl(
         return getQuestionList(questionWithAnswerList = questionWithAnswerList)
     }
 
+    override suspend fun deleteData(questionList: List<Question>) {
+        val questionEntityList: List<QuestionEntity> =
+            questionMapper.transformListToEntity(questionList)
+        val answerEntityList: List<AnswerEntity> =
+            getAnswerEntityList(questionList = questionList)
+
+        challengeDao.deleteQuestionWithAnswer(
+            questionEntityList = questionEntityList,
+            answerEntityList = answerEntityList
+        )
+    }
+
     private fun getQuestionList(questionWithAnswerList: List<QuestionWithAnswer>): List<Question> {
         val questionList = mutableListOf<Question>()
 

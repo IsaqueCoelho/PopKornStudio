@@ -9,7 +9,27 @@ class ChallengeUseCaseImpl(
     private val challengeRepository: ChallengeRepository
 ) : ChallengeUseCase {
 
-    override suspend fun createQuestions(genre: MovieGenre) {
+    override suspend fun saveAnswer(answer: Answer) {
+        challengeRepository.updatedAnswer(answer = answer)
+    }
+
+    override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
+        return challengeRepository.getQuestionsByState(state = state)
+    }
+
+    override suspend fun getChallenged(genre: MovieGenre): Challenge {
+        GENRE_NAME = genre.name!!
+        var questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
+
+        if (questionList.isEmpty()) {
+            createQuestions(genre)
+            questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
+        }
+
+        return CreateChallenge().create(GENRE_NAME, questionList)
+    }
+
+    private suspend fun createQuestions(genre: MovieGenre) {
         GENRE_NAME = genre.name!!
         val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
 
@@ -19,19 +39,8 @@ class ChallengeUseCaseImpl(
         challengeRepository.insertQuestions(questionList = questionList)
     }
 
-    override suspend fun saveAnswer(answer: Answer) {
-        challengeRepository.updatedAnswer(answer = answer)
-    }
 
-    override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
-        return challengeRepository.getQuestionsByState(state = state)
-    }
-
-    override suspend fun getChallenged(): Challenge {
-        val questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
-        return CreateChallenge().create(GENRE_NAME, questionList)
-    }
-
+    /////////////////////////////
     private fun getChallengeResult(challenge: Challenge): ChallengeResult {
         var points = 0
 

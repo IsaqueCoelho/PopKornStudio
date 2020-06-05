@@ -1,5 +1,6 @@
 package com.studio.sevenapp.android.domain.challenge.business
 
+import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Question
 import java.util.*
@@ -22,56 +23,41 @@ class CreateChallenge {
 
     private fun selectQuestions(): List<Question> {
         val questionSelectedList: MutableList<Question> = mutableListOf()
-        val questionPositionList: List<Int> = getQuestionPositions()
+        val totalQuestions = (questionList.size / 2)
 
-        for (questionPosition in questionList.indices) {
-            if (questionPositionList.contains(questionPosition)) {
-                questionSelectedList.add(
-                    questionList[questionPosition]
-                )
+        while (questionSelectedList.size < totalQuestions) {
+            val question = questionList.random()
+            if (!questionSelectedList.contains(question)) {
+                val selectedAnswerList =
+                    selectAnswers(question.answerList, getCorrectAnswer(question.answerList))
+                question.answerList = emptyList()
+                question.answerList = selectedAnswerList
+                questionSelectedList.add(question)
             }
         }
 
         return questionSelectedList
     }
 
-    private fun getQuestionPositions(): List<Int> {
-        val questionPositionList = mutableListOf<Int>()
-
-        while (questionPositionList.size < 10) {
-            val position = (questionList.indices).random()
-
-            if (!questionPositionList.contains(position)) {
-                questionPositionList.add(position)
+    private fun selectAnswers(
+        answerList: List<Answer>,
+        answerSelectedList: MutableList<Answer>
+    ): List<Answer> {
+        while (answerSelectedList.size < 3) {
+            val answer = answerList.random()
+            if (!answerSelectedList.contains(answer)) {
+                answerSelectedList.add(answer)
             }
         }
 
-        return questionPositionList
+        answerSelectedList.shuffle()
+
+        return answerSelectedList
     }
 
+    private fun getCorrectAnswer(answerList: List<Answer>): MutableList<Answer> {
+        val answerCorrectList: List<Answer> = answerList.filter { answer -> answer.isCorrect }
+        return answerCorrectList.toMutableList()
+    }
 
-    /*private fun getAnswerOptions(moviePosition: Int): List<Answer> {
-        val answerList: MutableList<Answer> = mutableListOf()
-        val positionCorrectAnswer = (0..2).random()
-        val fakeMoviePositions = getFakeMoviesPositions(moviePosition)
-        var fakeMoviePositionIndex = 0
-
-        for (answerPosition in 0..2) {
-            if (answerPosition != positionCorrectAnswer) {
-                answerList.add(
-                    getAnswer(
-                        moviePosition = fakeMoviePositions[fakeMoviePositionIndex],
-                        isCorrect = false
-                    )
-                )
-                fakeMoviePositionIndex++
-            } else {
-                answerList.add(
-                    getAnswer(moviePosition = moviePosition, isCorrect = true)
-                )
-            }
-        }
-
-        return answerList
-    }*/
 }

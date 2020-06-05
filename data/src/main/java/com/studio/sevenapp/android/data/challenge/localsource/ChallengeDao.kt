@@ -8,6 +8,12 @@ import com.studio.sevenapp.android.data.model.QuestionWithAnswer
 @Dao
 interface ChallengeDao {
 
+    @Delete
+    fun deleteQuestionWithAnswer(
+        questionEntityList: List<QuestionEntity>,
+        answerEntityList: List<AnswerEntity>
+    )
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuestionWithAnswer(
         questionEntityList: List<QuestionEntity>,
