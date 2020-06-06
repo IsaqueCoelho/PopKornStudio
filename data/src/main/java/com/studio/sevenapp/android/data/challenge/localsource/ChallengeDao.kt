@@ -9,7 +9,7 @@ import com.studio.sevenapp.android.data.model.QuestionWithAnswer
 interface ChallengeDao {
 
     @Delete
-    fun deleteQuestionWithAnswer(
+    suspend fun deleteQuestionWithAnswer(
         questionEntityList: List<QuestionEntity>,
         answerEntityList: List<AnswerEntity>
     )

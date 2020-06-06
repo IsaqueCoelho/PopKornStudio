@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.studio.sevenapp.android.domain.model.MovieGenre
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.popkornstudio.R
 import kotlinx.android.synthetic.main.item_game_category.view.*
 
 class GameCategoryAdapter(
-    private var genreList: List<MovieGenre>,
+    private var genreList: List<Genre>,
     private val itemClickListener: GameCategoryItemClickListener
 ) : RecyclerView.Adapter<GameCategoryAdapter.GameCategoryViewHolder>() {
 
@@ -33,7 +33,7 @@ class GameCategoryAdapter(
 
     }
 
-    fun updatedList(newGenreList: List<MovieGenre>){
+    fun updatedList(newGenreList: List<Genre>){
         genreList = newGenreList.toMutableList()
         notifyDataSetChanged()
     }
@@ -41,6 +41,6 @@ class GameCategoryAdapter(
     class GameCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     interface GameCategoryItemClickListener {
-        fun onItemClicked(movieGenre: MovieGenre)
+        fun onItemClicked(genre: Genre)
     }
 }

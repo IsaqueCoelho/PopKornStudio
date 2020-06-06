@@ -17,7 +17,7 @@ class ChallengeUseCaseImpl(
         return challengeRepository.getQuestionsByState(state = state)
     }
 
-    override suspend fun getChallenged(genre: MovieGenre): Challenge {
+    override suspend fun getChallenged(genre: Genre): Challenge {
         GENRE_NAME = genre.name!!
         var questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
 
@@ -29,7 +29,7 @@ class ChallengeUseCaseImpl(
         return CreateChallenge().create(GENRE_NAME, questionList)
     }
 
-    private suspend fun createQuestions(genre: MovieGenre) {
+    private suspend fun createQuestions(genre: Genre) {
         GENRE_NAME = genre.name!!
         val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
 

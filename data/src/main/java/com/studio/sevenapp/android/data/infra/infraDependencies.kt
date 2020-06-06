@@ -46,6 +46,7 @@ fun Module.insertInfra() {
         get<BuildInfoHelper>().isDebug
     }
 
+    // Gson dependencies
     single {
         Gson()
     }
@@ -54,6 +55,7 @@ fun Module.insertInfra() {
         GsonConverterFactory.create(get<Gson>())
     }
 
+    // Request interception
     single {
         HttpLoggingInterceptor().apply {
             level =
@@ -86,6 +88,7 @@ fun Module.insertInfra() {
             .build()
     }
 
+    // Retrofit Injection
     single(named(KOIN_RETROFIT)) {
         Retrofit
             .Builder()
@@ -93,5 +96,10 @@ fun Module.insertInfra() {
             .addConverterFactory(get<GsonConverterFactory>())
             .client(get(named(KOIN_OKHTTP)))
             .build()
+    }
+
+    // Local Create Database
+    single {
+        createRoomDb<AppDatabase>(get(), get(named(KOIN_DB_NAME)))
     }
 }

@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.data.challenge.mapper
+package com.studio.sevenapp.android.data.mapper
 
 import com.studio.sevenapp.android.data.model.ChallengeEntity
 import com.studio.sevenapp.android.domain.base.BaseMapper

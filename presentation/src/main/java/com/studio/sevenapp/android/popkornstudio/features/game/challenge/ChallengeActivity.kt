@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
-import com.studio.sevenapp.android.domain.model.MovieGenre
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import com.studio.sevenapp.android.popkornstudio.features.game.result.ChallengeResultActivity
@@ -46,8 +46,8 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
 
     private fun getChallengeType() {
         intent.extras?.let { extra ->
-            val movieGenre = extra.getParcelable(ARG_PARAM_CHALLENGE_TYPE) as MovieGenre
-            viewModel.getChallenge(movieGenre = movieGenre)
+            val movieGenre = extra.getParcelable(ARG_PARAM_CHALLENGE_TYPE) as Genre
+            viewModel.getChallenge(genre = movieGenre)
         }
     }
 
@@ -96,7 +96,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
     }
 
     companion object {
-        fun paramsChallengeType(challengeTypeParam: MovieGenre)
+        fun paramsChallengeType(challengeTypeParam: Genre)
                 : Bundle {
             return Bundle().apply {
                 putParcelable(ARG_PARAM_CHALLENGE_TYPE, challengeTypeParam)

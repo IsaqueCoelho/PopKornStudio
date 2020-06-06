@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.studio.sevenapp.android.domain.model.MovieGenre
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import com.studio.sevenapp.android.popkornstudio.features.game.challenge.ChallengeActivity
@@ -45,12 +45,12 @@ class GameCategoryActivity : BaseActivity<GameCategoryViewModel>(),
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onItemClicked(movieGenre: MovieGenre) {
+    override fun onItemClicked(genre: Genre) {
         changeScreen(
             intent = Intent(
                 this,
                 ChallengeActivity::class.java
-            ).putExtras(ChallengeActivity.paramsChallengeType(movieGenre)),
+            ).putExtras(ChallengeActivity.paramsChallengeType(genre)),
             addToStack = false
         )
     }

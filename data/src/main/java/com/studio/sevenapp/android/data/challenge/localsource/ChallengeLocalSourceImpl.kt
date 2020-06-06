@@ -1,7 +1,7 @@
 package com.studio.sevenapp.android.data.challenge.localsource
 
-import com.studio.sevenapp.android.data.challenge.mapper.AnswerMapper
-import com.studio.sevenapp.android.data.challenge.mapper.QuestionMapper
+import com.studio.sevenapp.android.data.mapper.AnswerMapper
+import com.studio.sevenapp.android.data.mapper.QuestionMapper
 import com.studio.sevenapp.android.data.model.AnswerEntity
 import com.studio.sevenapp.android.data.model.QuestionEntity
 import com.studio.sevenapp.android.data.model.QuestionWithAnswer

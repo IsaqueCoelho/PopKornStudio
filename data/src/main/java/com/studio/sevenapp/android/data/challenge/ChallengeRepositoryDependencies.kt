@@ -2,14 +2,12 @@ package com.studio.sevenapp.android.data.challenge
 
 import com.studio.sevenapp.android.data.challenge.localsource.ChallengeLocalSource
 import com.studio.sevenapp.android.data.challenge.localsource.ChallengeLocalSourceImpl
-import com.studio.sevenapp.android.data.challenge.mapper.AnswerMapper
-import com.studio.sevenapp.android.data.challenge.mapper.ChallengeMapper
-import com.studio.sevenapp.android.data.challenge.mapper.QuestionMapper
 import com.studio.sevenapp.android.data.challenge.remotesource.MovieRemoteSource
 import com.studio.sevenapp.android.data.infra.AppDatabase
-import com.studio.sevenapp.android.data.infra.KOIN_DB_NAME
 import com.studio.sevenapp.android.data.infra.ServiceFactory
-import com.studio.sevenapp.android.data.infra.createRoomDb
+import com.studio.sevenapp.android.data.mapper.AnswerMapper
+import com.studio.sevenapp.android.data.mapper.ChallengeMapper
+import com.studio.sevenapp.android.data.mapper.QuestionMapper
 import com.studio.sevenapp.android.data.moviegenre.KOIN_RETROFIT
 import com.studio.sevenapp.android.domain.challenge.ChallengeRepository
 import org.koin.core.module.Module
@@ -22,15 +20,11 @@ fun Module.insertChallengeRepository() {
         ServiceFactory.createService(get(named(KOIN_RETROFIT)), MovieRemoteSource::class.java)
     }
 
-    // Local injections
-    single {
-        createRoomDb<AppDatabase>(get(), get(named(KOIN_DB_NAME)))
-    }
-
     single {
         get<AppDatabase>().challengeDao()
     }
 
+    // Mappers
     single {
         ChallengeMapper()
     }
@@ -43,6 +37,7 @@ fun Module.insertChallengeRepository() {
         AnswerMapper()
     }
 
+    // Local Source
     single<ChallengeLocalSource> {
         ChallengeLocalSourceImpl(get(), get(), get())
     }

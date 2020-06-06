@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
 import com.studio.sevenapp.android.domain.model.Challenge
-import com.studio.sevenapp.android.domain.model.MovieGenre
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -27,10 +27,10 @@ class ChallengeViewModel(
     fun showQuestionsFragments(): LiveData<List<ChallengeQuestionFragment>> = fragmentQuestionListLv
     fun getChallenge(): LiveData<Challenge> = challengeLv
 
-    fun getChallenge(movieGenre: MovieGenre) {
+    fun getChallenge(genre: Genre) {
         viewModelScope.launch {
 
-            challengeLv.postValue(challengeUseCase.getChallenged(movieGenre))
+            challengeLv.postValue(challengeUseCase.getChallenged(genre))
         }
     }
 
