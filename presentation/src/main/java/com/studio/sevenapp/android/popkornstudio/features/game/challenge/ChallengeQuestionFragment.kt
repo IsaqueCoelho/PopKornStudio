@@ -14,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 private const val ARG_PARAM_CHALLENGE_QUESTION = "PARAM_CHALLENGE_QUESTION"
+private const val ARG_PARAM_QUESTION_COUNT = "PARAM_QUESTION_COUNT"
 
 class ChallengeQuestionFragment :
     BaseFragment<ChallengeQuestionViewModel>(R.layout.fragment_challenge_question),
@@ -21,12 +22,14 @@ class ChallengeQuestionFragment :
 
     override val viewModel: ChallengeQuestionViewModel by viewModel()
 
-    private lateinit var questionChallenge: Question
     private val answerOptionsAdapter: ChallengeAnswerOptionsAdapter by inject {
         parametersOf(this)
     }
 
-    private val totalTimer = 16000L
+    private lateinit var questionChallenge: Question
+    private var questionCount: Int = 0
+
+    private var totalTimer: Long = 15000L
     private val intervalTimer = 1000L
     private lateinit var timer: CountDownTimer
 
@@ -46,10 +49,15 @@ class ChallengeQuestionFragment :
         questionChallenge = arguments!!.let { bundle ->
             bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION) as Question
         }
+
+        questionCount = arguments!!.getInt(ARG_PARAM_QUESTION_COUNT)
+
+        totalTimer = questionChallenge.time.toLong()
     }
 
     private fun setComponents() {
-        textview_question_topic.text = questionChallenge.topic
+        val topic = "${questionCount}. ${questionChallenge.topic}"
+        textview_question_topic.text = topic
         textview_question_context.text = questionChallenge.context
 
         answerOptionsAdapter.updateList(questionChallenge.answerList)
@@ -104,10 +112,14 @@ class ChallengeQuestionFragment :
     }
 
     companion object {
-        fun newInstance(questionParam: Question) =
+        fun newInstance(
+            questionParam: Question,
+            questionCount: Int
+        ) =
             ChallengeQuestionFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(ARG_PARAM_CHALLENGE_QUESTION, questionParam)
+                    putInt(ARG_PARAM_QUESTION_COUNT, questionCount)
                 }
             }
     }

@@ -37,9 +37,9 @@ class ChallengeViewModel(
     fun createChallengeQuestionFragments(questionList: List<Question>) {
         val challengeFragmentList = mutableListOf<ChallengeQuestionFragment>()
 
-        questionList.forEach { question ->
+        questionList.forEachIndexed { index, question ->
             challengeFragmentList.add(
-                ChallengeQuestionFragment.newInstance(question)
+                ChallengeQuestionFragment.newInstance(question, index + 1)
             )
         }
 

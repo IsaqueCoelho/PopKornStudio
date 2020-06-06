@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.domain.challenge.business
 
 import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Movie
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateAnswer {
@@ -29,8 +30,19 @@ class CreateAnswer {
                 movie.title
             }
             else -> {
-                movie.release_date
+                getDateFormated(movie.release_date)
             }
         }
+    }
+
+    private fun getDateFormated(releaseDate: String): String {
+        val parser = SimpleDateFormat(ORIGINAL_DATE_FORMAT, Locale.ENGLISH)
+        val formatter = SimpleDateFormat(FINAL_DATE_FORMAT, Locale.ENGLISH)
+        return formatter.format(parser.parse(releaseDate))
+    }
+
+    companion object{
+        private const val ORIGINAL_DATE_FORMAT = "yyyy-MM-dd"
+        private const val FINAL_DATE_FORMAT = "dd/MM/yyyy"
     }
 }
