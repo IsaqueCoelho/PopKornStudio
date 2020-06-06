@@ -8,11 +8,9 @@ import com.studio.sevenapp.android.data.model.QuestionWithAnswer
 @Dao
 interface ChallengeDao {
 
-    @Delete
-    suspend fun deleteQuestionWithAnswer(
-        questionEntityList: List<QuestionEntity>,
-        answerEntityList: List<AnswerEntity>
-    )
+    @Transaction
+    @Query("SELECT * FROM QuestionEntity WHERE state = :state")
+    suspend fun getQuestionsByState(state: String): List<QuestionWithAnswer>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuestionWithAnswer(
@@ -21,9 +19,11 @@ interface ChallengeDao {
     )
 
     @Update
-    suspend fun updatedAnswer(answerEntity: AnswerEntity)
+    suspend fun updateQuestion(questionEntity: QuestionEntity)
 
-    @Transaction
-    @Query("SELECT * FROM QuestionEntity WHERE state = :state")
-    suspend fun getQuestionsByState(state: String): List<QuestionWithAnswer>
+    @Delete
+    suspend fun deleteQuestionWithAnswer(
+        questionEntityList: List<QuestionEntity>,
+        answerEntityList: List<AnswerEntity>
+    )
 }

@@ -8,6 +8,5 @@ data class AnswerEntity(
     @PrimaryKey val id: String,
     val questionId: String,
     val text: String,
-    val isCorrect: Boolean,
-    val isChecked: Boolean
+    val isCorrect: Boolean
 )

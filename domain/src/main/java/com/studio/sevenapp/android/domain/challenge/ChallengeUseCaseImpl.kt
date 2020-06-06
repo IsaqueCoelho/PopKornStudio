@@ -3,15 +3,14 @@ package com.studio.sevenapp.android.domain.challenge
 import com.studio.sevenapp.android.domain.challenge.business.CreateChallenge
 import com.studio.sevenapp.android.domain.challenge.business.GenerateChallengeDataLists
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
-import com.studio.sevenapp.android.domain.model.*
+import com.studio.sevenapp.android.domain.model.Challenge
+import com.studio.sevenapp.android.domain.model.ChallengeResult
+import com.studio.sevenapp.android.domain.model.Genre
+import com.studio.sevenapp.android.domain.model.Question
 
 class ChallengeUseCaseImpl(
     private val challengeRepository: ChallengeRepository
 ) : ChallengeUseCase {
-
-    override suspend fun saveAnswer(answer: Answer) {
-        //challengeRepository.updatedAnswer(answer = answer)
-    }
 
     override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
         return challengeRepository.getQuestionsByState(state = state)

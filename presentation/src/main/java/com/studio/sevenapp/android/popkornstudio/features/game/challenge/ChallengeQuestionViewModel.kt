@@ -12,7 +12,7 @@ class ChallengeQuestionViewModel(
 
     fun saveAnswer(answer: Answer){
         viewModelScope.launch {
-            challengeUseCase.saveAnswer(answer = answer)
+
         }
     }
 }

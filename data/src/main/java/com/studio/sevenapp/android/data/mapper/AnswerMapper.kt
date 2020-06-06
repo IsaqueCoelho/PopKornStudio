@@ -13,7 +13,6 @@ class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
             id = dataObject.id,
             text = dataObject.text,
             isCorrect = dataObject.isCorrect,
-            isChecked = dataObject.isChecked,
             questionId = questionId
         )
     }
@@ -22,7 +21,7 @@ class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
         return Answer(
             id = entityObject.id,
             text = entityObject.text,
-            isChecked = entityObject.isChecked,
+            isChecked = false,
             isCorrect = entityObject.isCorrect
         )
     }

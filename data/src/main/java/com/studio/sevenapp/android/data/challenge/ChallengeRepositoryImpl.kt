@@ -4,7 +4,6 @@ import com.studio.sevenapp.android.data.challenge.localsource.ChallengeLocalSour
 import com.studio.sevenapp.android.data.challenge.remotesource.MovieRemoteSource
 import com.studio.sevenapp.android.domain.challenge.ChallengeRepository
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
-import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Movie
 import com.studio.sevenapp.android.domain.model.Question
 
@@ -28,8 +27,8 @@ class ChallengeRepositoryImpl(
         ).movieList
     }
 
-    override suspend fun updatedAnswer(answer: Answer) =
-        challengeLocalSource.updatedAnswer(answer = answer)
+    override suspend fun updateQuestion(question: Question) =
+        challengeLocalSource.updateQuestion(question = question)
 
     override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
         return challengeLocalSource.getQuestionsByState(state = state.name)

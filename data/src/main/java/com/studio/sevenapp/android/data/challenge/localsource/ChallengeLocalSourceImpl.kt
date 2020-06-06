@@ -5,7 +5,6 @@ import com.studio.sevenapp.android.data.mapper.QuestionMapper
 import com.studio.sevenapp.android.data.model.AnswerEntity
 import com.studio.sevenapp.android.data.model.QuestionEntity
 import com.studio.sevenapp.android.data.model.QuestionWithAnswer
-import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Question
 
 class ChallengeLocalSourceImpl(
@@ -26,9 +25,9 @@ class ChallengeLocalSourceImpl(
         )
     }
 
-    override suspend fun updatedAnswer(answer: Answer) {
-        val answerEntity = answerMapper.transformToEntity(answer)
-        challengeDao.updatedAnswer(answerEntity = answerEntity)
+    override suspend fun updateQuestion(question: Question) {
+        val questionEntity = questionMapper.transformToEntity(dataObject = question)
+        challengeDao.updateQuestion(questionEntity = questionEntity)
     }
 
     override suspend fun getQuestionsByState(state: String): List<Question> {

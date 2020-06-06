@@ -1,5 +1,6 @@
 package com.studio.sevenapp.android.data.challenge.remotesource
 
+import com.studio.sevenapp.android.data.model.DiscoverResponseObject
 import retrofit2.http.GET
 import retrofit2.http.Query
 
