@@ -10,7 +10,7 @@ class ChallengeUseCaseImpl(
 ) : ChallengeUseCase {
 
     override suspend fun saveAnswer(answer: Answer) {
-        challengeRepository.updatedAnswer(answer = answer)
+        //challengeRepository.updatedAnswer(answer = answer)
     }
 
     override suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question> {
@@ -22,14 +22,13 @@ class ChallengeUseCaseImpl(
         var questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
 
         if (questionList.isEmpty()) {
-            createQuestions(genre)
-            questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
+            questionList = createQuestions(genre)
         }
 
         return CreateChallenge().create(GENRE_NAME, questionList)
     }
 
-    private suspend fun createQuestions(genre: Genre) {
+    private suspend fun createQuestions(genre: Genre): List<Question> {
         GENRE_NAME = genre.name!!
         val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
 
@@ -37,6 +36,7 @@ class ChallengeUseCaseImpl(
         val questionList: List<Question> = generateData.getQuestionList()
 
         challengeRepository.insertQuestions(questionList = questionList)
+        return questionList
     }
 
 
