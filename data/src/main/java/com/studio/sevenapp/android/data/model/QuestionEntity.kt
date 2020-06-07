@@ -11,5 +11,6 @@ data class QuestionEntity(
     val movieId: Int,
     val type: String,
     val state: String,
+    val is_correct: Boolean,
     val time: String
 )

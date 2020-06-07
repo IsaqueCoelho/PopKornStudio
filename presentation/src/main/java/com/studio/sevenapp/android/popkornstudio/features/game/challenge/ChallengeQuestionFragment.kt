@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.Question
 import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.popkornstudio.R
@@ -40,8 +41,9 @@ class ChallengeQuestionFragment :
     }
 
     override fun onClick(answer: Answer) {
-        answer.isChecked = true
-        viewModel.saveAnswer(answer = answer)
+        questionChallenge.isCorrect = answer.isCorrect
+        questionChallenge.state = QuestionStateEnum.TO_VALIDATE
+        viewModel.saveQuestion(question = questionChallenge)
         swipeToNextScreen()
     }
 

@@ -12,7 +12,8 @@ data class Question(
     val context: String,
     val movieId: Int,
     val type: QuestionTypeEnum,
-    val state: QuestionStateEnum,
+    var state: QuestionStateEnum,
+    var isCorrect: Boolean,
     val time: String,
     var answerList: List<Answer>
 ) : Parcelable

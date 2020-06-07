@@ -19,6 +19,7 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
             movieId = dataObject.movieId,
             type = dataObject.type.name,
             state = dataObject.state.name,
+            is_correct = dataObject.isCorrect,
             time = dataObject.time
         )
     }
@@ -31,6 +32,7 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
             movieId = entityObject.movieId,
             type = getQuestionType(entityObject.type),
             state = getQuestionState(entityObject.state),
+            isCorrect = entityObject.is_correct,
             time = entityObject.time,
             answerList = answerList
         )

@@ -15,7 +15,6 @@ class CreateAnswer {
         return Answer(
             id = UUID.randomUUID().toString(),
             isCorrect = checkIsCorrect(questionMovieId),
-            isChecked = false,
             text = getTextAnswer(questionType)
         )
     }

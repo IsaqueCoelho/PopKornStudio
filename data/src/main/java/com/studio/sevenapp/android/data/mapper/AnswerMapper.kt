@@ -21,7 +21,6 @@ class AnswerMapper : BaseMapper<Answer, AnswerEntity>() {
         return Answer(
             id = entityObject.id,
             text = entityObject.text,
-            isChecked = false,
             isCorrect = entityObject.isCorrect
         )
     }

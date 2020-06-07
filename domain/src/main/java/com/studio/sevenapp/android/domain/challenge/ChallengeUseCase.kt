@@ -8,4 +8,5 @@ import com.studio.sevenapp.android.domain.model.Question
 interface ChallengeUseCase {
     suspend fun getQuestionsByState(state: QuestionStateEnum): List<Question>
     suspend fun getChallenged(genre: Genre): Challenge
+    suspend fun saveQuestion(question: Question)
 }

@@ -7,6 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class Answer (
     val id: String,
     val text: String,
-    var isCorrect: Boolean = false,
-    var isChecked: Boolean = false
+    var isCorrect: Boolean = false
 ):Parcelable

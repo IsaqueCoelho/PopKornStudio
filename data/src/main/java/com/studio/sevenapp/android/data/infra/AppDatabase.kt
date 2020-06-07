@@ -11,7 +11,7 @@ import com.studio.sevenapp.android.data.moviegenre.localsource.GenreDao
 
 @Database(
     entities = [GenreEntity::class, ChallengeEntity::class, QuestionEntity::class, AnswerEntity::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

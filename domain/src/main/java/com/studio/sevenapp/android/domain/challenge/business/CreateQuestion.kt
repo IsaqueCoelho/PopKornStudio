@@ -19,6 +19,7 @@ class CreateQuestion {
             movieId = movie.id,
             type = questionType,
             state = QuestionStateEnum.AVAILABLE,
+            isCorrect = false,
             time = getTime(questionType),
             answerList = emptyList()
         )
