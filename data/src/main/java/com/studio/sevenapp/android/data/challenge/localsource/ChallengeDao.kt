@@ -1,28 +1,32 @@
 package com.studio.sevenapp.android.data.challenge.localsource
 
 import androidx.room.*
-import com.studio.sevenapp.android.data.model.AnswerEntity
-import com.studio.sevenapp.android.data.model.QuestionEntity
-import com.studio.sevenapp.android.data.model.QuestionWithAnswer
+import com.studio.sevenapp.android.data.model.*
 
 @Dao
 interface ChallengeDao {
+
+    @Transaction
+    @Query("SELECT * FROM ChallengeEntity WHERE genre = :genre")
+    suspend fun getChallengeByGenre(genre: String): ChallengeWithQuestionWithAnswer
 
     @Transaction
     @Query("SELECT * FROM QuestionEntity WHERE state = :state")
     suspend fun getQuestionsByState(state: String): List<QuestionWithAnswer>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertQuestionWithAnswer(
+    suspend fun insertNewChallenge(
+        challengeEntity: ChallengeEntity,
         questionEntityList: List<QuestionEntity>,
         answerEntityList: List<AnswerEntity>
     )
 
-    @Update
-    suspend fun updateQuestion(questionEntity: QuestionEntity)
+    @Query("UPDATE QuestionEntity SET state = :state , is_correct = :isCorrect WHERE id = :questionId")
+    suspend fun updateQuestion(questionId: String, state: String, isCorrect: Boolean)
 
     @Delete
-    suspend fun deleteQuestionWithAnswer(
+    suspend fun deleteChallenge(
+        challengeEntity: ChallengeEntity,
         questionEntityList: List<QuestionEntity>,
         answerEntityList: List<AnswerEntity>
     )

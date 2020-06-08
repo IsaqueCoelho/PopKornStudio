@@ -5,25 +5,41 @@ import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Question
 import java.util.*
 
-class CreateChallenge {
+class GenerateChallenge {
 
     private var questionList: List<Question> = emptyList()
 
     fun create(
         genreName: String,
+        level: Int,
         questionList: List<Question>
     ): Challenge {
         this.questionList = questionList
         return Challenge(
             id = UUID.randomUUID().toString(),
             genre = genreName,
-            questionList = selectQuestions()
+            level = level,
+            stage = "A",
+            questionList = questionList
         )
     }
 
-    private fun selectQuestions(): List<Question> {
+    fun reOrganize(challenge: Challenge): Challenge {
+        this.questionList = challenge.questionList
+
+        val totalList = if(questionList.size > 10) questionList.size / 2 else questionList.size
+
+        return Challenge(
+            id = challenge.id,
+            genre = challenge.genre,
+            level = challenge.level,
+            stage = challenge.stage,
+            questionList = selectQuestions(totalList)
+        )
+    }
+
+    private fun selectQuestions(totalQuestions: Int): List<Question> {
         val questionSelectedList: MutableList<Question> = mutableListOf()
-        val totalQuestions = (questionList.size / 2)
 
         while (questionSelectedList.size < totalQuestions) {
             val question = questionList.random()

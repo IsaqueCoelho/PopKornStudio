@@ -1,6 +1,6 @@
 package com.studio.sevenapp.android.domain.challenge
 
-import com.studio.sevenapp.android.domain.challenge.business.CreateChallenge
+import com.studio.sevenapp.android.domain.challenge.business.GenerateChallenge
 import com.studio.sevenapp.android.domain.challenge.business.GenerateChallengeDataLists
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.Challenge
@@ -16,32 +16,54 @@ class ChallengeUseCaseImpl(
     }
 
     override suspend fun getChallenged(genre: Genre): Challenge {
-        GENRE_NAME = genre.name!!
-        var questionList = getQuestionsByState(QuestionStateEnum.AVAILABLE)
+        var challenge: Challenge? = challengeRepository.getChallengeByGenre(genre = genre.name!!)
 
-        if (questionList.isEmpty()) {
-            questionList = createQuestions(genre)
-        }
+        challenge = validateChallenge(challenge = challenge, genre = genre)
 
-        return CreateChallenge().create(GENRE_NAME, questionList)
+        return challenge
     }
 
     override suspend fun saveQuestion(question: Question) {
         challengeRepository.updateQuestion(question = question)
     }
 
-    private suspend fun createQuestions(genre: Genre): List<Question> {
-        GENRE_NAME = genre.name!!
-        val movieList = challengeRepository.getMoviesByGenre(genre = genre.id)
-
-        val generateData = GenerateChallengeDataLists(movieList)
-        val questionList: List<Question> = generateData.getQuestionList()
-
-        challengeRepository.insertQuestions(questionList = questionList)
-        return questionList
+    private suspend fun validateChallenge(challenge: Challenge?, genre: Genre): Challenge {
+        return when {
+            challenge == null -> {
+                createChallenge(genre = genre)
+            }
+            challenge.questionList.isEmpty() -> {
+                nextLevelChallenge(challenge = challenge, genre = genre)
+            }
+            else -> {
+                GenerateChallenge().reOrganize(challenge = challenge)
+            }
+        }
     }
 
-    companion object {
-        private var GENRE_NAME: String = ""
+    private suspend fun createChallenge(genre: Genre, level: Int = 1): Challenge {
+        val generateChallenge = GenerateChallenge()
+        val challenge: Challenge = generateChallenge.create(
+            genreName = genre.name!!,
+            level = level,
+            questionList = createQuestions(genreId = genre.id, page = level)
+        )
+
+        challengeRepository.insertChallenge(challenge = challenge)
+
+        return generateChallenge.reOrganize(challenge = challenge)
+    }
+
+    private suspend fun nextLevelChallenge(challenge: Challenge, genre: Genre): Challenge {
+        challengeRepository.deleteData(challenge = challenge)
+        return createChallenge(genre = genre, level = challenge.level + 1)
+    }
+
+    private suspend fun createQuestions(genreId: Int, page: Int = 1): List<Question> {
+
+        val movieList = challengeRepository.getMoviesByGenre(page = page, genre = genreId)
+
+        val generateData = GenerateChallengeDataLists(movieList)
+        return generateData.getQuestionList()
     }
 }

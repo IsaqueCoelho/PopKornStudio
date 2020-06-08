@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class QuestionEntity(
     @PrimaryKey val id: String,
+    val challengeId: String,
     val topic: String,
     val context: String,
     val movieId: Int,

@@ -9,11 +9,13 @@ import com.studio.sevenapp.android.domain.model.Question
 
 class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
 
+    private lateinit var challengeId: String
     private var answerList: List<Answer> = emptyList()
 
     override fun transformToEntity(dataObject: Question): QuestionEntity {
         return QuestionEntity(
             id = dataObject.id,
+            challengeId = challengeId,
             topic = dataObject.topic,
             context = dataObject.context,
             movieId = dataObject.movieId,
@@ -36,6 +38,11 @@ class QuestionMapper : BaseMapper<Question, QuestionEntity>() {
             time = entityObject.time,
             answerList = answerList
         )
+    }
+
+    fun transformListToEntity(challengeId: String, questionList: List<Question>): List<QuestionEntity> {
+        this.challengeId = challengeId
+        return transformListToEntity(objectList = questionList)
     }
 
     fun transformFromEntity(entityObject: QuestionEntity, answerList: List<Answer>): Question {

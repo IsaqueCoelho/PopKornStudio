@@ -39,7 +39,7 @@ fun Module.insertChallengeRepository() {
 
     // Local Source
     single<ChallengeLocalSource> {
-        ChallengeLocalSourceImpl(get(), get(), get())
+        ChallengeLocalSourceImpl(get(), get(), get(), get())
     }
 
     // Repository
