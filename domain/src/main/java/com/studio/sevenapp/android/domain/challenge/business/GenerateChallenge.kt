@@ -19,7 +19,7 @@ class GenerateChallenge {
             id = UUID.randomUUID().toString(),
             genre = genreName,
             level = level,
-            stage = "A",
+            division = ChallengeDivisionEnum.ALPHA,
             questionList = questionList
         )
     }
@@ -27,13 +27,13 @@ class GenerateChallenge {
     fun reOrganize(challenge: Challenge): Challenge {
         this.questionList = challenge.questionList
 
-        val totalList = if(questionList.size > 10) questionList.size / 2 else questionList.size
+        val totalList = if (questionList.size > 10) questionList.size / 2 else questionList.size
 
         return Challenge(
             id = challenge.id,
             genre = challenge.genre,
             level = challenge.level,
-            stage = challenge.stage,
+            division = challenge.division,
             questionList = selectQuestions(totalList)
         )
     }

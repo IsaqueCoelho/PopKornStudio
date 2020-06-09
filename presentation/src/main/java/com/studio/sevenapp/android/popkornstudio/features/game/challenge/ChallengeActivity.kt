@@ -24,7 +24,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
         parametersOf(this)
     }
 
-    private lateinit var challengeId: String
+    private lateinit var challengeGenre: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +70,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
 
         viewModel.getChallenge()
             .observe(this, Observer { challenge ->
-                challengeId = challenge.id
+                challengeGenre = challenge.genre
                 viewModel.createChallengeQuestionFragments(
                     questionList = challenge.questionList
                 )
@@ -88,7 +88,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
         } else {
             changeScreen(
                 intent = Intent(this, ChallengeResultActivity::class.java).putExtras(
-                    ChallengeResultActivity.paramsChallengeType(challengeId = challengeId)
+                    ChallengeResultActivity.paramsChallengeType(challengeGenre = challengeGenre)
                 ),
                 addToStack = false
             )

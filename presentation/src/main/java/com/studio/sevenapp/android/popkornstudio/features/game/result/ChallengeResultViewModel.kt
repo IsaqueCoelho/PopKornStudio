@@ -1,5 +1,6 @@
 package com.studio.sevenapp.android.popkornstudio.features.game.result
 
+import androidx.annotation.CallSuper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -15,10 +16,16 @@ class ChallengeResultViewModel(
     private val resultLv = MutableLiveData<ChallengeResult>()
     fun showResult(): LiveData<ChallengeResult> = resultLv
 
-    fun getChallengeResult(challengeId: String) {
+    @CallSuper
+    override fun onViewResumed() {
+        super.onViewResumed()
+        loadStateLv.postValue(true)
+    }
+
+    fun getChallengeResult(challengeGenre: String) {
         viewModelScope.launch {
-//            val challengeResult = challengeUseCase.getChallengeResult(challengeId = challengeId)
-//            resultLv.postValue(challengeResult)
+            val challengeResult = challengeUseCase.getChallengeResult(genre = challengeGenre)
+            resultLv.postValue(challengeResult)
         }
     }
 }

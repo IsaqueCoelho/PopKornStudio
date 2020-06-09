@@ -24,6 +24,12 @@ interface ChallengeDao {
     @Query("UPDATE QuestionEntity SET state = :state , is_correct = :isCorrect WHERE id = :questionId")
     suspend fun updateQuestion(questionId: String, state: String, isCorrect: Boolean)
 
+    @Query("UPDATE ChallengeEntity SET division = :division WHERE id = :challengeId")
+    suspend fun updateChallenge(challengeId: String, division: String)
+
+    @Update
+    suspend fun updateQuestionList(questionEntityList: List<QuestionEntity>)
+
     @Delete
     suspend fun deleteChallenge(
         challengeEntity: ChallengeEntity,

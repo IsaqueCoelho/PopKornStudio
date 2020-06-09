@@ -65,6 +65,22 @@ class ChallengeLocalSourceImpl(
         )
     }
 
+    override suspend fun updateChallenge(challenge: Challenge) {
+        val questionEntityList: List<QuestionEntity> = questionMapper.transformListToEntity(
+            challengeId = challenge.id,
+            questionList = challenge.questionList
+        )
+
+        challengeDao.updateChallenge(
+            challengeId = challenge.id,
+            division = challenge.division.name
+        )
+
+        challengeDao.updateQuestionList(
+            questionEntityList = questionEntityList
+        )
+    }
+
     override suspend fun deleteData(challenge: Challenge) {
         val challengeEntity: ChallengeEntity =
             challengeMapper.transformToEntity(dataObject = challenge)

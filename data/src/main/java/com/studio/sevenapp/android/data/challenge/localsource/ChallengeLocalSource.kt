@@ -8,5 +8,6 @@ interface ChallengeLocalSource {
     suspend fun getQuestionsByState(state: String): List<Question>
     suspend fun insertChallenge(challenge: Challenge)
     suspend fun updateQuestion(question: Question)
+    suspend fun updateChallenge(challenge: Challenge)
     suspend fun deleteData(challenge: Challenge)
 }

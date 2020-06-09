@@ -8,5 +8,5 @@ data class ChallengeEntity(
     @PrimaryKey val id: String,
     val genre: String,
     var level: Int,
-    var stage: String
+    var division: String
 )

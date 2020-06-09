@@ -29,7 +29,6 @@ class ChallengeViewModel(
 
     fun getChallenge(genre: Genre) {
         viewModelScope.launch {
-
             challengeLv.postValue(challengeUseCase.getChallenged(genre))
         }
     }

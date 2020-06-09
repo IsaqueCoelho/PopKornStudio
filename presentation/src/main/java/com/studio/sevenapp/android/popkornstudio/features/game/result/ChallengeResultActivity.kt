@@ -19,30 +19,28 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
         setContentView(R.layout.activity_challenge_result)
         prepareObservers()
         setComponent()
+        getChallenge()
     }
 
     private fun setComponent() {
+        loadStateView = loadstate
         button_confirm.setOnClickListener {
             finish()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        getChallenge()
-    }
-
     private fun getChallenge() {
         intent.extras?.let { bundle ->
-            if(!bundle.getString(PARAM_CHALLENGE).isNullOrEmpty()){
-                viewModel.getChallengeResult(bundle.getString(PARAM_CHALLENGE)!!)
+            if (!bundle.getString(PARAM_CHALLENGE).isNullOrEmpty()) {
+                viewModel.getChallengeResult(challengeGenre = bundle.getString(PARAM_CHALLENGE)!!)
             }
         }
     }
 
     private fun prepareObservers() {
-        viewModel.showResult().observe(this, Observer {challengeResult ->
+        viewModel.showResult().observe(this, Observer { challengeResult ->
             setResultComponents(challengeResult)
+            setloadingState(false)
         })
     }
 
@@ -55,10 +53,10 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
     }
 
     companion object {
-        fun paramsChallengeType(challengeId: String)
+        fun paramsChallengeType(challengeGenre: String)
                 : Bundle {
             return Bundle().apply {
-                putString(PARAM_CHALLENGE, challengeId)
+                putString(PARAM_CHALLENGE, challengeGenre)
             }
         }
     }

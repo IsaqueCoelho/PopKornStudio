@@ -25,13 +25,16 @@ class ChallengeRepositoryImpl(
         ).movieList
     }
 
-    override suspend fun getChallengeByGenre(genre: String): Challenge? {
+    override suspend fun getChallengeByGenre(
+        genre: String,
+        questionStateEnum: QuestionStateEnum
+    ): Challenge? {
         val challenge: Challenge? = challengeLocalSource.getChallengeByGenre(genre = genre)
 
         challenge?.let {
             it.apply {
                 questionList = questionList.filter { question ->
-                    question.state == QuestionStateEnum.AVAILABLE
+                    question.state == questionStateEnum
                 }
             }
         }
@@ -48,6 +51,9 @@ class ChallengeRepositoryImpl(
 
     override suspend fun updateQuestion(question: Question) =
         challengeLocalSource.updateQuestion(question = question)
+
+    override suspend fun updateChallenge(challenge: Challenge) =
+        challengeLocalSource.updateChallenge(challenge = challenge)
 
     override suspend fun deleteData(challenge: Challenge) =
         challengeLocalSource.deleteData(challenge = challenge)
