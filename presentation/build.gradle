@@ -71,6 +71,7 @@ dependencies {
     implementation generalDeps.material
     implementation generalDeps.constraintLayout
     implementation generalDeps.circleimageview
+    implementation generalDeps.lottie
     implementation generalDeps.glide
     kapt kaptDependencies.glideCompiler
 

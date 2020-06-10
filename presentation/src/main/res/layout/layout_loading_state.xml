@@ -6,17 +6,20 @@
     android:background="@color/DEFAULT_7B000000"
     android:orientation="vertical">
 
-    <ProgressBar
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progressbar"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:indeterminate="true"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_percent="0.3"
+        app:lottie_rawRes="@raw/ic_loading_animation"
+        app:lottie_fileName="ic_loading_animation.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
     <TextView
         android:layout_width="wrap_content"
