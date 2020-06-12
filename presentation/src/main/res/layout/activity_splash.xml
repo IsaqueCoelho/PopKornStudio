@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/shape_splash_gradient"
     android:contentDescription="@string/content_description_splassh_screen"
     android:padding="@dimen/SPACE_100DP"
     android:src="@drawable/ic_popcorn_dev"

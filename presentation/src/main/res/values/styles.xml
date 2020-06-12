@@ -10,6 +10,13 @@
         <item name="android:textSize">@dimen/FONT_16SP</item>
     </style>
 
+    <style name="AppFullScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
     <style name="defaultButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="cornerRadius">@dimen/SPACE_16DP</item>
     </style>
