@@ -51,14 +51,16 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     }
 
     private fun setUserProfile(user: FirebaseUser) {
-        val firstName = user.displayName!!.split(" ")
         textview_user_name.text = user.displayName
         textview_user_email.text = user.email
-
-        textview_hello.text = String.format(getString(R.string.title_home), firstName[0])
 
         Glide.with(this)
             .load(user.photoUrl)
             .into(circleimageview_profile)
+
+        user.displayName?.let {
+            val firstName = user.displayName!!.split(" ")
+            textview_hello.text = String.format(getString(R.string.title_home), firstName[0])
+        }
     }
 }
