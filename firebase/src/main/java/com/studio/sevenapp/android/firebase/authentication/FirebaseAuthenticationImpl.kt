@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class FirebaseAuthenticationImpl(
     private val firebaseAuth: FirebaseAuth
-) : FirebaseAuthentication {
+) : com.studio.sevenapp.android.data.user.FirebaseAuthentication {
 
     override fun currentUser() = firebaseAuth.currentUser
 }

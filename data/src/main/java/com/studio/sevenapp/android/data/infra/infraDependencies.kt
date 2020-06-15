@@ -102,4 +102,5 @@ fun Module.insertInfra() {
     single {
         createRoomDb<AppDatabase>(get(), get(named(KOIN_DB_NAME)))
     }
+
 }

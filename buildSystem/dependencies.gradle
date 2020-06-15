@@ -34,7 +34,7 @@ def firebaseCoreVersion = '17.4.1'
 def firebaseAnalyticsVersion = '17.4.1'
 def firebaseAuthVersion = '19.3.1'
 def firebaseUiAuthVersion = '6.2.1'
-
+def firebaseFirestoreVersion = '21.4.3'
 
 //
 // Test Dependencies
@@ -69,7 +69,8 @@ ext.generalDeps = [
         firebaseCore          : "com.google.firebase:firebase-core:$firebaseCoreVersion",
         firebaseAnalytics     : "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
         firebaseAuth          : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
-        firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
+        firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion",
+        firebaseFirestore     : "com.google.firebase:firebase-firestore-ktx:$firebaseFirestoreVersion"
 ]
 
 ext.kaptDependencies = [

@@ -48,9 +48,7 @@ android {
 }
 
 dependencies {
-
-    implementation project(':firebase')
-    api project(':domain')
+    implementation project(':domain')
 
     // Core
     implementation generalDeps.kotlin
@@ -71,6 +69,7 @@ dependencies {
     // Firebase
     implementation generalDeps.firebaseCore
     implementation generalDeps.firebaseAuth
+    implementation generalDeps.firebaseFirestore
 
     // Tests
     testImplementation testImplementationDependencies.junit4

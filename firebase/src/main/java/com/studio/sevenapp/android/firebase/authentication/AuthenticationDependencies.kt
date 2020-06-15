@@ -9,7 +9,7 @@ fun Module.insertAuthentication(){
         FirebaseAuth.getInstance()
     }
 
-    single<FirebaseAuthentication> {
+    single<com.studio.sevenapp.android.data.user.FirebaseAuthentication> {
         FirebaseAuthenticationImpl(get())
     }
 }

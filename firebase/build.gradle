@@ -38,6 +38,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':data')
+
     // Core
     implementation generalDeps.kotlin
     implementation generalDeps.corektx
@@ -47,6 +49,7 @@ dependencies {
     // Firebase
     implementation generalDeps.firebaseCore
     implementation generalDeps.firebaseAuth
+    implementation generalDeps.firebaseFirestore
 
     // Tests
     testImplementation testImplementationDependencies.junit4

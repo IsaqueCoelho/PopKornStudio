@@ -17,7 +17,6 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintWidth_percent="0.3"
         app:lottie_rawRes="@raw/ic_loading_animation"
-        app:lottie_fileName="ic_loading_animation.json"
         app:lottie_autoPlay="true"
         app:lottie_loop="true" />
 

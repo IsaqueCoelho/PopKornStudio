@@ -1,4 +1,4 @@
-package com.studio.sevenapp.android.firebase.authentication
+package com.studio.sevenapp.android.data.user
 
 import com.google.firebase.auth.FirebaseUser
 

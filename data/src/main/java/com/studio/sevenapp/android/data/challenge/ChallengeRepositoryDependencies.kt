@@ -44,7 +44,7 @@ fun Module.insertChallengeRepository() {
 
     // Repository
     single<ChallengeRepository> {
-        ChallengeRepositoryImpl(get(), get())
+        ChallengeRepositoryImpl(get(), get(), get(), get())
     }
 
 }
