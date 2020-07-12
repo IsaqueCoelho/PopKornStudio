@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.ranking.RankingActivity">
+
+    <TextView
+        android:id="@+id/textview_title"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/FONT_24SP"
+        android:padding="@dimen/SPACE_16DP"
+        tools:text="Ação"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:background="@color/DEFAULT_E65100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_category"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_game_category" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

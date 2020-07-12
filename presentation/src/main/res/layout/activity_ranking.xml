@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.ranking.RankingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/SPACE_60DP">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="@dimen/SPACE_0DP"
+            android:layout_height="@dimen/SPACE_0DP"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:listitem="@layout/item_ranking" />
+
+        <include
+            android:id="@+id/loadstate"
+            layout="@layout/layout_loading_state"
+            android:layout_width="@dimen/SPACE_0DP"
+            android:layout_height="@dimen/SPACE_0DP"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomSheet"
+        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/SPACE_60DP"
+        app:cardCornerRadius="@dimen/SPACE_0DP"
+        app:cardElevation="@dimen/SPACE_0DP"
+        app:behavior_peekHeight="@dimen/SPACE_60DP"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <include layout="@layout/content_ranking_bottom_sheet"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/SPACE_16DP"
+        app:srcCompat="@drawable/ic_filter_white"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/DEFAULT_FFD32A"
+        app:layout_anchor="@+id/bottomSheet"
+        app:layout_anchorGravity="top|end"
+        app:elevation="@dimen/SPACE_0DP"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

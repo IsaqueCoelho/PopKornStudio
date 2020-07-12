@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_profile"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/DEFAULT_F3FEFF"
+        android:layout_margin="@dimen/SPACE_16DP"
+        app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:cardElevation="@dimen/SPACE_0DP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/SPACE_8DP">
+
+            <TextView
+                android:id="@+id/textview_user_position"
+                android:layout_width="@dimen/SPACE_0DP"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/FONT_24SP"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/circleimageview_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="100" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleimageview_profile"
+                android:layout_width="@dimen/SPACE_60DP"
+                android:layout_height="@dimen/SPACE_60DP"
+                android:layout_marginStart="@dimen/SPACE_60DP"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textview_user_name"
+                android:layout_width="@dimen/SPACE_0DP"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/SPACE_8DP"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/circleimageview_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/textview_user_points"
+                android:layout_width="@dimen/SPACE_0DP"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/SPACE_8DP"
+                android:textSize="@dimen/FONT_14SP"
+                app:layout_constraintStart_toEndOf="@id/circleimageview_profile"
+                app:layout_constraintTop_toBottomOf="@+id/textview_user_name"
+                tools:text="pontos: 50" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,7 @@
     <string name="title_loading">Carregando…</string>
     <string name="title_challenge">Desafio</string>
     <string name="title_challenge_result">Resultado</string>
+    <string name="title_ranking">Ranking</string>
 
     <!-- Form topic -->
     <string name="form_topic_access_profile">Acessar Perfil</string>

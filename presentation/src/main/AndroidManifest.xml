@@ -24,7 +24,7 @@
         <activity
             android:name=".signin.SignInActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppFullScreenTheme"/>
+            android:theme="@style/AppFullScreenTheme" />
         <activity
             android:name=".features.home.HomeActivity"
             android:screenOrientation="portrait" />
@@ -36,7 +36,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.game.result.ChallengeResultActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.ranking.RankingActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

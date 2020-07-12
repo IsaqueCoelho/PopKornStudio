@@ -2,7 +2,6 @@ package com.studio.sevenapp.android.popkornstudio.features.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.firebase.ui.auth.AuthUI
@@ -10,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import com.studio.sevenapp.android.popkornstudio.features.game.category.GameCategoryActivity
+import com.studio.sevenapp.android.popkornstudio.features.ranking.RankingActivity
 import com.studio.sevenapp.android.popkornstudio.signin.SignInActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,14 +29,23 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     private fun listeningComponents() {
         link_sair.setOnClickListener {
             AuthUI.getInstance().signOut(this).addOnCompleteListener {
-                Toast.makeText(this, "loggout", Toast.LENGTH_LONG).show()
-                changeScreen(Intent(this, SignInActivity::class.java), addToStack = false)
+                changeScreen(
+                    intent = Intent(this, SignInActivity::class.java),
+                    addToStack = false
+                )
             }
         }
 
         cardview_box_four.setOnClickListener {
             changeScreen(
-                Intent(this, GameCategoryActivity::class.java),
+                intent = Intent(this, GameCategoryActivity::class.java),
+                addToStack = true
+            )
+        }
+
+        cardview_box_two.setOnClickListener {
+            changeScreen(
+                intent = Intent(this, RankingActivity::class.java),
                 addToStack = true
             )
         }
