@@ -70,7 +70,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
 
         viewModel.getChallenge()
             .observe(this, Observer { challenge ->
-                challengeGenre = challenge.genre
+                challengeGenre = challenge.genre.name
                 viewModel.createChallengeQuestionFragments(
                     questionList = challenge.questionList
                 )

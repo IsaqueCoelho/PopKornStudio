@@ -15,7 +15,7 @@ class ChallengeUseCaseImpl(
 
     override suspend fun getChallenged(genre: Genre): Challenge {
         var challenge: Challenge? = challengeRepository.getChallengeByGenre(
-            genre = genre.name!!,
+            genre = genre.name,
             questionStateEnum = QuestionStateEnum.AVAILABLE
         )
 
@@ -54,7 +54,7 @@ class ChallengeUseCaseImpl(
     private suspend fun createChallenge(genre: Genre, level: Int = 1): Challenge {
         val generateChallenge = GenerateChallenge()
         val challenge: Challenge = generateChallenge.create(
-            genreName = genre.name!!,
+            genre = genre,
             level = level,
             questionList = createQuestions(genreId = genre.id, page = level)
         )
@@ -66,7 +66,7 @@ class ChallengeUseCaseImpl(
 
     private suspend fun nextLevelChallenge(challenge: Challenge, genre: Genre): Challenge {
         challengeRepository.deleteData(challenge = challenge)
-        return createChallenge(genre = genre, level = challenge.level)
+        return createChallenge(genre = genre, level = challenge.level + 1)
     }
 
     private suspend fun createQuestions(genreId: Int, page: Int = 1): List<Question> {
@@ -89,10 +89,15 @@ class ChallengeUseCaseImpl(
     }
 
     private suspend fun saveChallenge(challenge: Challenge, state: QuestionStateEnum) {
-        challenge.questionList.forEach { question ->
-            question.state = state
-            question.isCorrect = false
-        }
+        challenge.questionList
+            .filter { question ->
+                question.state != QuestionStateEnum.RESOLVED
+            }.apply {
+                forEach { question ->
+                    question.state = state
+                    question.isCorrect = false
+                }
+            }
 
         challengeRepository.updateChallenge(challenge = challenge)
     }

@@ -3,7 +3,6 @@ package com.studio.sevenapp.android.data.challenge
 import com.studio.sevenapp.android.data.challenge.localsource.ChallengeLocalSource
 import com.studio.sevenapp.android.data.challenge.remotesource.MovieRemoteSource
 import com.studio.sevenapp.android.data.infra.CollectionsEnum
-import com.studio.sevenapp.android.data.infra.FieldTypeEnum
 import com.studio.sevenapp.android.data.infra.Firestore
 import com.studio.sevenapp.android.domain.challenge.ChallengeRepository
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
@@ -61,12 +60,17 @@ class ChallengeRepositoryImpl(
     override suspend fun updateChallenge(challenge: Challenge) {
         challengeLocalSource.updateChallenge(challenge = challenge)
         val userId = userRepository.getCurrentUser()!!.uid
+
+        val body = hashMapOf(
+            challenge.genre.name to hashMapOf(
+                "level" to challenge.level
+            )
+        )
+
         firestore.updateDocumentField(
             collectionRef = CollectionsEnum.USERS.name,
             documentRef = userId,
-            fieldkey = "level",
-            fieldValue = challenge.level.toString(),
-            fieldValueType = FieldTypeEnum.INT
+            fieldHashMap = body
         )
     }
 

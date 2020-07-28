@@ -12,7 +12,7 @@ class GenerateChallengeResult() {
         this.challenge = challenge
 
         return ChallengeResult(
-            genre = challenge.genre,
+            genre = challenge.genre.name,
             points = countPoints(),
             result = getResult()
         )
@@ -38,8 +38,8 @@ class GenerateChallengeResult() {
                         "Parabénsss, 1ª parte do Desafio Level ${challenge.level} Concluída"
                     }
                     else -> {
-                        challenge.level++
-                        "Aeeehooo, Agora seu nível de Desafio é ${challenge.level + 1}!!!"
+                        challenge.level = challenge.level + 1
+                        "Aeeehooo, Agora seu nível de Desafio é ${challenge.level}!!!"
                     }
                 }
 

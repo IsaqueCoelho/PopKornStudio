@@ -6,12 +6,14 @@ import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.User
 import com.studio.sevenapp.android.domain.moviegenre.MovieGenreUseCase
+import com.studio.sevenapp.android.domain.user.UserUseCase
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RankingViewModel(
-    private val movieCategory: MovieGenreUseCase
+    private val movieCategory: MovieGenreUseCase,
+    private val userUseCase: UserUseCase
 ) : BaseViewModel(){
 
     private val categoryListLv = MutableLiveData<List<Genre>>()
@@ -41,25 +43,8 @@ class RankingViewModel(
     }
 
     private suspend fun getUserRanking(genre: Genre){
-        val userList = listOf(
-            User(
-                name = "Test1",
-                pictureUrl = "https://lh3.googleusercontent.com/ogw/ADGmqu9ay20pUmjnXzLiLvZGfzGFZST5naDaZIO17UBF=s83-c-mo",
-                level = 7
-            ),
-            User(
-                name = "Test1",
-                pictureUrl = "https://static3.tcdn.com.br/img/img_prod/460977/guarda_chuva_katana_samurai_42776_1_20190411193854.jpg",
-                level = 3
-            ),
-            User(
-                name = "Test1",
-                pictureUrl = "https://2.bp.blogspot.com/-pkq1t0htRqc/VvMZ0rhAc8I/AAAAAAAAy6U/ebmTX_8hHHQC18KiZ5HS5rbD8SPV0pdFA/s1600/que%2Bdeselegante.jpg",
-                level = 1
-            )
-        )
-
+        val userRanking = userUseCase.getCurrentRanking(genre = genre)
         delay(3000)
-        rankingListLv.postValue(userList)
+        rankingListLv.postValue(userRanking)
     }
 }

@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.domain.challenge.business
 
 import com.studio.sevenapp.android.domain.model.Answer
 import com.studio.sevenapp.android.domain.model.Challenge
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.Question
 import java.util.*
 
@@ -10,14 +11,14 @@ class GenerateChallenge {
     private var questionList: List<Question> = emptyList()
 
     fun create(
-        genreName: String,
+        genre: Genre,
         level: Int,
         questionList: List<Question>
     ): Challenge {
         this.questionList = questionList
         return Challenge(
             id = UUID.randomUUID().toString(),
-            genre = genreName,
+            genre = genre,
             level = level,
             division = ChallengeDivisionEnum.ALPHA,
             questionList = questionList

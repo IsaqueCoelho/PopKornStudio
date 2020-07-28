@@ -4,7 +4,7 @@ import com.studio.sevenapp.android.domain.challenge.business.ChallengeDivisionEn
 
 data class Challenge(
     val id: String,
-    val genre: String,
+    val genre: Genre,
     var level: Int,
     var division: ChallengeDivisionEnum,
     var questionList: List<Question>

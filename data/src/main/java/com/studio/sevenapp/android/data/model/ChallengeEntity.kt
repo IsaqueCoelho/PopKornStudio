@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class ChallengeEntity(
     @PrimaryKey val id: String,
     val genre: String,
+    val genreId: Int,
     var level: Int,
     var division: String
 )

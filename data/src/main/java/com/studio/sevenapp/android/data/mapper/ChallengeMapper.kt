@@ -4,6 +4,7 @@ import com.studio.sevenapp.android.data.model.ChallengeEntity
 import com.studio.sevenapp.android.domain.base.BaseMapper
 import com.studio.sevenapp.android.domain.challenge.business.ChallengeDivisionEnum
 import com.studio.sevenapp.android.domain.model.Challenge
+import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.Question
 
 class ChallengeMapper : BaseMapper<Challenge, ChallengeEntity>() {
@@ -13,7 +14,8 @@ class ChallengeMapper : BaseMapper<Challenge, ChallengeEntity>() {
     override fun transformToEntity(dataObject: Challenge): ChallengeEntity {
         return ChallengeEntity(
             id = dataObject.id,
-            genre = dataObject.genre,
+            genre = dataObject.genre.name,
+            genreId = dataObject.genre.id,
             level = dataObject.level,
             division = dataObject.division.name
         )
@@ -22,7 +24,7 @@ class ChallengeMapper : BaseMapper<Challenge, ChallengeEntity>() {
     override fun transformFromEntity(entityObject: ChallengeEntity): Challenge {
         return Challenge(
             id = entityObject.id,
-            genre = entityObject.genre,
+            genre = Genre(id = entityObject.genreId, name = entityObject.genre),
             level = entityObject.level,
             division = getDivisionEnum(entityObject.division),
             questionList = questioList

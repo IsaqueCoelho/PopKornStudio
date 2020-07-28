@@ -4,8 +4,6 @@ interface Firestore {
     fun updateDocumentField(
         collectionRef: String,
         documentRef: String,
-        fieldkey: String,
-        fieldValue: String,
-        fieldValueType: FieldTypeEnum
+        fieldHashMap: HashMap<String, HashMap<String, Int>>
     )
 }

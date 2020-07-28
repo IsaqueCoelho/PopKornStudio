@@ -6,7 +6,7 @@ import org.koin.core.module.Module
 fun Module.insertRanking() {
 
     viewModel {
-        RankingViewModel(get())
+        RankingViewModel(get(), get())
     }
 
     single {
