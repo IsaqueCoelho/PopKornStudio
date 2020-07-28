@@ -10,25 +10,25 @@
         android:id="@+id/textview_title"
         android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/FONT_24SP"
+        android:background="@color/DEFAULT_0BE881"
         android:padding="@dimen/SPACE_16DP"
-        tools:text="Ação"
-        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:background="@color/DEFAULT_E65100"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/FONT_24SP"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ação" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_category"
         android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="@dimen/SPACE_0DP"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_title"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_title"
         tools:listitem="@layout/item_game_category" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

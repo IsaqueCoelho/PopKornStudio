@@ -12,3 +12,14 @@
 /captures
 .externalNativeBuild
 .cxx
+/data/src/dev/google-services.json
+/data/src/prod/google-services.json
+/domain/src/dev/google-services.json
+/domain/src/prod/google-services.json
+/firebase/src/dev/google-services.json
+/firebase/src/prod/google-services.json
+/presentation/src/dev/google-services.json
+/presentation/src/prod/google-services.json
+/buildsystem/informations.gradle
+/keyStore/popkornstudiokeystore.jks
+/.idea/jarRepositories.xml
