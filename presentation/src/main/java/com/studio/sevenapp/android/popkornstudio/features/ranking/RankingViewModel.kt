@@ -43,7 +43,7 @@ class RankingViewModel(
     }
 
     private suspend fun getUserRanking(genre: Genre){
-        val userRanking = userUseCase.getCurrentRanking(genre = genre)
+        val userRanking = userUseCase.getRankingByGenre(genre = genre)
         delay(3000)
         rankingListLv.postValue(userRanking)
     }

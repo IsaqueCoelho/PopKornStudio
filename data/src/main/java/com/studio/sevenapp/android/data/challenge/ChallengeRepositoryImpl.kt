@@ -62,9 +62,7 @@ class ChallengeRepositoryImpl(
         val userId = userRepository.getCurrentUser()!!.uid
 
         val body = hashMapOf(
-            challenge.genre.name to hashMapOf(
-                "level" to challenge.level
-            )
+            challenge.genre.name to challenge.level
         )
 
         firestore.updateDocumentField(

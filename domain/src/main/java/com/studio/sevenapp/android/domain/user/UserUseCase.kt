@@ -7,5 +7,5 @@ import com.studio.sevenapp.android.domain.model.User
 interface UserUseCase {
     fun isUserLogged() : Boolean
     fun getCurrentUser(): FirebaseUser?
-    suspend fun getCurrentRanking(genre: Genre): List<User>
+    suspend fun getRankingByGenre(genre: Genre): List<User>
 }

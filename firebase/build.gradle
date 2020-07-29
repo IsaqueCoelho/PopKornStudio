@@ -50,6 +50,7 @@ dependencies {
     implementation generalDeps.firebaseCore
     implementation generalDeps.firebaseAuth
     implementation generalDeps.firebaseFirestore
+    implementation generalDeps.coroutinePlayServices
 
     // Tests
     testImplementation testImplementationDependencies.junit4
