@@ -5,7 +5,7 @@ import org.koin.core.module.Module
 
 fun Module.insertUserRepository(){
 
-    single<UserRepository>{
+    factory<UserRepository>{
         UserRepositoryImpl(get(), get())
     }
 }

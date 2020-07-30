@@ -1,6 +1,7 @@
 package com.studio.sevenapp.android.firebase.authentication
 
 import com.google.firebase.auth.FirebaseAuth
+import com.studio.sevenapp.android.data.user.FirebaseAuthentication
 import org.koin.core.module.Module
 
 fun Module.insertAuthentication(){
@@ -9,7 +10,7 @@ fun Module.insertAuthentication(){
         FirebaseAuth.getInstance()
     }
 
-    single<com.studio.sevenapp.android.data.user.FirebaseAuthentication> {
+    single<FirebaseAuthentication> {
         FirebaseAuthenticationImpl(get())
     }
 }
