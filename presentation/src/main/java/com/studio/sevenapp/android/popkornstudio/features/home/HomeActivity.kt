@@ -1,6 +1,9 @@
 package com.studio.sevenapp.android.popkornstudio.features.home
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -13,6 +16,7 @@ import com.studio.sevenapp.android.popkornstudio.features.ranking.RankingActivit
 import com.studio.sevenapp.android.popkornstudio.signin.SignInActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class HomeActivity : BaseActivity<HomeViewModel>() {
 
@@ -43,6 +47,17 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
                     intent = Intent(this, SignInActivity::class.java),
                     addToStack = false
                 )
+            }
+        }
+
+        cardview_box_one.setOnClickListener {
+            try {
+                val rateIntent = rateIntentForUrl("market://details")
+                startActivity(rateIntent)
+            } catch (e: ActivityNotFoundException) {
+                val rateIntent =
+                    rateIntentForUrl("https://play.google.com/store/apps/details")
+                startActivity(rateIntent)
             }
         }
 
@@ -85,5 +100,20 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             val firstName = user.displayName!!.split(" ")
             textview_hello.text = String.format(getString(R.string.title_home), firstName[0])
         }
+    }
+
+    private fun rateIntentForUrl(url: String): Intent? {
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(String.format("%s?id=%s", url, packageName))
+        )
+        var flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+        flags = if (Build.VERSION.SDK_INT >= 21) {
+            flags or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
+        } else {
+            flags or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
+        }
+        intent.addFlags(flags)
+        return intent
     }
 }

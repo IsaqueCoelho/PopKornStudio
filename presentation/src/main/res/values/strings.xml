@@ -28,7 +28,7 @@
     <string name="title_ranking">Ranking</string>
 
     <!-- Form topic -->
-    <string name="form_topic_access_profile">Acessar Perfil</string>
+    <string name="form_topic_rate_app">Avalie na Loja</string>
     <string name="form_topic_check_ranking">Conferir Ranking</string>
     <string name="form_topic_about_popkorn">Sobre PopKorn</string>
     <string name="form_topic_start_challenge">Iniciar Desafio</string>

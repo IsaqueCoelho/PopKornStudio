@@ -106,7 +106,7 @@
                 android:id="@+id/textview_box_one"
                 android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="wrap_content"
-                android:text="@string/form_topic_access_profile"
+                android:text="@string/form_topic_rate_app"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/FONT_20SP"
                 android:textStyle="bold"
@@ -119,7 +119,7 @@
                 android:layout_width="@dimen/SPACE_32DP"
                 android:layout_height="@dimen/SPACE_32DP"
                 android:contentDescription="@string/content_description_icon_person"
-                android:src="@drawable/ic_person_white"
+                android:src="@drawable/ic_shop_star"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
