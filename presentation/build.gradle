@@ -7,7 +7,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion app.compileSdkVersion
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId APPLICATION_ID
         minSdkVersion app.minSdkVersion
@@ -73,6 +73,7 @@ dependencies {
     implementation generalDeps.circleimageview
     implementation generalDeps.lottie
     implementation generalDeps.glide
+    implementation generalDeps.materialDialog
     kapt kaptDependencies.glideCompiler
 
     // Firebase

@@ -7,19 +7,25 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.snackbar.Snackbar
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.extensions.setBackground
 import com.studio.sevenapp.android.popkornstudio.extensions.setElevation
 import com.studio.sevenapp.android.popkornstudio.extensions.setMargin
 
-abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
+abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
 
     abstract val viewModel: ViewModel
 
     open val isViewModelOwner = true
 
     protected var loadStateView: View? = null
+
+    private val customDialog by lazy {
+        MaterialDialog(this).noAutoDismiss()
+    }
 
     private val snackBarNoInternetConnection by lazy {
         Snackbar
@@ -71,14 +77,30 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
         supportActionBar?.title = title
     }
 
-    protected fun showToast(msg: String){
+    protected fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
-    protected fun setloadingState(showLoading: Boolean){
-        when{
+    protected fun setloadingState(showLoading: Boolean) {
+        when {
             showLoading -> showLoadingState()
             !showLoading -> dismissLoadingState()
+        }
+    }
+
+    protected fun setCustomDialogLayout(customLayout: Int, cancelOnTouchOutside: Boolean = true) {
+        customDialog.customView(customLayout)
+        customDialog.cancelOnTouchOutside(cancelOnTouchOutside)
+    }
+
+    protected fun getCustomDialogViewById(viewId: Int): View {
+        return customDialog.findViewById(viewId)
+    }
+
+    protected fun customDialogVisibility(state: Boolean) {
+        when {
+            state && !customDialog.isShowing -> customDialog.show()
+            !state && customDialog.isShowing -> customDialog.dismiss()
         }
     }
 
@@ -88,11 +110,11 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity(){
         })
     }
 
-    private fun showLoadingState(){
+    private fun showLoadingState() {
         loadStateView?.visibility = View.VISIBLE
     }
 
-    private fun dismissLoadingState(){
+    private fun dismissLoadingState() {
         loadStateView?.visibility = View.GONE
     }
 }

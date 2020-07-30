@@ -22,8 +22,18 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        prepareComponents()
         listeningComponents()
         prepareObservers()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        customDialogVisibility(state = false)
+    }
+
+    private fun prepareComponents() {
+        setCustomDialogLayout(R.layout.dialog_about)
     }
 
     private fun listeningComponents() {
@@ -36,16 +46,20 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             }
         }
 
-        cardview_box_four.setOnClickListener {
+        cardview_box_two.setOnClickListener {
             changeScreen(
-                intent = Intent(this, GameCategoryActivity::class.java),
+                intent = Intent(this, RankingActivity::class.java),
                 addToStack = true
             )
         }
 
-        cardview_box_two.setOnClickListener {
+        cardview_box_three.setOnClickListener {
+            customDialogVisibility(state = true)
+        }
+
+        cardview_box_four.setOnClickListener {
             changeScreen(
-                intent = Intent(this, RankingActivity::class.java),
+                intent = Intent(this, GameCategoryActivity::class.java),
                 addToStack = true
             )
         }

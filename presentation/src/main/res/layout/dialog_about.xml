@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/DEFAULT_E65100">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/textview_body"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/SPACE_100DP"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleimageview_about"
+            android:layout_width="@dimen/SPACE_100DP"
+            android:layout_height="@dimen/SPACE_100DP"
+            android:layout_marginTop="@dimen/SPACE_50DP"
+            android:src="@drawable/ic_popcorn"
+            app:civ_border_color="@color/DEFAULT_FFD32A"
+            app:civ_border_width="@dimen/SPACE_8DP"
+            app:civ_circle_background_color="@color/DEFAULT_FFD32A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/SPACE_8DP"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/FONT_24SP"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circleimageview_about" />
+
+        <TextView
+            android:id="@+id/textview_decription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/SPACE_8DP"
+            android:text="@string/about_description"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/FONT_16SP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+
+        <TextView
+            android:id="@+id/textview_ps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/SPACE_32DP"
+            android:padding="@dimen/SPACE_8DP"
+            android:text="@string/about_ps"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/FONT_16SP"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_decription"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
