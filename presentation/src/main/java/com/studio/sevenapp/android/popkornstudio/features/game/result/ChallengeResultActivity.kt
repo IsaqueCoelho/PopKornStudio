@@ -6,8 +6,8 @@ import androidx.lifecycle.Observer
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest.*
 import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
 import com.studio.sevenapp.android.domain.model.ChallengeResult
+import com.studio.sevenapp.android.popkornstudio.BuildConfig.ADMOB_AFTER_RESULT_GAME_ID
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_challenge_result.*
@@ -31,10 +31,8 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
     }
 
     private fun prepareAds() {
-        MobileAds.initialize(this) {}
         mInterstitialAd = InterstitialAd(this)
-        // sample ca-app-pub-3940256099942544/1033173712
-        mInterstitialAd.adUnitId = "ca-app-pub-9901566387699897/3312600109"
+        mInterstitialAd.adUnitId = ADMOB_AFTER_RESULT_GAME_ID
         mInterstitialAd.loadAd(Builder().build())
 
         mInterstitialAd.adListener = object : AdListener() {
@@ -50,7 +48,7 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
                     else -> "The ad request was successful, but no ad was returned due to lack of ad inventory. "
                 }
 
-                Log.e(ChallengeResultActivity::class.java.name, "failed to load ads: $errorMsg")
+                Log.e(ChallengeResultActivity::class.java.simpleName, "failed to load ads: $errorMsg")
                 setloadingState(false)
             }
 

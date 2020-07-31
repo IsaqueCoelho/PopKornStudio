@@ -5,19 +5,16 @@
     <application
         android:name=".base.MainAplication"
         android:allowBackup="true"
-        android:icon="${iconApp}"
+        android:icon="@drawable/ic_popcorn_dev"
         android:label="@string/app_name"
-        android:roundIcon="${iconApp}"
+        android:roundIcon="@drawable/ic_popcorn_dev"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-<!--        &lt;!&ndash; Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 &ndash;&gt;-->
-<!--&lt;!&ndash;        <meta-data&ndash;&gt;-->
-<!--&lt;!&ndash;            android:name="com.google.android.gms.ads.APPLICATION_ID"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:value="ca-app-pub-9901566387699897~4984774426" />&ndash;&gt;-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
             android:name=".splash.SplashActivity"

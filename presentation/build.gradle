@@ -32,14 +32,16 @@ android {
             ext.myApplicationIdSuffix = '.dev'
             ext.versionNameSuffix = '-dev'
             manifestPlaceholders = [
-                    iconApp: "@drawable/ic_popcorn_dev",
+                    iconApp: "@drawable/ic_popcorn_dev"
             ]
+            buildConfigField "String", "ADMOB_AFTER_RESULT_GAME_ID", DEBUG_ADMOB_AFTER_RESULT_GAME_ID
         }
         prod {
             dimension dimensions.env
             manifestPlaceholders = [
-                    iconApp: "@drawable/ic_popcorn",
+                    iconApp: "@drawable/ic_popcorn"
             ]
+            buildConfigField "String", "ADMOB_AFTER_RESULT_GAME_ID", ADMOB_AFTER_RESULT_GAME_ID
         }
     }
 
