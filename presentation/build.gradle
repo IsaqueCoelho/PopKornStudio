@@ -80,6 +80,8 @@ dependencies {
     implementation generalDeps.firebaseAnalytics
     implementation generalDeps.firebaseAuth
     implementation generalDeps.firebaseUiAuth
+    implementation generalDeps.firebaseAdMob
+
 
     // Tests
     testImplementation testImplementationDependencies.junit4

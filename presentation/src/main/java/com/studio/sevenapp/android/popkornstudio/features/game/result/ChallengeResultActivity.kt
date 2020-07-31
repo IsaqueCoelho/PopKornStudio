@@ -1,7 +1,12 @@
 package com.studio.sevenapp.android.popkornstudio.features.game.result
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest.*
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.studio.sevenapp.android.domain.model.ChallengeResult
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
@@ -14,18 +19,62 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
 
     override val viewModel: ChallengeResultViewModel by viewModel()
 
+    private lateinit var mInterstitialAd: InterstitialAd
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_result)
         prepareObservers()
         setComponent()
+        prepareAds()
         getChallenge()
+    }
+
+    private fun prepareAds() {
+        MobileAds.initialize(this) {}
+        mInterstitialAd = InterstitialAd(this)
+        // sample ca-app-pub-3940256099942544/1033173712
+        mInterstitialAd.adUnitId = "ca-app-pub-9901566387699897/3312600109"
+        mInterstitialAd.loadAd(Builder().build())
+
+        mInterstitialAd.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                setloadingState(false)
+            }
+
+            override fun onAdFailedToLoad(errorCode: Int) {
+                val errorMsg = when (errorCode) {
+                    ERROR_CODE_INTERNAL_ERROR -> "Something happened internally; for instance, an invalid response was received from the ad server."
+                    ERROR_CODE_INVALID_REQUEST -> "he ad request was invalid; for instance, the ad unit ID was incorrect."
+                    ERROR_CODE_NETWORK_ERROR -> "The ad request was unsuccessful due to network connectivity."
+                    else -> "The ad request was successful, but no ad was returned due to lack of ad inventory. "
+                }
+
+                Log.e(ChallengeResultActivity::class.java.name, "failed to load ads: $errorMsg")
+                setloadingState(false)
+            }
+
+            override fun onAdOpened() {}
+
+            override fun onAdClicked() {}
+
+            override fun onAdLeftApplication() {
+                mInterstitialAd.loadAd(Builder().build())
+            }
+
+            override fun onAdClosed() {
+                finish()
+            }
+        }
     }
 
     private fun setComponent() {
         loadStateView = loadstate
         button_confirm.setOnClickListener {
-            finish()
+            when {
+                mInterstitialAd.isLoaded -> mInterstitialAd.show()
+                else -> finish()
+            }
         }
     }
 
@@ -40,7 +89,6 @@ class ChallengeResultActivity : BaseActivity<ChallengeResultViewModel>() {
     private fun prepareObservers() {
         viewModel.showResult().observe(this, Observer { challengeResult ->
             setResultComponents(challengeResult)
-            setloadingState(false)
         })
     }
 

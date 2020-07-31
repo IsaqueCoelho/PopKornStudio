@@ -37,6 +37,7 @@ def firebaseAuthVersion = '19.3.1'
 def firebaseUiAuthVersion = '6.2.1'
 def firebaseFirestoreVersion = '21.4.3'
 def coroutinesPlayServicesVersion = '1.2.1'
+def firebaseAdMobVersion = '19.3.0'
 
 //
 // Test Dependencies
@@ -74,6 +75,7 @@ ext.generalDeps = [
         firebaseAuth          : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
         firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion",
         firebaseFirestore     : "com.google.firebase:firebase-firestore-ktx:$firebaseFirestoreVersion",
+        firebaseAdMob         : "com.google.firebase:firebase-ads:$firebaseAdMobVersion",
 
         coroutinePlayServices : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesPlayServicesVersion"
 ]

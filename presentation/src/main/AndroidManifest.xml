@@ -10,6 +10,12 @@
         android:roundIcon="${iconApp}"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9901566387699897~4984774426" />
+
         <activity
             android:name=".splash.SplashActivity"
             android:label="@string/app_name"
