@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: '../buildsystem/informations.gradle'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion app.compileSdkVersion
@@ -83,6 +84,7 @@ dependencies {
     implementation generalDeps.firebaseAuth
     implementation generalDeps.firebaseUiAuth
     implementation generalDeps.firebaseAdMob
+    implementation generalDeps.firebaseCrashlytics
 
 
     // Tests

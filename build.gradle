@@ -8,11 +8,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath gradleDeps.android
         classpath gradleDeps.kotlin
         classpath gradleDeps.gms
+        classpath gradleDeps.fabric
     }
 }
 

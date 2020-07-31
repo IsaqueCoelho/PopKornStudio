@@ -38,6 +38,8 @@ def firebaseUiAuthVersion = '6.2.1'
 def firebaseFirestoreVersion = '21.4.3'
 def coroutinesPlayServicesVersion = '1.2.1'
 def firebaseAdMobVersion = '19.3.0'
+def fabricVersion = '1.31.2'
+def crashlyticsVersion = '2.10.1'
 
 //
 // Test Dependencies
@@ -76,6 +78,7 @@ ext.generalDeps = [
         firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion",
         firebaseFirestore     : "com.google.firebase:firebase-firestore-ktx:$firebaseFirestoreVersion",
         firebaseAdMob         : "com.google.firebase:firebase-ads:$firebaseAdMobVersion",
+        firebaseCrashlytics   : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
 
         coroutinePlayServices : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesPlayServicesVersion"
 ]
@@ -99,5 +102,6 @@ ext.androidTestImplementationDependencies = [
 ext.gradleDeps = [
         android         : "com.android.tools.build:gradle:$buildTools",
         kotlin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
-        gms             : "com.google.gms:google-services:$googleServicesVersion"
+        gms             : "com.google.gms:google-services:$googleServicesVersion",
+        fabric          : "io.fabric.tools:gradle:$fabricVersion"
 ]
