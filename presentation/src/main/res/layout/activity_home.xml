@@ -303,18 +303,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textview_box_news_body"
+            <FrameLayout
+                android:id="@+id/container_news"
                 android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="@dimen/SPACE_0DP"
-                android:layout_marginTop="@dimen/SPACE_16DP"
-                android:maxLength="240"
-                android:textColor="@android:color/white"
+                android:layout_marginTop="@dimen/SPACE_8DP"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imageview_box_news"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageview_box_news"
-                tools:text="@tools:sample/lorem/random" />
+                app:layout_constraintTop_toBottomOf="@id/imageview_box_news"/>
 
             <ImageView
                 android:id="@+id/imageview_box_news"

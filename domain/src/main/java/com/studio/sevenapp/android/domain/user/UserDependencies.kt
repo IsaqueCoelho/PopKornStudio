@@ -4,6 +4,6 @@ import org.koin.core.module.Module
 
 fun Module.insertUserUseCase() {
     factory<UserUseCase> {
-        UserUseCaseImpl(get())
+        UserUseCaseImpl(get(), get())
     }
 }

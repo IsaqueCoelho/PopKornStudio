@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
+import com.studio.sevenapp.android.domain.news.NewsUseCase
 import com.studio.sevenapp.android.domain.user.UserUseCase
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val userUseCase: UserUseCase
+    private val userUseCase: UserUseCase,
+    private val newsUseCase: NewsUseCase
 ) : BaseViewModel() {
 
     private val mustShowUserLv = MutableLiveData<FirebaseUser>()
@@ -22,6 +24,7 @@ class HomeViewModel(
     }
 
     private fun loadData() {
+        newsUseCase.getNews()
         mustShowUserLv.postValue(
             userUseCase.getCurrentUser()
         )

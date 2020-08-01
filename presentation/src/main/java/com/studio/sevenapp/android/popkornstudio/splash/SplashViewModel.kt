@@ -23,7 +23,7 @@ class SplashViewModel(
         }
     }
 
-    private fun checkUserAuthentication(){
+    private suspend fun checkUserAuthentication(){
         val isAuthenticated = userUseCase.isUserLogged()
         shouldChangeScreenLv.postValue(isAuthenticated)
     }

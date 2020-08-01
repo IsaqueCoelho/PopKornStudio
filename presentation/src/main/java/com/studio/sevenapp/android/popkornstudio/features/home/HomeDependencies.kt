@@ -5,6 +5,6 @@ import org.koin.core.module.Module
 
 fun Module.insertHomeDependencies(){
     viewModel {
-        HomeViewModel(get())
+        HomeViewModel(get(), get())
     }
 }

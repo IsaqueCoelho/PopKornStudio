@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+
+
 apply from: '../buildsystem/informations.gradle'
 
 android {
@@ -91,6 +94,12 @@ dependencies {
     implementation generalDeps.firebaseUiAuth
     implementation generalDeps.firebaseAdMob
     implementation generalDeps.firebaseCrashlytics
+
+    implementation (generalDeps.firebasePerform,{
+        // protobuf-lite that firebase-config and Tink depends on.
+        exclude group: 'com.google.protobuf',module: 'protobuf-javalite'
+        exclude group: 'com.google.protobuf',module: 'protobuf-lite'
+    })
 
 
     // Tests

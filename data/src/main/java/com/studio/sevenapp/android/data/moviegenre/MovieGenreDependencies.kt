@@ -15,7 +15,7 @@ const val KOIN_RETROFIT = "retrofit"
 
 fun Module.insertMovieGenreRepository(){
 
-    single {
+    factory {
         ServiceFactory.createService(get(named(KOIN_RETROFIT)), MovieGenreRemoteSource::class.java)
     }
 

@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
+
 apply from: '../buildsystem/informations.gradle'
+
 
 android {
 
@@ -51,6 +53,13 @@ dependencies {
     implementation generalDeps.firebaseAuth
     implementation generalDeps.firebaseFirestore
     implementation generalDeps.coroutinePlayServices
+
+    implementation (generalDeps.firebaseRemoteConfig,{
+        // protobuf-lite that firebase-config and Tink depends on.
+        exclude group: 'com.google.protobuf',module: 'protobuf-javalite'
+        exclude group: 'com.google.protobuf',module: 'protobuf-lite'
+    })
+
 
     // Tests
     testImplementation testImplementationDependencies.junit4
