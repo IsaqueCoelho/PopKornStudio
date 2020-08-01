@@ -11,7 +11,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath gradleDeps.android
+        classpath gradleDeps.gradle
         classpath gradleDeps.kotlin
         classpath gradleDeps.gms
         classpath gradleDeps.fabric

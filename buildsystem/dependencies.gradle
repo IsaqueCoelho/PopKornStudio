@@ -1,5 +1,5 @@
 // Android Config
-def buildTools = '3.5.0'
+def gradleVersion = '3.5.0'
 
 def googleServicesVersion = '4.3.3'
 def kotlin_version = '1.3.61'
@@ -100,7 +100,7 @@ ext.androidTestImplementationDependencies = [
 ]
 
 ext.gradleDeps = [
-        android         : "com.android.tools.build:gradle:$buildTools",
+        gradle         : "com.android.tools.build:gradle:$gradleVersion",
         kotlin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
         gms             : "com.google.gms:google-services:$googleServicesVersion",
         fabric          : "io.fabric.tools:gradle:$fabricVersion"
