@@ -3,12 +3,12 @@ package com.studio.sevenapp.android.popkornstudio.features.home
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseUser
+import com.studio.sevenapp.android.popkornstudio.BuildConfig
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import com.studio.sevenapp.android.popkornstudio.features.game.category.GameCategoryActivity
@@ -52,11 +52,11 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
         cardview_box_one.setOnClickListener {
             try {
-                val rateIntent = rateIntentForUrl("market://details")
+                val rateIntent = rateIntentForUrl(BuildConfig.PLAY_STORE_MARKET_DETAILS)
                 startActivity(rateIntent)
             } catch (e: ActivityNotFoundException) {
                 val rateIntent =
-                    rateIntentForUrl("https://play.google.com/store/apps/details")
+                    rateIntentForUrl(BuildConfig.PLAY_STORE_MARKET_DETAILS_FULL_URL)
                 startActivity(rateIntent)
             }
         }
@@ -108,11 +108,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             Uri.parse(String.format("%s?id=%s", url, packageName))
         )
         var flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-        flags = if (Build.VERSION.SDK_INT >= 21) {
-            flags or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
-        } else {
-            flags or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
-        }
+        flags = flags or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
         intent.addFlags(flags)
         return intent
     }

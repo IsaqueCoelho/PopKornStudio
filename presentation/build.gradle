@@ -36,6 +36,9 @@ android {
                     iconApp: "@drawable/ic_popcorn_dev"
             ]
             buildConfigField "String", "ADMOB_AFTER_RESULT_GAME_ID", DEBUG_ADMOB_AFTER_RESULT_GAME_ID
+
+            buildConfigField "String", "PLAY_STORE_MARKET_DETAILS", PLAY_STORE_MARKET_DETAILS
+            buildConfigField "String", "PLAY_STORE_MARKET_DETAILS_FULL_URL", PLAY_STORE_MARKET_DETAILS_FULL_URL
         }
         prod {
             dimension dimensions.env
@@ -43,6 +46,9 @@ android {
                     iconApp: "@drawable/ic_popcorn"
             ]
             buildConfigField "String", "ADMOB_AFTER_RESULT_GAME_ID", ADMOB_AFTER_RESULT_GAME_ID
+
+            buildConfigField "String", "PLAY_STORE_MARKET_DETAILS", PLAY_STORE_MARKET_DETAILS
+            buildConfigField "String", "PLAY_STORE_MARKET_DETAILS_FULL_URL", PLAY_STORE_MARKET_DETAILS_FULL_URL
         }
     }
 
