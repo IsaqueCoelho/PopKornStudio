@@ -265,7 +265,7 @@
         android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/SPACE_16DP"
-        android:text="@string/form_topic_news"
+        android:text="@string/form_topic_title_card_news"
         android:textSize="@dimen/FONT_24SP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardview_box_three" />
@@ -288,39 +288,30 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/SPACE_16DP">
-
-            <TextView
-                android:id="@+id/textview_box_news"
-                android:layout_width="@dimen/SPACE_0DP"
-                android:layout_height="wrap_content"
-                android:text="@string/form_topic_title_card_news"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/FONT_20SP"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@id/imageview_box_news"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
             <FrameLayout
                 android:id="@+id/container_news"
                 android:layout_width="@dimen/SPACE_0DP"
                 android:layout_height="@dimen/SPACE_0DP"
-                android:layout_marginTop="@dimen/SPACE_8DP"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageview_box_news"/>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/imageview_box_news"
                 android:layout_width="@dimen/SPACE_32DP"
                 android:layout_height="@dimen/SPACE_32DP"
+                android:layout_margin="@dimen/SPACE_16DP"
                 android:contentDescription="@string/content_description_icon_public"
                 android:src="@drawable/ic_public_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/loadstate"
+                layout="@layout/layout_loading_state"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

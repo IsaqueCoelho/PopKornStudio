@@ -1,15 +1,30 @@
 package com.studio.sevenapp.android.domain.news
 
-import android.util.Log
+import com.google.gson.Gson
 import com.studio.sevenapp.android.domain.model.News
+import com.studio.sevenapp.android.domain.model.SimpleNews
 
 class NewsUseCaseImpl(
-    private val newsRepository: NewsRepository
+    private val newsRepository: NewsRepository,
+    private val gson: Gson
 ): NewsUseCase {
-    override fun getNews(): News {
-        val json = newsRepository.getNews(key = NewsEnum.NEWS.name)
 
-        Log.e(NewsUseCaseImpl::class.java.simpleName, json)
-        return News()
+    private val news = "NEWS"
+
+    override fun getNews(): News {
+        val json = newsRepository.getNews(key = news)
+        return createNews(json = json)
+    }
+
+    private fun createNews(json: String): News {
+        val news = gson.fromJson(json, News::class.java)
+        return when(news.type){
+            NewsEnum.SIMPLE_NEWS.id -> {
+                gson.fromJson(json, SimpleNews::class.java)
+            }
+            else -> {
+                gson.fromJson(json, SimpleNews::class.java)
+            }
+        }
     }
 }

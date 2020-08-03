@@ -2,6 +2,6 @@
 <defaultsMap>
     <entry>
         <key>NEWS</key>
-        <value>[{"type":0,"body":{"title":"Upa, precisava mesmo falar contigo!","body":"Já avaliou o aplicativo hoje? Corre lá e dá essa força e não esquece de indicar o app!"}}]</value>
+        <value>[{"type":0,"title":"Upa, precisava mesmo falar contigo!","description":"Já avaliou o aplicativo hoje? Corre lá e dá essa força e não esquece de indicar o app pra alguém!"}]</value>
     </entry>
 </defaultsMap>

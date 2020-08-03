@@ -4,6 +4,6 @@ import org.koin.core.module.Module
 
 fun Module.insertNews(){
     factory<NewsUseCase> {
-        NewsUseCaseImpl(get())
+        NewsUseCaseImpl(get(), get())
     }
 }

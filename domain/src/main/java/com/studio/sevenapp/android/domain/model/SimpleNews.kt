@@ -4,4 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-open class News(val type: Int = 0 ) : Parcelable
+class SimpleNews(
+    val title: String,
+    val description: String
+) : News(), Parcelable

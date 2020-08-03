@@ -4,6 +4,7 @@ import com.studio.sevenapp.android.popkornstudio.features.game.category.insertGa
 import com.studio.sevenapp.android.popkornstudio.features.game.challenge.insertChallengeDependencies
 import com.studio.sevenapp.android.popkornstudio.features.game.result.insertChallengeResult
 import com.studio.sevenapp.android.popkornstudio.features.home.insertHomeDependencies
+import com.studio.sevenapp.android.popkornstudio.features.news.insertNews
 import com.studio.sevenapp.android.popkornstudio.features.ranking.insertRanking
 import com.studio.sevenapp.android.popkornstudio.signin.insertSignIn
 import com.studio.sevenapp.android.popkornstudio.splash.includeSplashScreen
@@ -20,13 +21,16 @@ val presentationModule = module {
     // Home
     insertHomeDependencies()
 
+    // News
+    insertNews()
+
     // Game Category
     insertGameCategoryDependencies()
 
-    // QuestionEntity
+    // Question
     insertChallengeDependencies()
 
-    // ChallengeEntity Result
+    // Challenge Result
     insertChallengeResult()
 
     // Ranking

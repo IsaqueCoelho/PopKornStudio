@@ -50,6 +50,9 @@ dependencies {
     implementation generalDeps.appCompat
     implementation generalDeps.koinCore
 
+    // Gson
+    implementation generalDeps.gson
+
     // Firebase
     implementation generalDeps.firebaseCore
     implementation generalDeps.firebaseAuth
