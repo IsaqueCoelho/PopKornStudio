@@ -3,12 +3,14 @@ package com.studio.sevenapp.android.popkornstudio.features.ranking
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.studio.sevenapp.android.domain.model.Genre
+import com.studio.sevenapp.android.domain.model.User
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_ranking.*
@@ -89,9 +91,22 @@ class RankingActivity :
         })
 
         viewModel.showRanking().observe(this, Observer { userList ->
-            rankingAdapter.updatedList(newUserList = userList)
+            updateRankingList(userList)
             setloadingState(showLoading = false)
         })
+    }
+
+    private fun updateRankingList(userList: List<User>?) {
+        emptystate.visibility = when{
+            userList.isNullOrEmpty() -> {
+                rankingAdapter.updatedList(newUserList = emptyList())
+                 View.VISIBLE
+            }
+            else -> {
+                rankingAdapter.updatedList(newUserList = userList)
+                View.GONE
+            }
+        }
     }
 
     private fun setComponentListener() {

@@ -5,6 +5,10 @@
     <string name="base_no_internet_connection_error">Sem conexão com a internet</string>
     <string name="base_no_internet_connection_close">FECHAR</string>
 
+    <!-- Empty State -->
+    <string name="empty_state_title">Sem Dados</string>
+    <string name="empty_state_description">Não existem dados à serem exibidos</string>
+
     <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>
     <string name="content_description_background_login">Background da tela de login</string>
