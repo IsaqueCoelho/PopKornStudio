@@ -3,6 +3,7 @@ package com.studio.sevenapp.android.popkornstudio.features.game.category
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,8 +72,21 @@ class GameCategoryActivity : BaseActivity<GameCategoryViewModel>(),
 
     private fun prepareObservers() {
         viewModel.showCategory().observe(this, Observer { movieCategoryList ->
-            adapter.updatedList(movieCategoryList)
+            updateCategoryList(movieCategoryList = movieCategoryList)
             setloadingState(false)
         })
+    }
+
+    private fun updateCategoryList(movieCategoryList: List<Genre>) {
+        emptystate.visibility = when {
+            movieCategoryList.isNotEmpty() -> {
+                adapter.updatedList(newGenreList = movieCategoryList)
+                View.GONE
+            }
+            else -> {
+                adapter.updatedList(newGenreList = emptyList())
+                View.VISIBLE
+            }
+        }
     }
 }

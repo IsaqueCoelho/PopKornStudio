@@ -26,10 +26,21 @@
         tools:listitem="@layout/item_game_category" />
 
     <include
-        android:id="@+id/loadstate"
+        android:id="@+id/emptystate"
+        layout="@layout/content_empty_state"
         android:layout_width="@dimen/SPACE_0DP"
         android:layout_height="@dimen/SPACE_0DP"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <include
+        android:id="@+id/loadstate"
         layout="@layout/layout_loading_state"
+        android:layout_width="@dimen/SPACE_0DP"
+        android:layout_height="@dimen/SPACE_0DP"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
