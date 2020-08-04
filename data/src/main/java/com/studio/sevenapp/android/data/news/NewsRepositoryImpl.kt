@@ -5,8 +5,12 @@ import com.studio.sevenapp.android.domain.news.NewsRepository
 
 class NewsRepositoryImpl(
     private val remoteConfigRepository: RemoteConfigRepository
-): NewsRepository {
+) : NewsRepository {
     override fun getNews(key: String): String {
         return remoteConfigRepository.getString(key = key)
+    }
+
+    override suspend fun refreshNews() {
+        remoteConfigRepository.refreshRemoteConfigData()
     }
 }

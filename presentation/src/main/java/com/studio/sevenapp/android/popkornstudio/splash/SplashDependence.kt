@@ -7,6 +7,6 @@ import org.koin.core.module.Module
 fun Module.includeSplashScreen() {
 
     viewModel {
-        SplashViewModel(get())
+        SplashViewModel(get(), get())
     }
 }

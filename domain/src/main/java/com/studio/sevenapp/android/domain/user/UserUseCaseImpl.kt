@@ -6,12 +6,10 @@ import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.User
 
 class UserUseCaseImpl(
-    private val userRepository: UserRepository,
-    private val RemoteConfigRepository: RemoteConfigRepository
+    private val userRepository: UserRepository
 ) : UserUseCase {
 
     override suspend fun isUserLogged(): Boolean {
-        RemoteConfigRepository.refreshRemoteConfigData()
         return userRepository.getCurrentUser() != null
     }
 

@@ -9,6 +9,9 @@
     <string name="empty_state_title">Sem Dados</string>
     <string name="empty_state_description">Não existem dados à serem exibidos</string>
 
+    <!-- Failure -->
+    <string name="failure_load_news">Não foi possível atualizar as </string>
+
     <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>
     <string name="content_description_background_login">Background da tela de login</string>

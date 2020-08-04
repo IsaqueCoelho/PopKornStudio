@@ -14,6 +14,7 @@ import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.extensions.setBackground
 import com.studio.sevenapp.android.popkornstudio.extensions.setElevation
 import com.studio.sevenapp.android.popkornstudio.extensions.setMargin
+import org.koin.android.ext.android.inject
 
 abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
     open val isViewModelOwner = true
 
     protected var loadStateView: View? = null
+
+    private val connectivityReceiver: ConnectivityReceiver by inject()
 
     private val customDialog by lazy {
         MaterialDialog(this).noAutoDismiss()
@@ -55,7 +58,21 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
         if (isViewModelOwner)
             viewModel.onViewResumed()
 
+        registerConnectivityReceiver()
         prepareBaseObservers()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterConnectivityReceiver()
+    }
+
+    private fun unregisterConnectivityReceiver() {
+        connectivityReceiver.unregisterNetworkCallback(this)
+    }
+
+    private fun registerConnectivityReceiver() {
+        connectivityReceiver.registerNetworkCallback(this)
     }
 
     protected fun changeScreen(intent: Intent, addToStack: Boolean) {
@@ -108,6 +125,16 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
         viewModel.showLoading().observe(this, Observer { loadingState ->
             setloadingState(loadingState)
         })
+
+        viewModel.showToast().observe(this, Observer { mustShowToast ->
+            when {
+                mustShowToast.first -> showToast(getString(mustShowToast.second))
+            }
+        })
+
+        viewModel.showNoInternetConnection().observe(this, Observer { mustShow ->
+            setNoInternetConnection(mustShow = mustShow)
+        })
     }
 
     private fun showLoadingState() {
@@ -116,5 +143,14 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
 
     private fun dismissLoadingState() {
         loadStateView?.visibility = View.GONE
+    }
+
+    private fun setNoInternetConnection(mustShow: Boolean) {
+        snackBarNoInternetConnection.apply {
+            when {
+                mustShow && !isShown -> show()
+                !mustShow && isShown -> dismiss()
+            }
+        }
     }
 }

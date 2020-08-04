@@ -4,4 +4,5 @@ import com.studio.sevenapp.android.domain.model.News
 
 interface NewsUseCase {
     fun getNews(): News
+    suspend fun refreshNews()
 }

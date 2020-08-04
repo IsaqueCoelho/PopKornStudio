@@ -7,7 +7,7 @@ import com.studio.sevenapp.android.domain.model.SimpleNews
 class NewsUseCaseImpl(
     private val newsRepository: NewsRepository,
     private val gson: Gson
-): NewsUseCase {
+) : NewsUseCase {
 
     private val news = "NEWS"
 
@@ -16,9 +16,13 @@ class NewsUseCaseImpl(
         return createNews(json = json)
     }
 
+    override suspend fun refreshNews() {
+        newsRepository.refreshNews()
+    }
+
     private fun createNews(json: String): News {
         val news = gson.fromJson(json, News::class.java)
-        return when(news.type){
+        return when (news.type) {
             NewsEnum.SIMPLE_NEWS.id -> {
                 gson.fromJson(json, SimpleNews::class.java)
             }

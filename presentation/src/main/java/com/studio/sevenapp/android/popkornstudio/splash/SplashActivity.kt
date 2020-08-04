@@ -17,11 +17,10 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        setObservers()
+        prepareObservers()
     }
 
-    private fun setObservers() {
-
+    private fun prepareObservers() {
         viewModel.shouldChangeScreen()
             .observe(this, Observer { result ->
                 changeScreen(

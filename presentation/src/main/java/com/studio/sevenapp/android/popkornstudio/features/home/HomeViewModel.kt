@@ -11,7 +11,6 @@ import com.studio.sevenapp.android.domain.news.NewsUseCase
 import com.studio.sevenapp.android.domain.user.UserUseCase
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
 import com.studio.sevenapp.android.popkornstudio.features.news.SimpleNewsFragment
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -20,10 +19,10 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
     private val mustShowUserLv = MutableLiveData<FirebaseUser>()
-    fun showUser() : LiveData<FirebaseUser> = mustShowUserLv
+    fun showUser(): LiveData<FirebaseUser> = mustShowUserLv
 
     private val mustShowNewsLv = MutableLiveData<Fragment>()
-    fun showNews() : LiveData<Fragment> = mustShowNewsLv
+    fun showNews(): LiveData<Fragment> = mustShowNewsLv
 
     init {
         viewModelScope.launch {
@@ -31,19 +30,18 @@ class HomeViewModel(
         }
     }
 
-    private suspend fun loadData() {
+    private fun loadData() {
         mustShowUserLv.postValue(
             userUseCase.getCurrentUser()
         )
 
-        delay(3000)
         mustShowNewsLv.postValue(
             createFragment(news = newsUseCase.getNews())
         )
     }
 
     private fun createFragment(news: News): Fragment {
-        return when(news){
+        return when (news) {
             is SimpleNews -> SimpleNewsFragment.params(news = news)
             else -> SimpleNewsFragment.params(news = news)
         }

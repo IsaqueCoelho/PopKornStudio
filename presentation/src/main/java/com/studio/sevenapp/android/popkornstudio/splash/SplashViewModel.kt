@@ -2,33 +2,42 @@ package com.studio.sevenapp.android.popkornstudio.splash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import com.studio.sevenapp.android.domain.news.NewsUseCase
 import com.studio.sevenapp.android.domain.user.UserUseCase
+import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class SplashViewModel(
-    private val userUseCase : UserUseCase
+    private val userUseCase: UserUseCase,
+    private val newsUseCase: NewsUseCase
 ) : BaseViewModel() {
 
-    private val shouldChangeScreenLv = MutableLiveData<Boolean>()
+    private val scope = CoroutineScope(SupervisorJob())
+    private val handler = CoroutineExceptionHandler { _, _ ->
+        mustShowToastLv.postValue(Pair(true, R.string.failure_load_news))
+    }
 
+    private val shouldChangeScreenLv = MutableLiveData<Boolean>()
     fun shouldChangeScreen(): LiveData<Boolean> = shouldChangeScreenLv
 
     init {
-        viewModelScope.launch {
+        scope.launch(handler) {
+            newsUseCase.refreshNews()
+        }
+
+        scope.launch {
             delay(SPLASH_DELAY)
             checkUserAuthentication()
         }
     }
 
-    private suspend fun checkUserAuthentication(){
+    private suspend fun checkUserAuthentication() {
         val isAuthenticated = userUseCase.isUserLogged()
         shouldChangeScreenLv.postValue(isAuthenticated)
     }
 
-    companion object{
+    companion object {
         private const val SPLASH_DELAY = 2300L
     }
 
