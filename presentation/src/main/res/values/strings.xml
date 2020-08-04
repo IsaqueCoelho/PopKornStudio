@@ -10,7 +10,8 @@
     <string name="empty_state_description">Não existem dados à serem exibidos</string>
 
     <!-- Failure -->
-    <string name="failure_load_news">Não foi possível atualizar as </string>
+    <string name="failure_load_news">Não foi possível atualizar as notícias</string>
+    <string name="failure_load_category">Não foi possível buscar as categorias</string>
 
     <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>

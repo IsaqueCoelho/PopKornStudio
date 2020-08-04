@@ -86,8 +86,7 @@ class RankingActivity :
 
     private fun prepareObservers() {
         viewModel.showCategory().observe(this, Observer { genreList ->
-            textview_title.text = genreList[0].name
-            categoryAdapter.updatedList(newGenreList = genreList)
+            updatedCategoryList(genreList)
         })
 
         viewModel.showRanking().observe(this, Observer { userList ->
@@ -96,15 +95,29 @@ class RankingActivity :
         })
     }
 
-    private fun updateRankingList(userList: List<User>?) {
-        emptystate.visibility = when{
-            userList.isNullOrEmpty() -> {
-                rankingAdapter.updatedList(newUserList = emptyList())
-                 View.VISIBLE
+    private fun updatedCategoryList(genreList: List<Genre>) {
+        emptystate_category.visibility = when {
+            !genreList.isNullOrEmpty() -> {
+                textview_title.text = genreList[0].name
+                categoryAdapter.updatedList(newGenreList = genreList)
+                View.GONE
             }
             else -> {
+                textview_title.text = getString(R.string.title_game_choice_category)
+                View.VISIBLE
+            }
+        }
+    }
+
+    private fun updateRankingList(userList: List<User>?) {
+        emptystate.visibility = when {
+            !userList.isNullOrEmpty() -> {
                 rankingAdapter.updatedList(newUserList = userList)
                 View.GONE
+            }
+            else -> {
+                rankingAdapter.updatedList(newUserList = emptyList())
+                View.VISIBLE
             }
         }
     }

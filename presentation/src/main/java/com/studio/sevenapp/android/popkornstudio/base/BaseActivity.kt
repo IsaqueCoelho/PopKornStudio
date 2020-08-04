@@ -94,7 +94,7 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
         supportActionBar?.title = title
     }
 
-    protected fun showToast(msg: String) {
+    private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
