@@ -20,18 +20,21 @@ class CreateQuestion {
             type = questionType,
             state = QuestionStateEnum.AVAILABLE,
             isCorrect = false,
-            time = getTime(questionType),
+            time = getTimeInMillis(questionType),
             answerList = emptyList()
         )
     }
 
-    private fun getTime(questionType: QuestionTypeEnum): String {
+    private fun getTimeInMillis(questionType: QuestionTypeEnum): String {
+        val thirtySeconds = "30000"
+        val sixteenSeconds = "16000"
+
         return when (questionType) {
             QuestionTypeEnum.OVERVIEW -> {
-                "30000"
+                thirtySeconds
             }
             else -> {
-                "16000"
+                sixteenSeconds
             }
         }
     }
