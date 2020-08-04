@@ -1,5 +1,6 @@
 package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_challenge.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+
 
 private const val ARG_PARAM_CHALLENGE_TYPE = "PARAM_CHALLENGE_TYPE"
 
@@ -40,10 +42,42 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                onBackPressed()
+                validateOnExiteScreen()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun validateOnExiteScreen() {
+        when {
+            viewModel.getChallenge().value != null -> {
+                showExitDialog(viewModel.getChallenge().value!!)
+            }
+            else -> {
+                onBackPressed()
+            }
+        }
+    }
+
+    private fun showExitDialog(challenge: Challenge) {
+        val alertDialog: AlertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle(getString(R.string.dialog_title_challenge_exit))
+        alertDialog.setMessage(getString(R.string.dialog_content_challenge_exit))
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE,
+            getString(R.string.action_yes)
+        ) { dialog, _ ->
+            viewModel.cancelChallenge(challenge)
+            dialog.dismiss()
+            onBackPressed()
+        }
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEGATIVE,
+            getString(R.string.action_no)
+        ) { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
     }
 
     private fun getChallengeType() {

@@ -27,6 +27,8 @@
     <string name="action_sign_in_by_google">Entrar usando Google</string>
     <string name="action_loggout"><u>Sair</u></string>
     <string name="action_confirm">Confirmar</string>
+    <string name="action_yes">SIM</string>
+    <string name="action_no">NÃO</string>
 
     <!-- Title -->
     <string name="title_home">Olá, <b>%s!</b></string>
@@ -35,6 +37,12 @@
     <string name="title_challenge">Desafio</string>
     <string name="title_challenge_result">Resultado</string>
     <string name="title_ranking">Ranking</string>
+
+    <!-- Dialog Title -->
+    <string name="dialog_title_challenge_exit">Você realmente gostaria de sair?</string>
+
+    <!-- Dialog Content -->
+    <string name="dialog_content_challenge_exit">Caso você prossiga todas as questões respondidas serão canceladas!</string>
 
     <!-- Form topic -->
     <string name="form_topic_rate_app">Avalie na Loja</string>

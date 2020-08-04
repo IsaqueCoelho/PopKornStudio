@@ -4,6 +4,7 @@ import androidx.annotation.CallSuper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
+import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.Question
@@ -52,5 +53,14 @@ class ChallengeViewModel(
         }
 
         fragmentQuestionListLv.postValue(challengeFragmentList)
+    }
+
+    fun cancelChallenge(challenge: Challenge) {
+        scope.launch {
+            challengeUseCase.saveChallenge(
+                challenge = challenge,
+                state = QuestionStateEnum.AVAILABLE
+            )
+        }
     }
 }

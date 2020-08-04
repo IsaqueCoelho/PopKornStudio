@@ -88,7 +88,7 @@ class ChallengeUseCaseImpl(
         return challengeResult
     }
 
-    private suspend fun saveChallenge(challenge: Challenge, state: QuestionStateEnum) {
+    override suspend fun saveChallenge(challenge: Challenge, state: QuestionStateEnum) {
         challenge.questionList
             .filter { question ->
                 question.state != QuestionStateEnum.RESOLVED
