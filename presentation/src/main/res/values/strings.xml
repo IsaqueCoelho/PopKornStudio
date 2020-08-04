@@ -11,7 +11,8 @@
 
     <!-- Failure -->
     <string name="failure_load_news">Não foi possível atualizar as notícias</string>
-    <string name="failure_load_category">Não foi possível buscar as categorias</string>
+    <string name="failure_load_category">Não foi possível buscar as categorias =(</string>
+    <string name="failure_load_challenge">Não foi possível gerar o desafio =(</string>
 
     <!-- Image descriptions -->
     <string name="content_description_splassh_screen">Tela de Carregamento com o logo do aplicativo</string>

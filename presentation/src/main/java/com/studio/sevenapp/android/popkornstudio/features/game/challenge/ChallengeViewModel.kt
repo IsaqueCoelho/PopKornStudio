@@ -3,20 +3,32 @@ package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 import androidx.annotation.CallSuper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
 import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.Question
+import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 class ChallengeViewModel(
     private val challengeUseCase: ChallengeUseCase
 ) : BaseViewModel() {
 
-    private val challengeLv = MutableLiveData<Challenge>()
+    private val scope = CoroutineScope(SupervisorJob())
+    private val handler = CoroutineExceptionHandler { _, _ ->
+        challengeLv.postValue(null)
+        mustShowToastLv.postValue(Pair(first = true, second = R.string.failure_load_challenge))
+    }
+
+    private val challengeLv = MutableLiveData<Challenge?>()
+    fun getChallenge(): LiveData<Challenge?> = challengeLv
+
     private val fragmentQuestionListLv = MutableLiveData<List<ChallengeQuestionFragment>>()
+    fun showQuestionsFragments(): LiveData<List<ChallengeQuestionFragment>> = fragmentQuestionListLv
 
     @CallSuper
     override fun onViewResumed() {
@@ -24,11 +36,8 @@ class ChallengeViewModel(
         loadStateLv.postValue(true)
     }
 
-    fun showQuestionsFragments(): LiveData<List<ChallengeQuestionFragment>> = fragmentQuestionListLv
-    fun getChallenge(): LiveData<Challenge> = challengeLv
-
     fun getChallenge(genre: Genre) {
-        viewModelScope.launch {
+        scope.launch(handler) {
             challengeLv.postValue(challengeUseCase.getChallenged(genre))
         }
     }

@@ -3,8 +3,10 @@ package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
+import com.studio.sevenapp.android.domain.model.Challenge
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.popkornstudio.R
 import com.studio.sevenapp.android.popkornstudio.base.BaseActivity
@@ -70,11 +72,26 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
 
         viewModel.getChallenge()
             .observe(this, Observer { challenge ->
+                updateChallenge(challenge)
+            })
+    }
+
+    private fun updateChallenge(challenge: Challenge?) {
+        emptystate.visibility = when {
+            challenge != null -> {
                 challengeGenre = challenge.genre.name
                 viewModel.createChallengeQuestionFragments(
                     questionList = challenge.questionList
                 )
-            })
+                View.GONE
+            }
+            else -> {
+                viewModel.createChallengeQuestionFragments(
+                    questionList = emptyList()
+                )
+                View.VISIBLE
+            }
+        }
     }
 
     private fun setViewPager(challengeQuestionAdapter: ChallengeQuestionAdapter) {

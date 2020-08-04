@@ -56,7 +56,6 @@ fun Module.insertInfra() {
     }
 
     // Request interception
-
     single {
         ErrorInterceptor(isLoggingEnabled = get(named(KOIN_IS_DEBUG)))
     }

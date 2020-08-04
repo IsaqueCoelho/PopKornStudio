@@ -1,6 +1,5 @@
 package com.studio.sevenapp.android.popkornstudio.features.ranking
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.studio.sevenapp.android.domain.model.Genre
@@ -20,8 +19,8 @@ class RankingViewModel(
 ) : BaseViewModel() {
 
     private val scope = CoroutineScope(SupervisorJob())
-    private val handler = CoroutineExceptionHandler { _, exception ->
-        setExceptionState(exception = exception)
+    private val handler = CoroutineExceptionHandler { _, _ ->
+        setExceptionState()
     }
 
     private val categoryListLv = MutableLiveData<List<Genre>>()
@@ -55,11 +54,10 @@ class RankingViewModel(
         rankingListLv.postValue(userRanking)
     }
 
-    private fun setExceptionState(exception: Throwable) {
+    private fun setExceptionState() {
         mustShowToastLv.postValue(Pair(true, R.string.failure_load_category))
         loadStateLv.postValue(false)
         categoryListLv.postValue(emptyList())
         rankingListLv.postValue(emptyList())
-        Log.e(RankingViewModel::class.java.simpleName, "${exception.message}")
     }
 }
