@@ -12,7 +12,7 @@ import org.koin.android.ext.android.inject
 class SimpleNewsFragment : BaseFragment<EmptyViewModel>(R.layout.fragment_simple_news) {
 
     private val simpleNews: SimpleNews? by lazy {
-        arguments?.getParcelable(NEWS_PARAM) as SimpleNews
+        arguments?.getParcelable(NEWS_PARAM) as SimpleNews?
     }
 
     override val viewModel: EmptyViewModel by inject()

@@ -48,8 +48,8 @@ class ChallengeQuestionFragment :
     }
 
     private fun getArquments() {
-        questionChallenge = arguments!!.let { bundle ->
-            bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION) as Question
+        arguments?.let {bundle ->
+            questionChallenge = bundle.getParcelable(ARG_PARAM_CHALLENGE_QUESTION)!!
         }
 
         questionCount = arguments!!.getInt(ARG_PARAM_QUESTION_COUNT)

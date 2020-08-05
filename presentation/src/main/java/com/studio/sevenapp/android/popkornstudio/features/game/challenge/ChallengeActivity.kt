@@ -82,8 +82,8 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
 
     private fun getChallengeType() {
         intent.extras?.let { extra ->
-            val movieGenre = extra.getParcelable(ARG_PARAM_CHALLENGE_TYPE) as Genre
-            viewModel.getChallenge(genre = movieGenre)
+            val movieGenre = extra.getParcelable(ARG_PARAM_CHALLENGE_TYPE) as Genre?
+            viewModel.getChallenge(genre = movieGenre!!)
         }
     }
 
