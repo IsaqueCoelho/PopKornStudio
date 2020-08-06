@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.game.challenge.ChallengeQuestionFragment">
 
     <TextView
@@ -13,10 +13,10 @@
         android:layout_margin="@dimen/SPACE_8DP"
         android:textSize="@dimen/FONT_20SP"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Qual é o filme da sinopse a abaixo?"/>
+        tools:text="Qual é o filme da sinopse a abaixo?" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_question_container"
@@ -25,9 +25,9 @@
         android:layout_margin="@dimen/SPACE_8DP"
         android:backgroundTint="@color/DEFAULT_37474F"
         app:cardCornerRadius="@dimen/SPACE_16DP"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_question_topic"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/textview_question_topic">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,14 +41,14 @@
                 android:id="@+id/textview_question_context"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:maxHeight="@dimen/SPACE_100DP"
+                android:maxHeight="@dimen/SPACE_128DP"
                 android:scrollbars="vertical"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="@tools:sample/lorem/random"/>
+                tools:text="@tools:sample/lorem/random" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -58,14 +58,14 @@
         android:id="@+id/textview_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/SPACE_32DP"
         android:layout_marginStart="@dimen/SPACE_8DP"
-        android:textSize="@dimen/FONT_20SP"
+        android:layout_marginTop="@dimen/SPACE_32DP"
         android:text="@string/form_topic_challenge_question_options"
+        android:textSize="@dimen/FONT_20SP"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview_question_container"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/cardview_question_container" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -74,32 +74,32 @@
         android:layout_marginStart="@dimen/SPACE_8DP"
         android:layout_marginTop="@dimen/SPACE_16DP"
         android:layout_marginEnd="@dimen/SPACE_8DP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_options"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_challenge_options"/>
+        tools:listitem="@layout/item_challenge_options" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageview_container_indicator"
         android:layout_width="@dimen/SPACE_45DP"
         android:layout_height="@dimen/SPACE_45DP"
-        android:src="@color/DEFAULT_0FBCF9"
         android:layout_margin="@dimen/SPACE_16DP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:src="@color/DEFAULT_0FBCF9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textview_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/FONT_20SP"
         android:text="@string/timer_indicator"
-        app:layout_constraintStart_toStartOf="@id/imageview_container_indicator"
-        app:layout_constraintTop_toTopOf="@id/imageview_container_indicator"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/FONT_20SP"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_container_indicator"
         app:layout_constraintEnd_toEndOf="@id/imageview_container_indicator"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_container_indicator"/>
+        app:layout_constraintStart_toStartOf="@id/imageview_container_indicator"
+        app:layout_constraintTop_toTopOf="@id/imageview_container_indicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@
     <string name="title_ranking">Ranking</string>
 
     <!-- Dialog Title -->
-    <string name="dialog_title_challenge_exit">Você realmente gostaria de sair?</string>
+    <string name="dialog_title_challenge_exit">Você deseja sair?</string>
 
     <!-- Dialog Content -->
     <string name="dialog_content_challenge_exit">Caso você prossiga todas as questões respondidas serão canceladas!</string>

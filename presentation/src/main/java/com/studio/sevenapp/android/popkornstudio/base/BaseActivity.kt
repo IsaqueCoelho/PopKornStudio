@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.CallSuper
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -110,7 +111,7 @@ abstract class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() {
         customDialog.cancelOnTouchOutside(cancelOnTouchOutside)
     }
 
-    protected fun getCustomDialogViewById(viewId: Int): View {
+    protected fun <VIEW : View> getCustomDialogViewById(@IdRes viewId: Int): VIEW {
         return customDialog.findViewById(viewId)
     }
 

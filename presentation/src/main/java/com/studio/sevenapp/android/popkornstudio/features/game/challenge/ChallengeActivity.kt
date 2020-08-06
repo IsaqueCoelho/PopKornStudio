@@ -1,10 +1,11 @@
 package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.studio.sevenapp.android.domain.model.Challenge
@@ -35,7 +36,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
         setContentView(R.layout.activity_challenge)
 
         getChallengeType()
-        setComponents()
+        prepareComponents()
         prepareObservers()
     }
 
@@ -51,33 +52,12 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
     private fun validateOnExiteScreen() {
         when {
             viewModel.getChallenge().value != null -> {
-                showExitDialog(viewModel.getChallenge().value!!)
+                customDialogVisibility(state = true)
             }
             else -> {
                 onBackPressed()
             }
         }
-    }
-
-    private fun showExitDialog(challenge: Challenge) {
-        val alertDialog: AlertDialog = AlertDialog.Builder(this).create()
-        alertDialog.setTitle(getString(R.string.dialog_title_challenge_exit))
-        alertDialog.setMessage(getString(R.string.dialog_content_challenge_exit))
-        alertDialog.setButton(
-            AlertDialog.BUTTON_POSITIVE,
-            getString(R.string.action_yes)
-        ) { dialog, _ ->
-            viewModel.cancelChallenge(challenge)
-            dialog.dismiss()
-            onBackPressed()
-        }
-        alertDialog.setButton(
-            AlertDialog.BUTTON_NEGATIVE,
-            getString(R.string.action_no)
-        ) { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.show()
     }
 
     private fun getChallengeType() {
@@ -87,7 +67,7 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
         }
     }
 
-    private fun setComponents() {
+    private fun prepareComponents() {
         setSupportActionBar(toolbar as Toolbar?)
         setToolbarBackButton()
         setToolbarTitle(getString(R.string.title_challenge))
@@ -95,6 +75,33 @@ class ChallengeActivity : BaseActivity<ChallengeViewModel>() {
         loadStateView = loadstate
 
         viewpagerchallenge.isUserInputEnabled = false
+
+        prepareExitDialog()
+    }
+
+    private fun prepareExitDialog() {
+        setCustomDialogLayout(R.layout.dialog_simple)
+
+        val dialogTitle = getCustomDialogViewById<TextView>(viewId = R.id.dialog_title)
+        val dialogDescription = getCustomDialogViewById<TextView>(viewId = R.id.dialog_description)
+        val btnNo = getCustomDialogViewById<Button>(viewId = R.id.dialog_button_left)
+        val btnYes = getCustomDialogViewById<Button>(viewId = R.id.dialog_button_right)
+
+        dialogTitle.text = getString(R.string.dialog_title_challenge_exit)
+        dialogDescription.text = getString(R.string.dialog_content_challenge_exit)
+        btnNo.visibility = View.VISIBLE
+        btnNo.text = getString(R.string.action_no)
+        btnYes.text = getString(R.string.action_yes)
+
+        btnNo.setOnClickListener {
+            customDialogVisibility(state = false)
+        }
+
+        btnYes.setOnClickListener {
+            viewModel.cancelChallenge(viewModel.getChallenge().value!!)
+            customDialogVisibility(state = false)
+            onBackPressed()
+        }
     }
 
     private fun prepareObservers() {
