@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.method.ScrollingMovementMethod
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
@@ -61,6 +62,7 @@ class ChallengeQuestionFragment :
         val topic = "${questionCount}. ${questionChallenge.topic}"
         textview_question_topic.text = topic
         textview_question_context.text = questionChallenge.context
+        textview_question_context.movementMethod = ScrollingMovementMethod()
 
         answerOptionsAdapter.updateList(questionChallenge.answerList)
 

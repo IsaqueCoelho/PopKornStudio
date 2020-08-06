@@ -15,4 +15,5 @@
     <dimen name="SPACE_50DP">50dp</dimen>
     <dimen name="SPACE_60DP">60dp</dimen>
     <dimen name="SPACE_100DP">100dp</dimen>
+    <dimen name="SPACE_128DP">128dp</dimen>
 </resources>

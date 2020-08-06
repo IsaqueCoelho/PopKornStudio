@@ -40,9 +40,16 @@ class CreateQuestion {
     }
 
     private fun getRandomType(): QuestionTypeEnum {
-        return QuestionTypeEnum.values()[
-                (QuestionTypeEnum.values().indices).random()
-        ]
+        return when {
+            movie.overview.isNotEmpty() -> {
+                QuestionTypeEnum.values()[
+                        (QuestionTypeEnum.values().indices).random()
+                ]
+            }
+            else -> {
+                QuestionTypeEnum.RELEASE_DATE
+            }
+        }
     }
 
     private fun getQuestionTopic(questionType: QuestionTypeEnum): String {
