@@ -55,11 +55,6 @@ fun Module.insertInfra() {
         GsonConverterFactory.create(get<Gson>())
     }
 
-    // Request interception
-    single {
-        ErrorInterceptor(isLoggingEnabled = get(named(KOIN_IS_DEBUG)))
-    }
-
     single {
         HttpLoggingInterceptor().apply {
             level =
