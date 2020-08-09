@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.popkornstudio.features.game.category
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.crashlytics.android.Crashlytics
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.moviegenre.MovieGenreUseCase
 import com.studio.sevenapp.android.popkornstudio.R
@@ -16,7 +17,8 @@ class GameCategoryViewModel(
 ) : BaseViewModel() {
 
     private val scope = CoroutineScope(SupervisorJob())
-    private val handler = CoroutineExceptionHandler { _, _ ->
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        Crashlytics.logException(exception)
         categoryListLv.postValue(emptyList())
         mustShowToastLv.postValue(Pair(first = true, second = R.string.failure_load_category))
     }

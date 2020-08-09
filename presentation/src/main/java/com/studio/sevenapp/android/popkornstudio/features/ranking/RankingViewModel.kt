@@ -2,6 +2,7 @@ package com.studio.sevenapp.android.popkornstudio.features.ranking
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.crashlytics.android.Crashlytics
 import com.studio.sevenapp.android.domain.model.Genre
 import com.studio.sevenapp.android.domain.model.User
 import com.studio.sevenapp.android.domain.moviegenre.MovieGenreUseCase
@@ -19,7 +20,8 @@ class RankingViewModel(
 ) : BaseViewModel() {
 
     private val scope = CoroutineScope(SupervisorJob())
-    private val handler = CoroutineExceptionHandler { _, _ ->
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        Crashlytics.logException(exception)
         setExceptionState()
     }
 
