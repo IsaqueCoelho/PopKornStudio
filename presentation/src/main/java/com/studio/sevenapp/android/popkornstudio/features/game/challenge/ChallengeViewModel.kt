@@ -3,6 +3,7 @@ package com.studio.sevenapp.android.popkornstudio.features.game.challenge
 import androidx.annotation.CallSuper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.crashlytics.android.Crashlytics
 import com.studio.sevenapp.android.domain.challenge.ChallengeUseCase
 import com.studio.sevenapp.android.domain.challenge.business.QuestionStateEnum
 import com.studio.sevenapp.android.domain.model.Challenge
@@ -20,7 +21,8 @@ class ChallengeViewModel(
 ) : BaseViewModel() {
 
     private val scope = CoroutineScope(SupervisorJob())
-    private val handler = CoroutineExceptionHandler { _, _ ->
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        Crashlytics.logException(exception)
         challengeLv.postValue(null)
         mustShowToastLv.postValue(Pair(first = true, second = R.string.failure_load_challenge))
     }
