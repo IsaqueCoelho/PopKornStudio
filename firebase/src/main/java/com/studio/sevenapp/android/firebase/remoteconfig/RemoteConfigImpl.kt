@@ -1,8 +1,8 @@
 package com.studio.sevenapp.android.firebase.remoteconfig
 
+import com.crashlytics.android.Crashlytics
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.studio.sevenapp.android.data.infra.RemoteConfig
-import kotlinx.coroutines.tasks.await
 
 class RemoteConfigImpl(
     private val remoteConfig: FirebaseRemoteConfig
@@ -13,6 +13,8 @@ class RemoteConfigImpl(
     }
 
     override suspend fun refreshRemoteConfig() {
-        remoteConfig.fetchAndActivate().await()
+        remoteConfig.fetchAndActivate().addOnFailureListener { exception ->
+            Crashlytics.logException(exception)
+        }
     }
 }

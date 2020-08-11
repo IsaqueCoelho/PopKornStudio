@@ -271,7 +271,6 @@
             android:layout_marginTop="@dimen/SPACE_16DP"
             android:text="@string/form_topic_title_card_news"
             android:textSize="@dimen/FONT_24SP"
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardview_box_three" />
 
@@ -286,7 +285,6 @@
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="@dimen/SPACE_16DP"
             app:cardElevation="@dimen/SPACE_0DP"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

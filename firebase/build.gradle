@@ -53,6 +53,7 @@ dependencies {
     implementation generalDeps.firebaseAuth
     implementation generalDeps.firebaseFirestore
     implementation generalDeps.coroutinePlayServices
+    implementation generalDeps.firebaseCrashlytics
 
     implementation (generalDeps.firebaseRemoteConfig,{
         // protobuf-lite that firebase-config and Tink depends on.
